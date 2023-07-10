@@ -8,7 +8,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "eslint --ext .tsx --ext .ts src/"
+    "lint": "eslint ./src --ext .ts,.tsx --max-warnings=0",
+    "precommit": "npm run lint"
   },
   "dependencies": {
     "expo": "~48.0.18",
@@ -39,10 +40,16 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-webpack-plugin": "^4.0.1",
+    "husky": "^8.0.3",
     "prettier": "^3.0.0",
     "prettier-eslint": "^15.0.1",
     "prettier-eslint-cli": "^7.1.0",
     "typescript": "^5.1.6"
   },
-  "private": true
+  "private": true,
+  "husky": {
+    "hooks": {
+        "pre-commit": "npm run precommit"
+    }
+  }
 }
