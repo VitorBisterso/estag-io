@@ -5,12 +5,12 @@
     },
     "ignorePatterns": ["babel.config.js"],
     "extends": [
+        "airbnb-typescript",
         "eslint:recommended",
+        "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:react-hooks/recommended",
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+        "airbnb",
+        "prettier"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -24,6 +24,13 @@
         "@typescript-eslint",
         "prettier"
     ],
+    "settings": {
+        "import/resolver": {
+          "typescript": {
+            "alwaysTryTypes": true
+          }
+        }
+    },
     "rules": {
         "prettier/prettier": [
             "warn",
@@ -31,6 +38,8 @@
                 "endOfLine": "auto"
             }
         ],
+        "react/jsx-filename-extension": "off",
+        "react/react-in-jsx-scope": "off",
         "quotes": [
             "error",
             "single"
@@ -38,6 +47,28 @@
         "semi": [
             "error",
             "always"
+        ],
+        "react/style-prop-object": "off",
+        "react/jsx-indent": "off",
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": "off",
+        "no-unused-expressions": [
+            "error", { "allowTernary": true }
+        ],
+        "@typescript-eslint/no-unused-vars": [
+            "warn",
+            { "argsIgnorePattern": "^_" }
+        ],
+        "@typescript-eslint/no-explicit-any": "off",
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "jsx": "never",
+                "ts": "never",
+                "tsx": "never"
+            }
         ]
     }
 }
