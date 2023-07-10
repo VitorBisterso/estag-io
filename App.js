@@ -4,6 +4,7 @@ import {
    PaperProvider,
    MD3LightTheme as DefaultTheme,
 } from 'react-native-paper';
+import Toast from 'react-native-toast-message';
 
 import Main from '@/components/Main';
 
@@ -26,6 +27,7 @@ export default function App() {
                <Stack.Screen name="Home" component={Main} />
             </Stack.Navigator>
          </NavigationContainer>
+         <Toast />
       </PaperProvider>
    );
 }
