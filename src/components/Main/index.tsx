@@ -1,26 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { Button } from 'react-native-paper';
-import Toast from 'react-native-toast-message';
+import { StyleSheet, View } from 'react-native';
+import { Text } from 'react-native-paper';
+import { useTranslation } from 'react-i18next';
+
+import Logo from '@/components/Logo';
 
 export default function App() {
+   const { t } = useTranslation(['auth', 'common']);
+
    return (
-      <View style={styles.container}>
-         <Text>Estag.io</Text>
-         <Button
-            icon="camera"
-            onPress={() =>
-               Toast.show({
-                  type: 'success',
-                  text1: 'Titulo',
-                  text2: 'Descricao',
-               })
-            }
-         >
-            Teste de botão e ícone
-         </Button>
-         <StatusBar style="auto" />
-      </View>
+      <>
+         <View style={styles.container}>
+            <Logo />
+            <Text variant="headlineMedium">
+               {t('app.name', { ns: 'common' })}
+            </Text>
+            <Text variant="headlineMedium">{t('tabs.login')}</Text>
+
+            <StatusBar style="auto" />
+         </View>
+         <View style={styles.container}>
+            <Text>a</Text>
+         </View>
+      </>
    );
 }
 
