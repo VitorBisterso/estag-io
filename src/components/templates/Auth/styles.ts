@@ -6,4 +6,8 @@ export default StyleSheet.create({
       backgroundColor: '#fff',
       paddingTop: StatusBar.currentHeight,
    },
+   contentWrapper: {
+      marginTop: 32,
+      marginHorizontal: 32,
+   },
 });

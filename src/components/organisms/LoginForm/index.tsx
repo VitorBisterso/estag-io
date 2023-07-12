@@ -1,8 +1,8 @@
-import { View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
-import TextInputField from '@/components/molecules/TextInputField';
 import Button from '@/components/atoms/Button';
+import Gap from '@/components/atoms/Gap';
+import TextInputField from '@/components/molecules/TextInputField';
 import styles from './styles';
 
 type LoginFormFields = 'email' | 'password';
@@ -11,8 +11,7 @@ interface Props {
    email: string;
    password: string;
    setField: (field: LoginFormFields, value: string) => void;
-   onBlurEmail: () => void;
-   onBlurPassword: () => void;
+   onBlur: (field: LoginFormFields) => void;
    errors: {
       email?: string;
       password?: string;
@@ -25,26 +24,25 @@ export default function LoginForm({
    password,
    setField,
    errors,
-   onBlurEmail,
-   onBlurPassword,
+   onBlur,
    onSubmit,
 }: Props) {
    const { t } = useTranslation('auth');
 
    function hasSomeError() {
-      if (!errors || Object.keys(errors).length <= 0) return true;
+      if (!errors || Object.keys(errors).length >= 0) return true;
 
       return Boolean(errors.email) || Boolean(errors.password);
    }
 
    return (
-      <View style={styles.form}>
+      <Gap gap={8}>
          <TextInputField
             email
             label={t('labels.email')}
             value={email}
             onChangeText={(newEmail) => setField('email', newEmail)}
-            onBlur={onBlurEmail}
+            onBlur={() => onBlur('email')}
             hasError={Boolean(errors.email)}
             error={errors.email}
          />
@@ -53,7 +51,7 @@ export default function LoginForm({
             label={t('labels.password')}
             value={password}
             onChangeText={(newPassword) => setField('password', newPassword)}
-            onBlur={onBlurPassword}
+            onBlur={() => onBlur('password')}
             hasError={Boolean(errors.password)}
             error={errors.password}
          />
@@ -63,6 +61,6 @@ export default function LoginForm({
             style={styles.button}
             disabled={hasSomeError()}
          />
-      </View>
+      </Gap>
    );
 }

@@ -15,6 +15,7 @@ export default function MainPage() {
       },
       validationSchema: loginValidations(t),
       onSubmit: () => {
+         // eslint-disable-next-line no-console
          console.log(loginFormik.values);
       },
    });

@@ -18,7 +18,7 @@ export default function AuthHeader() {
          }}
       >
          <Logo />
-         <Text variant="displayMedium" style={{ color: theme.colors.primary }}>
+         <Text variant="displaySmall" style={{ color: theme.colors.primary }}>
             {t('app.name')}
          </Text>
       </View>

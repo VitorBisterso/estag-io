@@ -22,8 +22,7 @@ export default function Button({
       <PaperButton
          mode="contained"
          onPress={onPress}
-         // @ts-expect-error does not suport spread in style prop
-         style={{ ...style, ...defaultStyles.button }}
+         style={[style, defaultStyles.button]}
          disabled={disabled}
          loading={loading}
       >
