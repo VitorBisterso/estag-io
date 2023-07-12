@@ -10,13 +10,7 @@ export default function AuthHeader() {
    const theme = useTheme();
 
    return (
-      <View
-         style={{
-            ...styles.header,
-            borderBottomColor: theme.colors.primary,
-            borderBottomWidth: 2,
-         }}
-      >
+      <View style={styles.header}>
          <Logo />
          <Text variant="displaySmall" style={{ color: theme.colors.primary }}>
             {t('app.name')}

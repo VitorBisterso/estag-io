@@ -2,6 +2,6 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
    button: {
-      marginBottom: 32,
+      marginBottom: 50,
    },
 });

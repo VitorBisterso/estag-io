@@ -4,7 +4,7 @@ export default StyleSheet.create({
    container: {
       flex: 1,
       backgroundColor: '#fff',
-      paddingTop: StatusBar.currentHeight,
+      paddingTop: Number(StatusBar.currentHeight) + 16,
    },
    contentWrapper: {
       marginTop: 32,
