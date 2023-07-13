@@ -1,12 +1,17 @@
+import React, { useMemo } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 
+import { useSignInMutation } from '@/services';
+import { LoginContext } from '@/components/hooks/useLogin';
 import AuthTemplate from '@/components/templates/Auth';
 import loginValidations from './loginValidations';
 
 export default function MainPage() {
    const { t } = useTranslation('auth');
+
+   const [signIn, { isLoading: isSigninIn }] = useSignInMutation();
 
    const loginFormik = useFormik({
       initialValues: {
@@ -15,15 +20,30 @@ export default function MainPage() {
       },
       validationSchema: loginValidations(t),
       onSubmit: () => {
-         // eslint-disable-next-line no-console
-         console.log(loginFormik.values);
+         const { email, password } = loginFormik.values;
+
+         signIn({ email, password })
+            .unwrap()
+            // eslint-disable-next-line no-console
+            .then((result) => console.log(result))
+            // eslint-disable-next-line no-console
+            .catch((err) => console.log(err));
       },
    });
 
+   const loginProviderValue = useMemo(
+      () => ({
+         formik: loginFormik,
+         isLoading: isSigninIn,
+      }),
+      [loginFormik, isSigninIn],
+   );
    return (
       <>
          <StatusBar style="auto" />
-         <AuthTemplate loginFormik={loginFormik} />
+         <LoginContext.Provider value={loginProviderValue}>
+            <AuthTemplate />
+         </LoginContext.Provider>
       </>
    );
 }

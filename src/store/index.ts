@@ -19,7 +19,10 @@ export const middlewareErrorToast: Middleware = () => (next) => (action) => {
       Toast.show({
          type: 'error',
          text1: 'Erro',
-         text2: action.payload.data.error,
+         text2:
+            action.payload.data &&
+            action.payload.data.message &&
+            action.payload.data.message[0],
       });
    }
 
