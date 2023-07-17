@@ -8,12 +8,13 @@ import {
 interface Props {
    label: string;
    value: string;
-   onChangeText: (newValue: string) => void;
-   email?: boolean;
+   onChangeText?: (newValue: string) => void;
+   inputMode?: TextInputProps['inputMode'];
    password?: boolean;
    placeholder?: string;
    maxLength?: number;
-   onBlur?: () => void;
+   onBlur?: (e: any) => void;
+   onPressIn?: () => void;
    hasError?: boolean;
    error?: string;
 }
@@ -22,17 +23,17 @@ export default function TextInputField({
    label,
    value,
    onChangeText,
-   email,
+   inputMode,
    password,
    placeholder,
    maxLength,
    onBlur,
+   onPressIn,
    hasError,
    error,
 }: Props) {
    const theme = useTheme();
 
-   const inputMode: TextInputProps['inputMode'] = email ? 'email' : 'text';
    return (
       <>
          <TextInput
@@ -45,8 +46,13 @@ export default function TextInputField({
             onChangeText={onChangeText}
             maxLength={maxLength}
             onBlur={onBlur}
+            onPressIn={onPressIn}
             error={hasError}
             outlineColor={theme.colors.primary}
+            style={{
+               backgroundColor: 'white',
+            }}
+            placeholderTextColor={theme.colors.onSurfaceDisabled}
          />
          <HelperText type="error" visible={hasError}>
             {error}
@@ -56,11 +62,13 @@ export default function TextInputField({
 }
 
 TextInputField.defaultProps = {
-   email: false,
+   onChangeText: undefined,
+   inputMode: 'text',
    password: false,
    placeholder: undefined,
    maxLength: 255,
    onBlur: undefined,
+   onPressIn: undefined,
    hasError: false,
    error: undefined,
 };

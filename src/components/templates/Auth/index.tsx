@@ -5,6 +5,7 @@ import { Text } from 'react-native-paper';
 import HomeHeader from '@/components/molecules/AuthHeader';
 import TabGroup from '@/components/molecules/TabGroup';
 import LoginForm from '@/components/organisms/LoginForm';
+import SignUpForm from '@/components/organisms/SignUpForm';
 import styles from './styles';
 
 export default function AuthTemplate() {
@@ -22,7 +23,7 @@ export default function AuthTemplate() {
                   },
                   {
                      title: t('tabs.register'),
-                     component: <Text>register</Text>,
+                     component: <SignUpForm />,
                   },
                   {
                      title: t('tabs.recover.password'),

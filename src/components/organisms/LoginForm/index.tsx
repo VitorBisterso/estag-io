@@ -26,13 +26,14 @@ export default function LoginForm() {
       <KeyboardAwareScrollView>
          <Gap gap={8}>
             <TextInputField
-               email
+               inputMode="email"
                label={t('labels.email')}
+               placeholder="user@email.com"
                value={email}
                onChangeText={(newEmail) =>
                   formik.setFieldValue('email', newEmail)
                }
-               onBlur={() => formik.handleBlur('email')}
+               onBlur={formik.handleBlur('email')}
                hasError={Boolean(errors.email) && formik.touched.email}
                error={errors.email}
             />
@@ -40,10 +41,11 @@ export default function LoginForm() {
                password
                label={t('labels.password')}
                value={password}
+               placeholder="********"
                onChangeText={(newPassword) =>
                   formik.setFieldValue('password', newPassword)
                }
-               onBlur={() => formik.handleBlur('password')}
+               onBlur={formik.handleBlur('password')}
                hasError={Boolean(errors.password) && formik.touched.password}
                error={errors.password}
             />

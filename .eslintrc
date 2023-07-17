@@ -69,6 +69,10 @@
               "ts": "never",
               "tsx": "never"
           }
-      ]
+      ],
+      "react/jsx-no-bind": ["error", {
+        "allowArrowFunctions": true,
+        "allowFunctions": true,
+      }]
   }
 }
