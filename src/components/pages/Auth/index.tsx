@@ -3,13 +3,17 @@ import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 
 import { useSignInMutation, useSignUpMutation } from '@/services';
-import { LoginContext } from '@/components/hooks/useLogin';
+import { LoginContext } from '@/hooks/useLogin';
+import useToast from '@/hooks/useToast';
+import { storeData } from '@/hooks/useLocalStorage';
 import AuthTemplate from '@/components/templates/Auth';
-import { SignUpContext } from '@/components/hooks/useSignUp';
+import { SignUpContext } from '@/hooks/useSignUp';
+import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/consts';
 import { loginValidations, signUpValidations } from './validations';
 
 export default function MainPage() {
-   const { t } = useTranslation('auth');
+   const { t } = useTranslation(['auth', 'common']);
+   const toast = useToast();
 
    const [signIn, { isLoading: isSigninIn }] = useSignInMutation();
    const [signUp, { isLoading: isSigninUp }] = useSignUpMutation();
@@ -25,10 +29,12 @@ export default function MainPage() {
 
          signIn({ email, password })
             .unwrap()
-            // eslint-disable-next-line no-console
-            .then((result) => console.log(result))
-            // eslint-disable-next-line no-console
-            .catch((err) => console.log(err));
+            .then(({ accessToken, refreshToken }) => {
+               storeData(ACCESS_TOKEN_KEY, accessToken);
+               storeData(REFRESH_TOKEN_KEY, refreshToken);
+
+               toast.success(t('success.signed.in'));
+            });
       },
    });
 
@@ -47,10 +53,15 @@ export default function MainPage() {
       onSubmit: () => {
          signUp(signUpFormik.values)
             .unwrap()
-            // eslint-disable-next-line no-console
-            .then((result) => console.log(result))
-            // eslint-disable-next-line no-console
-            .catch((err) => console.log(err));
+            .then(() => {
+               const createdObject =
+                  signUpFormik.values.profile === 'USER'
+                     ? t('labels.option.user')
+                     : t('labels.option.company');
+               toast.success(
+                  t('success.created', { ns: 'common', object: createdObject }),
+               );
+            });
       },
    });
 

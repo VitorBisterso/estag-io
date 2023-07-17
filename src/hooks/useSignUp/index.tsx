@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { createContext, useContext } from 'react';
 import { FormikContextType } from 'formik';
 
 export type SignUpValues = {
@@ -17,9 +17,7 @@ export type SignUpContextType = {
    isLoading: boolean;
 };
 
-export const SignUpContext = React.createContext<SignUpContextType | null>(
-   null,
-);
+export const SignUpContext = createContext<SignUpContextType | null>(null);
 export default function useSignUp() {
    return useContext(SignUpContext) as SignUpContextType;
 }

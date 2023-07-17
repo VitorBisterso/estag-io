@@ -1,8 +1,9 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import auth from '@/locale/pt/auth.json';
 import common from '@/locale/pt/common.json';
+import auth from '@/locale/pt/auth.json';
+import toast from '@/locale/pt/toast.json';
 
 i18n.use(initReactI18next).init({
    compatibilityJSON: 'v3',
@@ -23,5 +24,6 @@ i18n.use(initReactI18next).init({
 });
 
 i18n.addResourceBundle('pt', 'auth', auth);
+i18n.addResourceBundle('pt', 'toast', toast);
 
 export default i18n;

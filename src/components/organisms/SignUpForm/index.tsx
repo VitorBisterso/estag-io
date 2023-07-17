@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import RNPickerSelect from 'react-native-picker-select';
 
-import useSignUp, { SignUpValues } from '@/components/hooks/useSignUp';
+import useSignUp, { SignUpValues } from '@/hooks/useSignUp';
 import Button from '@/components/atoms/Button';
 import MaskedField from '@/components/atoms/MaskedField';
 import Gap from '@/components/atoms/Gap';

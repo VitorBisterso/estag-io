@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { createContext, useContext } from 'react';
 import { FormikContextType } from 'formik';
 
 export type LoginContextType = {
@@ -6,7 +6,7 @@ export type LoginContextType = {
    isLoading: boolean;
 };
 
-export const LoginContext = React.createContext<LoginContextType | null>(null);
+export const LoginContext = createContext<LoginContextType | null>(null);
 export default function useLogin() {
    return useContext(LoginContext) as LoginContextType;
 }

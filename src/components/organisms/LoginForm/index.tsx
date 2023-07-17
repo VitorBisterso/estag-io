@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-import useLogin from '@/components/hooks/useLogin';
+import useLogin from '@/hooks/useLogin';
 import Button from '@/components/atoms/Button';
 import Gap from '@/components/atoms/Gap';
 import TextInputField from '@/components/molecules/TextInputField';

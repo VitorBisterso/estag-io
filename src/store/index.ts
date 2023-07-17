@@ -30,7 +30,7 @@ export const middlewareErrorToast: Middleware = () => (next) => (action) => {
 
       Toast.show({
          type: 'error',
-         text1: 'Erro',
+         text1: 'Erro!',
          text2: selectedMessage,
       });
    }
