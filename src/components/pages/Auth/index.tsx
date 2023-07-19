@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
+import { useNavigation, StackActions } from '@react-navigation/native';
 
 import { useSignInMutation, useSignUpMutation } from '@/services';
 import { LoginContext } from '@/hooks/useLogin';
@@ -8,12 +9,17 @@ import useToast from '@/hooks/useToast';
 import { storeData } from '@/hooks/useLocalStorage';
 import AuthTemplate from '@/components/templates/Auth';
 import { SignUpContext } from '@/hooks/useSignUp';
-import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from '@/consts';
+import {
+   ACCESS_TOKEN_KEY,
+   REFRESH_TOKEN_KEY,
+   OPPORTUNITIES_PAGE,
+} from '@/consts';
 import { loginValidations, signUpValidations } from './validations';
 
-export default function MainPage() {
+export default function AuthPage() {
    const { t } = useTranslation(['auth', 'common']);
    const toast = useToast();
+   const navigation = useNavigation();
 
    const [signIn, { isLoading: isSigninIn }] = useSignInMutation();
    const [signUp, { isLoading: isSigninUp }] = useSignUpMutation();
@@ -34,6 +40,7 @@ export default function MainPage() {
                storeData(REFRESH_TOKEN_KEY, refreshToken);
 
                toast.success(t('success.signed.in'));
+               navigation.dispatch(StackActions.replace(OPPORTUNITIES_PAGE));
             });
       },
    });

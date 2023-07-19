@@ -16,7 +16,7 @@ export async function storeData(
    });
 }
 
-export async function getData(key: string, isObject = false) {
+export async function getData(key: string, isObject = false): Promise<string> {
    return AsyncStorage.getItem(key)
       .then((value) => {
          if (!value) return '';
