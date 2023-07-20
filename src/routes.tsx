@@ -14,11 +14,11 @@ export default function Routes() {
          screenOptions={{ headerShown: false }}
       >
          <Stack.Screen name={SPLASH_SCREEN_PAGE} component={SplashScreenPage} />
+         <Stack.Screen name={AUTH_PAGE} component={AuthPage} />
          <Stack.Screen
             name={OPPORTUNITIES_PAGE}
             component={OpportunitiesPage}
          />
-         <Stack.Screen name={AUTH_PAGE} component={AuthPage} />
       </Stack.Navigator>
    );
 }

@@ -9,9 +9,11 @@ import type { PreloadedState } from '@reduxjs/toolkit';
 import Toast from 'react-native-toast-message';
 
 import { api } from '@/services';
+import ProfileSlice from './states/profile';
 
 const rootReducer = combineReducers({
    [api.reducerPath]: api.reducer,
+   ProfileSlice,
 });
 
 export const middlewareErrorToast: Middleware = () => (next) => (action) => {

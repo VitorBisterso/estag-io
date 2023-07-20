@@ -60,6 +60,13 @@
           { "argsIgnorePattern": "^_" }
       ],
       "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/naming-convention": [
+        "error",
+        {
+            "selector": "variable",
+            "format": ["camelCase", "UPPER_CASE", "PascalCase"]
+        }
+      ],
       "import/extensions": [
           "error",
           "ignorePackages",
@@ -72,7 +79,7 @@
       ],
       "react/jsx-no-bind": ["error", {
         "allowArrowFunctions": true,
-        "allowFunctions": true,
+        "allowFunctions": true
       }]
   }
 }

@@ -1,3 +1,7 @@
+import { JwtPayload } from 'jwt-decode';
+
+import { PROFILE_TYPE } from '@/store/states/profile';
+
 export interface SignInParams {
    email: string;
    password: string;
@@ -25,4 +29,12 @@ export interface SignUpCompanyParams {
 
 export interface SignUpResponse {
    accessToken: string;
+}
+
+export interface AccessToken extends JwtPayload {
+   email: string;
+   exp: number;
+   iat: number;
+   sub: string;
+   userType: PROFILE_TYPE;
 }
