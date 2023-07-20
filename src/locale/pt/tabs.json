@@ -1,0 +1,11 @@
+{
+   "user.opportunities": "Vagas",
+   "user.internships": "Seu estágio",
+   "user.reviews": "Empresas",
+
+   "company.opportunities": "Vagas",
+   "company.internships": "Estágios",
+   "company.reviews": "Avaliações",
+
+   "logout": "Logout"
+}

@@ -9,11 +9,7 @@ import useToast from '@/hooks/useToast';
 import { storeData } from '@/hooks/useLocalStorage';
 import AuthTemplate from '@/components/templates/Auth';
 import { SignUpContext } from '@/hooks/useSignUp';
-import {
-   ACCESS_TOKEN_KEY,
-   REFRESH_TOKEN_KEY,
-   OPPORTUNITIES_PAGE,
-} from '@/consts';
+import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, LOGGED_PAGES } from '@/consts';
 import { loginValidations, signUpValidations } from './validations';
 
 export default function AuthPage() {
@@ -40,7 +36,7 @@ export default function AuthPage() {
                storeData(REFRESH_TOKEN_KEY, refreshToken);
 
                toast.success(t('success.signed.in'));
-               navigation.dispatch(StackActions.replace(OPPORTUNITIES_PAGE));
+               navigation.dispatch(StackActions.replace(LOGGED_PAGES));
             });
       },
    });
