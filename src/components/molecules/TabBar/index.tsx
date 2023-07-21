@@ -1,9 +1,11 @@
 import { TabNavigationState } from '@react-navigation/native';
 import { View } from 'react-native';
 import { useTheme } from 'react-native-paper';
+import { useTranslation } from 'react-i18next';
 
 import { PRIMARY_LIGHT } from '@/theme';
 import TabBarButton from '@/components/atoms/TabBarButton';
+import { logout } from '@/utils';
 import styles from './styles';
 
 function getLabel(tabBarLabel: string, title: string, routeName: string) {
@@ -23,7 +25,9 @@ export default function TabBar({
    descriptors: any;
    navigation: any;
 }) {
+   const { t } = useTranslation();
    const theme = useTheme();
+
    return (
       <View style={styles.container}>
          {state.routes.map((route: any, index: number) => {
@@ -65,6 +69,17 @@ export default function TabBar({
                />
             );
          })}
+         <TabBarButton
+            label={t('logout')}
+            isFocused={false}
+            onPress={() => logout(navigation)}
+            backgroundColor="white"
+            textColor={theme.colors.onSurfaceDisabled}
+            options={{
+               tabBarAccessibilityLabel: t('logout'),
+               tabBarIcon: 'logout',
+            }}
+         />
       </View>
    );
 }
