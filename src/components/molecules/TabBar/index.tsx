@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { PRIMARY_LIGHT } from '@/theme';
 import TabBarButton from '@/components/atoms/TabBarButton';
-import { logout } from '@/utils';
+import useLogout from '@/hooks/useLogout';
 import styles from './styles';
 
 function getLabel(tabBarLabel: string, title: string, routeName: string) {
@@ -25,8 +25,9 @@ export default function TabBar({
    descriptors: any;
    navigation: any;
 }) {
-   const { t } = useTranslation();
+   const { t } = useTranslation('tabs');
    const theme = useTheme();
+   const logout = useLogout();
 
    return (
       <View style={styles.container}>
@@ -72,7 +73,7 @@ export default function TabBar({
          <TabBarButton
             label={t('logout')}
             isFocused={false}
-            onPress={() => logout(navigation)}
+            onPress={logout.exit}
             backgroundColor="white"
             textColor={theme.colors.onSurfaceDisabled}
             options={{

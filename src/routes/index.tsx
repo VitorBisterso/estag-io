@@ -7,20 +7,21 @@ import { RootState } from '@/store';
 import {
    AUTH_PAGE,
    INTERNSHIPS_PAGE,
-   LOGGED_PAGES,
-   OPPORTUNITIES_PAGE,
+   LOGGED_ROUTES,
+   OPPORTUNITIES_ROUTES,
    REVIEWS_PAGE,
    SPLASH_SCREEN_PAGE,
    INTERNSHIPS_ICON,
    OPPORTUNITIES_ICON,
    REVIEWS_ICON,
 } from '@/consts';
+import TabBar from '@/components/molecules/TabBar';
 import SplashScreenPage from '@/components/pages/SplashScreen';
 import AuthPage from '@/components/pages/Auth';
-import OpportunitiesPage from '@/components/pages/Opportunities';
 import InternshipsPage from '@/components/pages/Internships';
 import ReviewsPage from '@/components/pages/Reviews';
-import TabBar from '@/components/molecules/TabBar';
+
+import OpportunitiesRoutes from './opportunities';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -35,15 +36,15 @@ function Tabs() {
    return (
       <Tab.Navigator
          sceneContainerStyle={{ backgroundColor: 'white' }}
-         initialRouteName={OPPORTUNITIES_PAGE}
+         initialRouteName={OPPORTUNITIES_ROUTES}
          screenOptions={{ headerShown: false }}
          // eslint-disable-next-line react/no-unstable-nested-components, react/jsx-props-no-spreading
          tabBar={(props) => <TabBar {...props} />}
          backBehavior="history"
       >
          <Tab.Screen
-            name={OPPORTUNITIES_PAGE}
-            component={OpportunitiesPage}
+            name={OPPORTUNITIES_ROUTES}
+            component={OpportunitiesRoutes}
             options={{
                tabBarLabel: t(`${profile}.opportunities`),
                // @ts-expect-error str is not a function
@@ -80,7 +81,7 @@ export default function Routes() {
       >
          <Stack.Screen name={SPLASH_SCREEN_PAGE} component={SplashScreenPage} />
          <Stack.Screen name={AUTH_PAGE} component={AuthPage} />
-         <Stack.Screen name={LOGGED_PAGES} component={Tabs} />
+         <Stack.Screen name={LOGGED_ROUTES} component={Tabs} />
       </Stack.Navigator>
    );
 }
