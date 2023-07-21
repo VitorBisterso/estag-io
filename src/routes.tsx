@@ -11,6 +11,9 @@ import {
    OPPORTUNITIES_PAGE,
    REVIEWS_PAGE,
    SPLASH_SCREEN_PAGE,
+   INTERNSHIPS_ICON,
+   OPPORTUNITIES_ICON,
+   REVIEWS_ICON,
 } from '@/consts';
 import SplashScreenPage from '@/components/pages/SplashScreen';
 import AuthPage from '@/components/pages/Auth';
@@ -44,7 +47,7 @@ function Tabs() {
             options={{
                tabBarLabel: t(`${profile}.opportunities`),
                // @ts-expect-error str is not a function
-               tabBarIcon: 'briefcase',
+               tabBarIcon: OPPORTUNITIES_ICON,
             }}
          />
          <Tab.Screen
@@ -53,7 +56,7 @@ function Tabs() {
             options={{
                tabBarLabel: t(`${profile}.internships`),
                // @ts-expect-error str is not a function
-               tabBarIcon: 'school',
+               tabBarIcon: INTERNSHIPS_ICON,
             }}
          />
          <Tab.Screen
@@ -62,7 +65,7 @@ function Tabs() {
             options={{
                tabBarLabel: t(`${profile}.reviews`),
                // @ts-expect-error str is not a function
-               tabBarIcon: 'chart-line',
+               tabBarIcon: REVIEWS_ICON,
             }}
          />
       </Tab.Navigator>

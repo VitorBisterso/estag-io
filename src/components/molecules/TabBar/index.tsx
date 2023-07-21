@@ -1,8 +1,9 @@
 import { TabNavigationState } from '@react-navigation/native';
-import { View, TouchableOpacity } from 'react-native';
-import { IconButton, Text, useTheme } from 'react-native-paper';
+import { View } from 'react-native';
+import { useTheme } from 'react-native-paper';
 
 import { PRIMARY_LIGHT } from '@/theme';
+import TabBarButton from '@/components/atoms/TabBarButton';
 import styles from './styles';
 
 function getLabel(tabBarLabel: string, title: string, routeName: string) {
@@ -53,22 +54,15 @@ export default function TabBar({
                ? theme.colors.primary
                : theme.colors.onSurfaceDisabled;
             return (
-               <TouchableOpacity
+               <TabBarButton
                   key={label}
+                  label={label}
+                  isFocused={isFocused}
                   onPress={onPress}
-                  accessibilityState={isFocused ? { selected: true } : {}}
-                  accessibilityLabel={options.tabBarAccessibilityLabel}
-                  style={[styles.button, { backgroundColor }]}
-               >
-                  <IconButton
-                     icon={options.tabBarIcon}
-                     iconColor={textColor}
-                     style={styles.icon}
-                  />
-                  <Text style={[styles.text, { color: textColor }]}>
-                     {label}
-                  </Text>
-               </TouchableOpacity>
+                  backgroundColor={backgroundColor}
+                  textColor={textColor}
+                  options={options}
+               />
             );
          })}
       </View>
