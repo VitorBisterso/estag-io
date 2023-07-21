@@ -2,6 +2,7 @@
    "common": {
       "app.name": "Estag.io",
       "success.created": "{{object}} criado(a) com sucesso!",
-      "success.logout": "Até logo!"
+      "success.logout": "Até logo!",
+      "empty.list": "Nenhum resultado encontrado"
    }
 }

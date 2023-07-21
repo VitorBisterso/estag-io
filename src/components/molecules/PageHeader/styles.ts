@@ -13,6 +13,7 @@ export default StyleSheet.create({
       borderBottomColor: PRIMARY_COLOR,
    },
    title: {
+      fontWeight: 'bold',
       fontSize: 32,
       marginLeft: 16,
    },
