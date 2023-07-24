@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, {
+   createContext,
+   useContext,
+   useState,
+   useMemo,
+   useEffect,
+} from 'react';
 
 function isNullOrUndefined(value: any) {
    return value === null || value === undefined;
@@ -21,30 +27,37 @@ function removeEmptyProperties<T extends object>(object: any) {
 
 type Args<T extends object> = {
    initialState: T;
-   submit: () => void;
+   onChangeState: (filterState: T) => void;
 };
 
 export default function useFilter<TInputs extends object>(args: Args<TInputs>) {
    const [filterState, setFilterState] = useState<TInputs>(args.initialState);
 
-   useEffect(() => {
-      args.submit();
-   }, [filterState]);
-
    function reset() {
       setFilterState(args.initialState);
    }
 
-   return {
-      state: removeEmptyProperties(filterState),
-      set: setFilterState,
-      reset,
-   };
+   useEffect(() => {
+      args.onChangeState(filterState);
+   }, [filterState]);
+
+   return useMemo(
+      () => ({
+         state: removeEmptyProperties(filterState),
+         set: (newValues: Partial<TInputs>) =>
+            setFilterState((currentState) => ({
+               ...currentState,
+               ...newValues,
+            })),
+         reset,
+      }),
+      [filterState],
+   );
 }
 
 type FilterContextType<TInputs extends object> = {
    state: TInputs;
-   set: (values: TInputs) => void;
+   set: (values: Partial<TInputs>) => void;
    reset: () => void;
 };
 

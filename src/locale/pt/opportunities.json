@@ -1,3 +1,14 @@
 {
-   "header.title": "Vagas\ndisponíveis"
+   "header.title": "Vagas\ndisponíveis",
+   "filters.type": "Tipo de estágio",
+   "filters.type.local": "Local",
+   "filters.type.remote": "Remoto",
+   "filters.workload": "Carga horária semanal",
+   "filters.only.applied": "Apenas vagas que estou inscrito",
+   
+   "filters.order.by.title": "Nome",
+   "filters.order.by.type": "Tipo",
+   "filters.order.by.salary": "Salário",
+   "filters.order.by.deadline": "Data limite",
+   "filters.order.by.workload": "Carga horária"
 }

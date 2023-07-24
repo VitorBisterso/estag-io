@@ -16,4 +16,4 @@ export const opportunityApi = api.injectEndpoints({
    }),
 });
 
-export const { useGetOpportunitiesQuery } = opportunityApi;
+export const { useLazyGetOpportunitiesQuery } = opportunityApi;

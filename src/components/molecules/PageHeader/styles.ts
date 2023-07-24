@@ -17,11 +17,6 @@ export default StyleSheet.create({
       fontSize: 32,
       marginLeft: 16,
    },
-   backButton: {
-      borderRadius: 100,
-      borderWidth: 1,
-      borderColor: PRIMARY_COLOR,
-   },
    icon: {
       marginLeft: 'auto',
    },

@@ -16,4 +16,5 @@ export interface OpportunityFilter extends Filters<Opportunity> {
    title?: string;
    type?: OPPORTUNITY_TYPE;
    weeklyWorkload?: number;
+   registeredOnly?: boolean;
 }

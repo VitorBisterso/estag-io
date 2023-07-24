@@ -9,6 +9,7 @@ interface Props {
    style?: StyleProp<ViewStyle>;
    disabled?: boolean;
    loading?: boolean;
+   uppercase?: boolean;
 }
 
 export default function Button({
@@ -17,6 +18,7 @@ export default function Button({
    style,
    disabled,
    loading,
+   uppercase,
 }: Props) {
    return (
       <PaperButton
@@ -25,6 +27,7 @@ export default function Button({
          style={[style, defaultStyles.button]}
          disabled={disabled}
          loading={loading}
+         uppercase={uppercase}
       >
          {label}
       </PaperButton>
@@ -35,4 +38,5 @@ Button.defaultProps = {
    style: undefined,
    disabled: false,
    loading: false,
+   uppercase: true,
 };

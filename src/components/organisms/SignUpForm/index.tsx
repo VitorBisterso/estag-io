@@ -1,14 +1,14 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import RNPickerSelect from 'react-native-picker-select';
 
 import useSignUp, { SignUpValues } from '@/hooks/useSignUp';
 import Button from '@/components/atoms/Button';
+import Select from '@/components/atoms/Select';
 import MaskedField from '@/components/atoms/MaskedField';
 import Gap from '@/components/atoms/Gap';
 import TextInputField from '@/components/molecules/TextInputField';
-import DateField from '../DateField';
+import DateField from '@/components/molecules/DateField';
 import styles from './styles';
 
 export default function SignUpForm() {
@@ -110,11 +110,8 @@ export default function SignUpForm() {
                }
                error={errors.confirmPassword}
             />
-            <RNPickerSelect
-               style={{
-                  viewContainer: styles.picker,
-                  inputAndroid: styles.itemStyle,
-               }}
+            <Select
+               label={t('labels.select.profile')}
                value={profile}
                items={profileOptions}
                onValueChange={(newProfile) =>
