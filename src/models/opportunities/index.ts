@@ -3,6 +3,7 @@ import { Filters } from '@/models/filters';
 export type OPPORTUNITY_TYPE = 'REMOTE' | 'LOCAL';
 
 export interface Opportunity {
+   id: number;
    title: string;
    description: string;
    type: OPPORTUNITY_TYPE;
@@ -17,4 +18,9 @@ export interface OpportunityFilter extends Filters<Opportunity> {
    type?: OPPORTUNITY_TYPE;
    weeklyWorkload?: number;
    registeredOnly?: boolean;
+}
+
+export interface GetOpportunitiesResponse {
+   list: Array<Opportunity>;
+   count: number;
 }

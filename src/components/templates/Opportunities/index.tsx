@@ -19,7 +19,7 @@ import styles from './styles';
 export default function OpportunitiesTemplate() {
    const { t } = useTranslation('opportunities');
 
-   const [getOpportunities, { data: opportunities, isLoading }] =
+   const [getOpportunities, { data, isLoading }] =
       useLazyGetOpportunitiesQuery();
 
    const initialState: OpportunityFilterType = {
@@ -47,7 +47,7 @@ export default function OpportunitiesTemplate() {
                <View style={styles.content}>
                   <OpportunityFilter />
                   <OpportunitiesList
-                     opportunities={opportunities ?? []}
+                     opportunities={data?.list ?? []}
                      isLoading={isLoading}
                   />
                </View>

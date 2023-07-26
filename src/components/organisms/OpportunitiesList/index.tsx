@@ -15,6 +15,6 @@ export default function OpportunitiesList({ opportunities, isLoading }: Props) {
    if (opportunities && opportunities.length <= 0) return <EmptyResults />;
 
    return opportunities?.map((opportunity) => (
-      <Text key={opportunity.title}>{opportunity.title}</Text>
+      <Text key={opportunity.id}>{opportunity.title}</Text>
    ));
 }
