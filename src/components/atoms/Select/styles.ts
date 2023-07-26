@@ -13,6 +13,7 @@ export default StyleSheet.create({
       backgroundColor: 'white',
       marginBottom: 16,
       padding: 2,
+      minWidth: 100,
    },
    itemStyle: {
       backgroundColor: 'white',

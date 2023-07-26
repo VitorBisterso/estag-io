@@ -8,28 +8,39 @@ import styles from './styles';
 interface Props {
    label: string;
    value: any;
-   items: Array<{ label: string; value: any }>;
+   items: Array<{ label: string | number; value: any }>;
    onValueChange: (value: any) => void;
+   visible?: boolean;
+   innerRef?: any;
 }
 
-export default function Select({ label, value, items, onValueChange }: Props) {
+export default function Select({
+   label,
+   value,
+   items,
+   onValueChange,
+   visible,
+   innerRef,
+}: Props) {
    const { t } = useTranslation();
 
    return (
       <View style={styles.container}>
-         <Text>{label}</Text>
-         <View style={styles.picker}>
+         {visible && <Text>{label}</Text>}
+         <View style={visible && styles.picker}>
             <Picker
-               dropdownIconColor="black"
+               ref={innerRef}
+               dropdownIconColor={visible ? 'black' : 'white'}
                placeholder={t('placeholders.select.item')}
                selectedValue={value}
                onValueChange={onValueChange}
+               style={{ display: visible ? 'flex' : 'none' }}
             >
                {items.map((item) => (
                   <Picker.Item
                      style={styles.itemStyle}
                      key={item.value}
-                     label={item.label}
+                     label={String(item.label)}
                      value={item.value}
                   />
                ))}
@@ -38,3 +49,8 @@ export default function Select({ label, value, items, onValueChange }: Props) {
       </View>
    );
 }
+
+Select.defaultProps = {
+   visible: true,
+   innerRef: undefined,
+};

@@ -1,13 +1,22 @@
 {
    "common": {
       "app.name": "Estag.io",
+
       "success.created": "{{object}} criado(a) com sucesso!",
       "success.logout": "Até logo!",
+
       "empty.list": "Nenhum resultado encontrado",
+
       "filters": "Filtros",
       "filters.order.by": "Ordenar por",
       "filters.items.per.page": "Itens por página",
+
       "placeholders.select.item": "Selecione uma opção",
-      "buttons.clear.filters": "Limpar filtros"
+
+      "buttons.clear.filters": "Limpar filtros",
+
+      "labels.pagination.total": "Total: {{total}}",
+      "labels.pagination.current": "{{current}} de {{total}}",
+      "labels.pagination.go.to": "Ir para página"
    }
 }

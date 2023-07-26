@@ -1,5 +1,6 @@
 import { View } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { Checkbox, Text } from 'react-native-paper';
 
 import { useFilterContext } from '@/hooks/useFilter';
 import {
@@ -8,7 +9,6 @@ import {
 } from '@/models/opportunities';
 import Select from '@/components/atoms/Select';
 import ThemedIconButton from '@/components/atoms/ThemedIconButton';
-import { Checkbox, Text } from 'react-native-paper';
 import Filter, { toggleDirection } from '../Filter';
 import styles from './styles';
 

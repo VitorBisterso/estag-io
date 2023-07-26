@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -38,7 +38,7 @@ export default function OpportunitiesTemplate() {
 
    return (
       <FilterProvider filter={filter}>
-         <View style={styles.container}>
+         <ScrollView style={styles.container}>
             <Gap gap={32}>
                <PageHeader
                   title={t('header.title')}
@@ -48,11 +48,12 @@ export default function OpportunitiesTemplate() {
                   <OpportunityFilter />
                   <OpportunitiesList
                      opportunities={data?.list ?? []}
+                     count={data?.count ?? 0}
                      isLoading={isLoading}
                   />
                </View>
             </Gap>
-         </View>
+         </ScrollView>
       </FilterProvider>
    );
 }
