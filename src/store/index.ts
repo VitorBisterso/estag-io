@@ -26,6 +26,8 @@ export const middlewareErrorToast: Middleware = () => (next) => (action) => {
       let selectedMessage: string;
       if (Array.isArray(message)) {
          [selectedMessage] = message;
+      } else if (message === 'Unauthorized') {
+         selectedMessage = 'Não autorizado';
       } else {
          selectedMessage = message;
       }
