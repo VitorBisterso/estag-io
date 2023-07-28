@@ -10,5 +10,7 @@
    "filters.order.by.type": "Tipo",
    "filters.order.by.salary": "Salário",
    "filters.order.by.deadline": "Data limite",
-   "filters.order.by.workload": "Carga horária"
+   "filters.order.by.workload": "Carga horária",
+
+   "labels.card.deadline": "Até {{date}}"
 }

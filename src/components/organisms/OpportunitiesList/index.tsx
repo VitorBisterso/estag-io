@@ -1,10 +1,10 @@
 import { View } from 'react-native';
-import { Text } from 'react-native-paper';
 
 import { Opportunity, OpportunityFilter } from '@/models/opportunities';
 import Loader from '@/components/atoms/Loader';
 import EmptyResults from '@/components/atoms/EmptyResults';
 import Pagination from '@/components/molecules/Pagination';
+import OpportunityCard from '@/components/molecules/OpportunityCard';
 import { useFilterContext } from '@/hooks/useFilter';
 import styles from './styles';
 
@@ -29,7 +29,11 @@ export default function OpportunitiesList({
    return (
       <>
          {opportunities?.map((opportunity) => (
-            <Text key={opportunity.id}>{opportunity.title}</Text>
+            <OpportunityCard
+               key={opportunity.id}
+               opportunity={opportunity}
+               companyName="Sensedia"
+            />
          ))}
          <View style={styles.pagination}>
             <Pagination
