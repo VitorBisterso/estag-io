@@ -10,6 +10,7 @@ interface Props {
    disabled?: boolean;
    loading?: boolean;
    uppercase?: boolean;
+   mode?: 'text' | 'outlined' | 'contained' | 'elevated' | 'contained-tonal';
 }
 
 export default function Button({
@@ -19,10 +20,11 @@ export default function Button({
    disabled,
    loading,
    uppercase,
+   mode,
 }: Props) {
    return (
       <PaperButton
-         mode="contained"
+         mode={mode}
          onPress={onPress}
          style={[style, defaultStyles.button]}
          disabled={disabled}
@@ -39,4 +41,5 @@ Button.defaultProps = {
    disabled: false,
    loading: false,
    uppercase: true,
+   mode: 'contained',
 };

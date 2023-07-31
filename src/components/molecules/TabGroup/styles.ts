@@ -6,7 +6,7 @@ export default StyleSheet.create({
    },
    tabs: {
       flexDirection: 'row',
-      justifyContent: 'space-around',
+      justifyContent: 'space-between',
       marginBottom: 32,
    },
    tabButton: {

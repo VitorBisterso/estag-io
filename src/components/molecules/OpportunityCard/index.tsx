@@ -10,12 +10,11 @@ import { Opportunity } from '@/models/opportunities';
 import { formatDate } from '@/utils';
 import CardItem from '@/components/atoms/CardItem';
 import Card from '@/components/molecules/Card';
-import { OPPORTUNITY_DETAILS_PAGE } from '@/consts';
+import { LOCAL_ICON, OPPORTUNITY_DETAILS_PAGE, REMOTE_ICON } from '@/consts';
 import styles from './styles';
 
 interface Props {
    opportunity: Opportunity;
-   companyName: string;
 }
 
 type CompanyStyles = {
@@ -24,7 +23,7 @@ type CompanyStyles = {
    border?: ViewStyle['borderStyle'];
 };
 
-export default function OpportunityCard({ opportunity, companyName }: Props) {
+export default function OpportunityCard({ opportunity }: Props) {
    const { t } = useTranslation('opportunities');
    const navigation = useNavigation<any>();
    const { profile } = useSelector((state: RootState) => state.ProfileSlice);
@@ -34,6 +33,7 @@ export default function OpportunityCard({ opportunity, companyName }: Props) {
       title,
       description,
       salary,
+      companyName,
       type,
       deadline,
       weeklyWorkload,
@@ -107,7 +107,7 @@ export default function OpportunityCard({ opportunity, companyName }: Props) {
          <View style={styles.row}>
             <CardItem icon="currency-usd" text={salary.toString()} />
             <CardItem
-               icon={type === 'REMOTE' ? 'laptop' : 'domain'}
+               icon={type === 'REMOTE' ? REMOTE_ICON : LOCAL_ICON}
                text={t(`filters.type.${type.toLowerCase()}`)}
             />
             <CardItem

@@ -27,7 +27,14 @@ export const opportunityApi = api.injectEndpoints({
          }),
          providesTags: ['Opportunities'],
       }),
+      getOpportunityById: builder.query<Opportunity, string | number>({
+         query: (id) => ({
+            url: `/opportunities/${id}`,
+            method: 'GET',
+         }),
+      }),
    }),
 });
 
-export const { useLazyGetOpportunitiesQuery } = opportunityApi;
+export const { useLazyGetOpportunitiesQuery, useGetOpportunityByIdQuery } =
+   opportunityApi;

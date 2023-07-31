@@ -12,5 +12,6 @@ export default {
       secondary: SECONDARY_COLOR,
       secondaryContainer: '#42CB58',
       onSecondaryContainer: '#FFFFFF',
+      outline: PRIMARY_COLOR,
    },
 };

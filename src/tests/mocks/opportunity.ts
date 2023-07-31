@@ -8,6 +8,7 @@ export function mockOpportunities(amount: number): Array<Opportunity> {
    return Array.from({ length: amount }, (_, index) => {
       const isEven = index % 2 === 0;
       return {
+         id: index,
          title: faker.word.noun(3),
          description: faker.word.words(20),
          type: isEven ? 'REMOTE' : 'LOCAL',

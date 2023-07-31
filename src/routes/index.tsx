@@ -13,7 +13,8 @@ import {
    SPLASH_SCREEN_PAGE,
    INTERNSHIPS_ICON,
    OPPORTUNITIES_ICON,
-   REVIEWS_ICON,
+   COMPANY_REVIEWS_ICON,
+   USER_REVIEWS_ICON,
 } from '@/consts';
 import TabBar from '@/components/molecules/TabBar';
 import SplashScreenPage from '@/components/pages/SplashScreen';
@@ -66,7 +67,10 @@ function Tabs() {
             options={{
                tabBarLabel: t(`${profile}.reviews`),
                // @ts-expect-error str is not a function
-               tabBarIcon: REVIEWS_ICON,
+               tabBarIcon:
+                  profile === 'COMPANY'
+                     ? COMPANY_REVIEWS_ICON
+                     : USER_REVIEWS_ICON,
             }}
          />
       </Tab.Navigator>

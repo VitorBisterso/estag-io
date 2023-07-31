@@ -12,5 +12,21 @@
    "filters.order.by.deadline": "Data limite",
    "filters.order.by.workload": "Carga horária",
 
-   "labels.card.deadline": "Até {{date}}"
+   "labels.card.deadline": "Até {{date}}",
+   "labels.description": "Descrição da vaga",
+   "labels.company": "Empresa",
+   "labels.salary": "Salário",
+   "labels.type": "Tipo de estágio",
+   "labels.type.local": "Local",
+   "labels.type.remote": "Remoto",
+   "labels.workload": "Carga horária semanal",
+   "labels.deadline": "Data final para inscrições",
+   "labels.active": "Vaga ativa",
+
+   "buttons.apply": "Inscrever-se",
+   "buttons.update": "Editar",
+   "buttons.create.internship": "Criar estágio",
+
+   "tabs.general.info": "Informações gerais",
+   "tabs.proccess": "Processo seletivo"
 }

@@ -29,11 +29,7 @@ export default function OpportunitiesList({
    return (
       <>
          {opportunities?.map((opportunity) => (
-            <OpportunityCard
-               key={opportunity.id}
-               opportunity={opportunity}
-               companyName="Sensedia"
-            />
+            <OpportunityCard key={opportunity.id} opportunity={opportunity} />
          ))}
          <View style={styles.pagination}>
             <Pagination
