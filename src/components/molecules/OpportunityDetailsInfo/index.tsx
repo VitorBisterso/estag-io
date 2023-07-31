@@ -36,7 +36,7 @@ export default function OpportunityDetailsInfo({ opportunity }: Props) {
          {!isCompany && (
             <OpportunityParamInfo
                label={t('labels.company')}
-               value={companyName}
+               value={companyName as string}
             />
          )}
          <OpportunityParamInfo

@@ -33,7 +33,16 @@ export default function OpportunityDetailsTemplate({ opportunity }: Props) {
             </Gap>
          );
 
-      return <Button label={t('buttons.apply')} onPress={() => undefined} />;
+      const isApplied = opportunity.applied;
+      return (
+         <Button
+            label={
+               isApplied ? t('buttons.already.applied') : t('buttons.apply')
+            }
+            disabled={isApplied}
+            onPress={() => undefined}
+         />
+      );
    }
 
    return (

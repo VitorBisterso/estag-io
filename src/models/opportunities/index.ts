@@ -9,9 +9,10 @@ export interface Opportunity {
    type: OPPORTUNITY_TYPE;
    salary: number;
    deadline: string;
-   companyName: string;
    weeklyWorkload: number;
-   isActive: boolean;
+   companyName?: string;
+   isActive?: boolean;
+   applied?: boolean;
 }
 
 export interface OpportunityFilter extends Filters<Opportunity> {
