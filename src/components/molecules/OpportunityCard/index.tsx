@@ -3,11 +3,14 @@ import { StyleProp, TextStyle, View, ViewStyle } from 'react-native';
 import { useSelector } from 'react-redux';
 import { IconButton, Switch, Text } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
+import { useNavigation } from '@react-navigation/native';
 
 import { RootState } from '@/store';
 import { Opportunity } from '@/models/opportunities';
 import { formatDate } from '@/utils';
 import CardItem from '@/components/atoms/CardItem';
+import Card from '@/components/molecules/Card';
+import { OPPORTUNITY_DETAILS_PAGE } from '@/consts';
 import styles from './styles';
 
 interface Props {
@@ -18,14 +21,16 @@ interface Props {
 type CompanyStyles = {
    title?: StyleProp<TextStyle>;
    header?: StyleProp<ViewStyle>;
-   border?: StyleProp<ViewStyle>;
+   border?: ViewStyle['borderStyle'];
 };
 
 export default function OpportunityCard({ opportunity, companyName }: Props) {
    const { t } = useTranslation('opportunities');
+   const navigation = useNavigation<any>();
    const { profile } = useSelector((state: RootState) => state.ProfileSlice);
 
    const {
+      id,
       title,
       description,
       salary,
@@ -42,7 +47,7 @@ export default function OpportunityCard({ opportunity, companyName }: Props) {
       return {
          title: styles.companyTitle,
          header: styles.companyHeader,
-         border: { borderStyle: isActive ? 'solid' : 'dashed' },
+         border: isActive ? 'solid' : 'dashed',
       };
    }
    const companyStyles: CompanyStyles = useMemo(getCompanyStyles, [profile]);
@@ -80,13 +85,14 @@ export default function OpportunityCard({ opportunity, companyName }: Props) {
    }
 
    return (
-      <View style={[styles.container, styles.shadow, companyStyles.border]}>
-         <View style={companyStyles.header}>
-            <Text style={[styles.title, companyStyles.title]} numberOfLines={1}>
-               {title}
-            </Text>
-            {renderIcons()}
-         </View>
+      <Card
+         title={title}
+         border={companyStyles.border}
+         titleStyle={companyStyles.title}
+         headerStyle={companyStyles.header}
+         renderIcons={renderIcons}
+         onPress={() => navigation.navigate(OPPORTUNITY_DETAILS_PAGE, { id })}
+      >
          <View style={[styles.row, styles.subtitle]}>
             <Text style={styles.subtitleText} numberOfLines={1}>
                {companyName}
@@ -110,6 +116,6 @@ export default function OpportunityCard({ opportunity, companyName }: Props) {
             />
          </View>
          {renderActiveToggle()}
-      </View>
+      </Card>
    );
 }
