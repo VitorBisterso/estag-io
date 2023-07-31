@@ -1,7 +1,9 @@
 import { View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Checkbox, Text } from 'react-native-paper';
+import { useSelector } from 'react-redux';
 
+import { RootState } from '@/store';
 import { useFilterContext } from '@/hooks/useFilter';
 import {
    Opportunity,
@@ -13,6 +15,7 @@ import Filter, { toggleDirection } from '../Filter';
 import styles from './styles';
 
 export default function OpportunityFilter() {
+   const { profile } = useSelector((state: RootState) => state.ProfileSlice);
    const { t } = useTranslation(['opportunities', 'common']);
    const { state, set, reset } = useFilterContext<OpportunityFilterType>();
 
@@ -75,13 +78,17 @@ export default function OpportunityFilter() {
                   }
                />
             </View>
-            <View style={styles.row}>
-               <Text>{t('filters.only.applied')}</Text>
-               <Checkbox
-                  status={state.registeredOnly ? 'checked' : 'unchecked'}
-                  onPress={() => set({ registeredOnly: !state.registeredOnly })}
-               />
-            </View>
+            {profile === 'USER' && (
+               <View style={styles.row}>
+                  <Text>{t('filters.only.applied')}</Text>
+                  <Checkbox
+                     status={state.registeredOnly ? 'checked' : 'unchecked'}
+                     onPress={() =>
+                        set({ registeredOnly: !state.registeredOnly })
+                     }
+                  />
+               </View>
+            )}
          </View>
       </Filter>
    );
