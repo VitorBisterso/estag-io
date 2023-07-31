@@ -2,20 +2,25 @@ import React, { useMemo } from 'react';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useNavigation, StackActions } from '@react-navigation/native';
+import jwtDecode from 'jwt-decode';
+import { useDispatch } from 'react-redux';
 
 import { useSignInMutation, useSignUpMutation } from '@/services';
+import { setProfile } from '@/store/states/profile';
 import { LoginContext } from '@/hooks/useLogin';
 import useToast from '@/hooks/useToast';
-import { storeData } from '@/hooks/useLocalStorage';
-import AuthTemplate from '@/components/templates/Auth';
 import { SignUpContext } from '@/hooks/useSignUp';
+import { storeData } from '@/hooks/useLocalStorage';
+import { AccessToken } from '@/models/auth';
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, LOGGED_ROUTES } from '@/consts';
+import AuthTemplate from '@/components/templates/Auth';
 import { loginValidations, signUpValidations } from './validations';
 
 export default function AuthPage() {
    const { t } = useTranslation(['auth', 'common']);
    const toast = useToast();
    const navigation = useNavigation();
+   const dispatch = useDispatch();
 
    const [signIn, { isLoading: isSigninIn }] = useSignInMutation();
    const [signUp, { isLoading: isSigninUp }] = useSignUpMutation();
@@ -31,9 +36,12 @@ export default function AuthPage() {
 
          signIn({ email, password })
             .unwrap()
-            .then(({ accessToken, refreshToken }) => {
-               storeData(ACCESS_TOKEN_KEY, accessToken);
-               storeData(REFRESH_TOKEN_KEY, refreshToken);
+            .then(async ({ accessToken, refreshToken }) => {
+               await storeData(ACCESS_TOKEN_KEY, accessToken);
+               await storeData(REFRESH_TOKEN_KEY, refreshToken);
+
+               const decoded = jwtDecode<AccessToken>(accessToken);
+               dispatch(setProfile(decoded.userType));
 
                toast.success(t('success.signed.in'));
                navigation.dispatch(StackActions.replace(LOGGED_ROUTES));
