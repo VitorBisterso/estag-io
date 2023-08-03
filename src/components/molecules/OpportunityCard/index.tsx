@@ -6,11 +6,13 @@ import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 
 import { RootState } from '@/store';
+import { useUpdateOpportunityMutation } from '@/services/opportunities';
 import { Opportunity } from '@/models/opportunities';
 import { formatDate } from '@/utils';
 import CardItem from '@/components/atoms/CardItem';
 import Card from '@/components/molecules/Card';
 import { LOCAL_ICON, OPPORTUNITY_DETAILS_PAGE, REMOTE_ICON } from '@/consts';
+import useToast from '@/hooks/useToast';
 import styles from './styles';
 
 interface Props {
@@ -27,6 +29,10 @@ export default function OpportunityCard({ opportunity }: Props) {
    const { t } = useTranslation('opportunities');
    const navigation = useNavigation<any>();
    const { profile } = useSelector((state: RootState) => state.ProfileSlice);
+   const toast = useToast();
+
+   const [updateOpportunity, { isLoading: isUpdating }] =
+      useUpdateOpportunityMutation();
 
    const {
       id,
@@ -50,7 +56,10 @@ export default function OpportunityCard({ opportunity }: Props) {
          border: isActive ? 'solid' : 'dashed',
       };
    }
-   const companyStyles: CompanyStyles = useMemo(getCompanyStyles, [profile]);
+   const companyStyles: CompanyStyles = useMemo(getCompanyStyles, [
+      profile,
+      opportunity,
+   ]);
 
    function renderIcons() {
       if (!isCompany) return null;
@@ -78,8 +87,19 @@ export default function OpportunityCard({ opportunity }: Props) {
          <Switch
             style={styles.activeSwitch}
             value={isActive}
-            // eslint-disable-next-line no-console
-            onValueChange={() => console.log('toggle active')}
+            disabled={isUpdating}
+            onValueChange={() => {
+               const newValue = !isActive;
+               updateOpportunity({ ...opportunity, isActive: newValue })
+                  .unwrap()
+                  .then(() =>
+                     toast.success(
+                        newValue
+                           ? t('messages.activated')
+                           : t('messages.inactivated'),
+                     ),
+                  );
+            }}
          />
       );
    }

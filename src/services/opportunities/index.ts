@@ -41,6 +41,18 @@ export const opportunityApi = api.injectEndpoints({
          }),
          invalidatesTags: ['Opportunity'],
       }),
+      updateOpportunity: builder.mutation<null, Opportunity>({
+         query: (opportunity) => {
+            // eslint-disable-next-line no-param-reassign
+            delete opportunity.applicants;
+            return {
+               url: `/opportunities/${opportunity.id}`,
+               method: 'PUT',
+               body: opportunity,
+            };
+         },
+         invalidatesTags: ['Opportunities', 'Opportunity'],
+      }),
    }),
 });
 
@@ -48,4 +60,5 @@ export const {
    useLazyGetOpportunitiesQuery,
    useGetOpportunityByIdQuery,
    useApplyToOpportunityMutation,
+   useUpdateOpportunityMutation,
 } = opportunityApi;

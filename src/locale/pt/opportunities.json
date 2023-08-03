@@ -31,5 +31,7 @@
    "tabs.general.info": "Informações gerais",
    "tabs.proccess": "Processo seletivo",
 
-   "messages.applied": "Inscrito com sucesso!"
+   "messages.applied": "Inscrito com sucesso!",
+   "messages.activated": "Vaga ativada com sucesso!",
+   "messages.inactivated": "Vaga desativada com sucesso!"
 }

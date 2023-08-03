@@ -13,6 +13,7 @@ export interface Opportunity {
    companyName?: string;
    isActive?: boolean;
    applied?: boolean;
+   applicants?: Array<{ id: number }>;
 }
 
 export interface OpportunityFilter extends Filters<Opportunity> {
