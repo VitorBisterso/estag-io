@@ -167,7 +167,7 @@ export default function SignUpForm() {
             {renderCommonFields()}
             {renderUniqueFields()}
             <Button
-               label={t('buttons.sign.in')}
+               label={t('buttons.sign.up')}
                onPress={formik.handleSubmit}
                style={styles.button}
                disabled={shouldDisableButton()}
