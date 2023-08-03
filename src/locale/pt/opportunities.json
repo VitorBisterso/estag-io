@@ -29,5 +29,7 @@
    "buttons.create.internship": "Criar estágio",
 
    "tabs.general.info": "Informações gerais",
-   "tabs.proccess": "Processo seletivo"
+   "tabs.proccess": "Processo seletivo",
+
+   "messages.applied": "Inscrito com sucesso!"
 }

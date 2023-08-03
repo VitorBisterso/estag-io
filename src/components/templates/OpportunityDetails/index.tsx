@@ -5,11 +5,13 @@ import { useSelector } from 'react-redux';
 
 import { Opportunity } from '@/models/opportunities';
 import { RootState } from '@/store';
+import { useApplyToOpportunityMutation } from '@/services/opportunities';
 import Gap from '@/components/atoms/Gap';
 import PageHeader from '@/components/molecules/PageHeader';
 import OpportunityDetailsInfo from '@/components/molecules/OpportunityDetailsInfo';
 import TabGroup from '@/components/molecules/TabGroup';
 import Button from '@/components/atoms/Button';
+import useToast from '@/hooks/useToast';
 import styles from './styles';
 
 interface Props {
@@ -19,6 +21,10 @@ interface Props {
 export default function OpportunityDetailsTemplate({ opportunity }: Props) {
    const { t } = useTranslation('opportunities');
    const { profile } = useSelector((state: RootState) => state.ProfileSlice);
+   const toast = useToast();
+
+   const [applyToOpportunity, { isLoading: isApplying }] =
+      useApplyToOpportunityMutation();
 
    function renderButtons() {
       if (profile === 'COMPANY')
@@ -39,8 +45,13 @@ export default function OpportunityDetailsTemplate({ opportunity }: Props) {
             label={
                isApplied ? t('buttons.already.applied') : t('buttons.apply')
             }
+            loading={isApplying}
             disabled={isApplied}
-            onPress={() => undefined}
+            onPress={() =>
+               applyToOpportunity(opportunity.id)
+                  .unwrap()
+                  .then(() => toast.success(t('messages.applied')))
+            }
          />
       );
    }

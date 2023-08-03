@@ -32,9 +32,20 @@ export const opportunityApi = api.injectEndpoints({
             url: `/opportunities/${id}`,
             method: 'GET',
          }),
+         providesTags: ['Opportunity'],
+      }),
+      applyToOpportunity: builder.mutation<null, string | number>({
+         query: (id) => ({
+            url: `/opportunities/apply/${id}`,
+            method: 'PATCH',
+         }),
+         invalidatesTags: ['Opportunity'],
       }),
    }),
 });
 
-export const { useLazyGetOpportunitiesQuery, useGetOpportunityByIdQuery } =
-   opportunityApi;
+export const {
+   useLazyGetOpportunitiesQuery,
+   useGetOpportunityByIdQuery,
+   useApplyToOpportunityMutation,
+} = opportunityApi;
