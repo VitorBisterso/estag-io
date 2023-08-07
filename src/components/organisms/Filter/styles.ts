@@ -5,7 +5,6 @@ import { PRIMARY_COLOR } from '@/theme';
 export default StyleSheet.create({
    container: {
       flexDirection: 'column',
-      marginBottom: 32,
    },
    justify: {
       justifyContent: 'space-between',

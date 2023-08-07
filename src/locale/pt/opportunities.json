@@ -14,6 +14,7 @@
 
    "labels.opportunity": "Vaga",
    "labels.card.deadline": "Até {{date}}",
+   "labels.title": "Título da vaga",
    "labels.description": "Descrição da vaga",
    "labels.company": "Empresa",
    "labels.salary": "Salário",
@@ -23,6 +24,9 @@
    "labels.workload": "Carga horária semanal",
    "labels.deadline": "Data final para inscrições",
    "labels.active": "Vaga ativa",
+
+   "placeholders.title": "Estagiário de desenvolvimento",
+   "placeholders.description": "Descreva mais sobre esta vaga",
 
    "buttons.apply": "Inscrever-se",
    "buttons.already.applied": "Inscrito",

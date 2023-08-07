@@ -1,4 +1,4 @@
-import { ScrollView, View } from 'react-native';
+import { ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 
@@ -22,20 +22,15 @@ export default function OpportunitiesTemplate({ data, isFetching }: Props) {
 
    return (
       <>
+         <PageHeader title={t('header.title')} icon={OPPORTUNITIES_ICON} />
          <ScrollView style={styles.container}>
-            <Gap gap={32}>
-               <PageHeader
-                  title={t('header.title')}
-                  icon={OPPORTUNITIES_ICON}
+            <Gap gap={32} style={styles.content}>
+               <OpportunityFilter />
+               <OpportunitiesList
+                  opportunities={data?.list ?? []}
+                  count={data?.count ?? 0}
+                  isLoading={isFetching}
                />
-               <View style={styles.content}>
-                  <OpportunityFilter />
-                  <OpportunitiesList
-                     opportunities={data?.list ?? []}
-                     count={data?.count ?? 0}
-                     isLoading={isFetching}
-                  />
-               </View>
             </Gap>
          </ScrollView>
          <Fab

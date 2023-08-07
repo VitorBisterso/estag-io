@@ -16,6 +16,7 @@
       "placeholders.select.item": "Selecione uma opção",
 
       "buttons.clear.filters": "Limpar filtros",
+      "buttons.save": "Salvar",
 
       "labels.pagination.total": "Total: {{total}}",
       "labels.pagination.current": "{{current}} de {{total}}",

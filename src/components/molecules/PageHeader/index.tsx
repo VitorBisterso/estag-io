@@ -1,3 +1,4 @@
+import React from 'react';
 import { View } from 'react-native';
 import { IconButton, Text, useTheme } from 'react-native-paper';
 
@@ -6,12 +7,20 @@ import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 
 interface Props {
-   title: string;
+   title?: string;
+   withTitle?: boolean;
+   children?: React.ReactNode;
    icon?: string;
    hasBackButton?: boolean;
 }
 
-export default function PageHeader({ title, icon, hasBackButton }: Props) {
+export default function PageHeader({
+   title,
+   withTitle,
+   children,
+   icon,
+   hasBackButton,
+}: Props) {
    const theme = useTheme();
    const navigation = useNavigation();
 
@@ -24,6 +33,17 @@ export default function PageHeader({ title, icon, hasBackButton }: Props) {
             onPress={() => navigation.goBack()}
          />
       );
+   }
+
+   function renderMainContent() {
+      if (withTitle)
+         return (
+            <Text style={styles.title} numberOfLines={2}>
+               {title}
+            </Text>
+         );
+
+      return <View style={styles.children}>{children}</View>;
    }
 
    function renderIcon() {
@@ -42,15 +62,16 @@ export default function PageHeader({ title, icon, hasBackButton }: Props) {
    return (
       <View style={styles.container}>
          {renderBackButton()}
-         <Text style={styles.title} numberOfLines={2}>
-            {title}
-         </Text>
+         {renderMainContent()}
          {renderIcon()}
       </View>
    );
 }
 
 PageHeader.defaultProps = {
+   title: '',
+   withTitle: true,
+   children: null,
    icon: undefined,
    hasBackButton: false,
 };

@@ -11,6 +11,7 @@ export default StyleSheet.create({
       paddingBottom: 16,
       borderBottomWidth: 1,
       borderBottomColor: PRIMARY_COLOR,
+      backgroundColor: 'white',
    },
    title: {
       fontWeight: 'bold',
@@ -19,5 +20,9 @@ export default StyleSheet.create({
    },
    icon: {
       marginLeft: 'auto',
+   },
+   children: {
+      flex: 1,
+      flexDirection: 'row',
    },
 });

@@ -6,10 +6,10 @@ import useToast from '@/hooks/useToast';
 import { useCreateOpportunityMutation } from '@/services';
 import { CreateOpportunityContext } from '@/hooks/useCreateOpportunity';
 import { OPPORTUNITY_TYPE } from '@/models/opportunities';
-import CreateOpportunityForm from '@/components/organisms/OpportunityForm/Create';
+import CreateOpportunityTemplate from '@/components/templates/CreateOpportunity';
 import validations from './validations';
 
-export default function CreateOpportunity() {
+export default function CreateOpportunityPage() {
    const { t } = useTranslation('opportunities');
    const toast = useToast();
 
@@ -51,7 +51,7 @@ export default function CreateOpportunity() {
 
    return (
       <CreateOpportunityContext.Provider value={providerValue}>
-         <CreateOpportunityForm />
+         <CreateOpportunityTemplate />
       </CreateOpportunityContext.Provider>
    );
 }
