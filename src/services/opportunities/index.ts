@@ -1,4 +1,5 @@
 import {
+   CreateOpportunityParams,
    GetOpportunitiesResponse,
    Opportunity,
    OpportunityFilter,
@@ -41,6 +42,14 @@ export const opportunityApi = api.injectEndpoints({
          }),
          invalidatesTags: ['Opportunity'],
       }),
+      createOpportunity: builder.mutation<null, CreateOpportunityParams>({
+         query: (opportunity) => ({
+            url: '/opportunities',
+            method: 'POST',
+            body: opportunity,
+         }),
+         invalidatesTags: ['Opportunities'],
+      }),
       updateOpportunity: builder.mutation<null, Opportunity>({
          query: (opportunity) => {
             // eslint-disable-next-line no-param-reassign
@@ -60,5 +69,6 @@ export const {
    useLazyGetOpportunitiesQuery,
    useGetOpportunityByIdQuery,
    useApplyToOpportunityMutation,
+   useCreateOpportunityMutation,
    useUpdateOpportunityMutation,
 } = opportunityApi;

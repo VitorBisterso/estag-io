@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 
 import { RootState } from '@/store';
-import { useUpdateOpportunityMutation } from '@/services/opportunities';
+import { useUpdateOpportunityMutation } from '@/services';
 import { Opportunity } from '@/models/opportunities';
 import { formatDate } from '@/utils';
 import CardItem from '@/components/atoms/CardItem';

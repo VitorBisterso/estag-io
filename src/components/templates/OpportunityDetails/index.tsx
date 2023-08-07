@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import { Opportunity } from '@/models/opportunities';
 import { RootState } from '@/store';
-import { useApplyToOpportunityMutation } from '@/services/opportunities';
+import { useApplyToOpportunityMutation } from '@/services';
 import Gap from '@/components/atoms/Gap';
 import PageHeader from '@/components/molecules/PageHeader';
 import OpportunityDetailsInfo from '@/components/molecules/OpportunityDetailsInfo';

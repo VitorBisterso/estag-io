@@ -12,6 +12,7 @@
    "filters.order.by.deadline": "Data limite",
    "filters.order.by.workload": "Carga horária",
 
+   "labels.opportunity": "Vaga",
    "labels.card.deadline": "Até {{date}}",
    "labels.description": "Descrição da vaga",
    "labels.company": "Empresa",
@@ -33,5 +34,9 @@
 
    "messages.applied": "Inscrito com sucesso!",
    "messages.activated": "Vaga ativada com sucesso!",
-   "messages.inactivated": "Vaga desativada com sucesso!"
+   "messages.inactivated": "Vaga desativada com sucesso!",
+
+   "errors.salary": "O salário deve ser um número maior que zero",
+   "errors.workload": "As carga horária semanal deve ser um número maior que zero",
+   "errors.invalid.date": "A data limite deve ser uma data no futuro"
 }

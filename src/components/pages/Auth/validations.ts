@@ -1,25 +1,30 @@
-import { isCnpjValid, phoneRegExp } from '@/validations';
 import * as Yup from 'yup';
+
+import { TranslationFunctionType } from '@/utils';
+import { isCnpjValid, phoneRegExp } from '@/validations';
 
 const MIN_PASSWORD_SIZE = 8;
 
-export function loginValidations(t: (key: string) => string) {
+export function loginValidations(t: TranslationFunctionType) {
+   const requiredMessage = t('errors.required.field', { ns: 'common' });
+
    return Yup.object({
       email: Yup.string()
          .trim()
          .email(t('errors.invalid.email'))
-         .required(t('errors.required.field')),
+         .required(requiredMessage),
       password: Yup.string()
          .trim()
          .min(MIN_PASSWORD_SIZE, t('errors.password.min'))
-         .required(t('errors.required.field')),
+         .required(requiredMessage),
    });
 }
 
 export const PROFILE_TYPES = ['USER', 'COMPANY'];
 
-export function signUpValidations(t: (key: string) => string) {
-   const requiredMessage = t('errors.required.field');
+export function signUpValidations(t: TranslationFunctionType) {
+   const requiredMessage = t('errors.required.field', { ns: 'common' });
+
    return Yup.object({
       name: Yup.string().trim().required(requiredMessage),
       email: Yup.string()

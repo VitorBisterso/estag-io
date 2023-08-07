@@ -1,6 +1,8 @@
 {
    "common": {
       "app.name": "Estag.io",
+      
+      "errors.required.field": "Este campo é obrigatório",
 
       "success.created": "{{object}} criado(a) com sucesso!",
       "success.logout": "Até logo!",

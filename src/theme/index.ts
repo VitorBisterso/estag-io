@@ -9,6 +9,8 @@ export default {
    colors: {
       ...DefaultTheme.colors,
       primary: PRIMARY_COLOR,
+      primaryContainer: PRIMARY_COLOR,
+      onPrimaryContainer: '#FFFFFF',
       secondary: SECONDARY_COLOR,
       secondaryContainer: '#42CB58',
       onSecondaryContainer: '#FFFFFF',

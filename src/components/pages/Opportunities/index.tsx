@@ -4,7 +4,7 @@ import {
    GetOpportunitiesResponse,
    OpportunityFilter as OpportunityFilterType,
 } from '@/models/opportunities';
-import { useLazyGetOpportunitiesQuery } from '@/services/opportunities';
+import { useLazyGetOpportunitiesQuery } from '@/services';
 import OpportunitiesTemplate from '@/components/templates/Opportunities';
 
 export default function OpportunitiesPage() {

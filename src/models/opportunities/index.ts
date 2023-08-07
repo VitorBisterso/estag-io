@@ -27,3 +27,13 @@ export interface GetOpportunitiesResponse {
    list: Array<Opportunity>;
    count: number;
 }
+
+export interface CreateOpportunityParams {
+   title: string;
+   description: string;
+   type: OPPORTUNITY_TYPE;
+   salary: number;
+   deadline: string;
+   weeklyWorkload: number;
+   isActive: boolean;
+}
