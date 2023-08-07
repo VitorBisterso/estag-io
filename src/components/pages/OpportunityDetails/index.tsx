@@ -11,9 +11,9 @@ interface Props {
 
 export default function OpportunityDetails({ route }: Props) {
    const { id } = route.params;
-   const { data: opportunity, isLoading } = useGetOpportunityByIdQuery(id);
+   const { data: opportunity, isFetching } = useGetOpportunityByIdQuery(id);
 
-   if (isLoading) return <Loader size={64} />;
+   if (isFetching) return <Loader size={64} />;
 
    return (
       <OpportunityDetailsTemplate

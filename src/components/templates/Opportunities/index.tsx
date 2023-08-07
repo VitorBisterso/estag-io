@@ -1,59 +1,35 @@
 import { ScrollView, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
-import {
-   DEFAULT_DIRECTION,
-   FIRST_PAGE,
-   OPPORTUNITIES_ICON,
-   PAGE_SIZE,
-} from '@/consts';
-import { OpportunityFilter as OpportunityFilterType } from '@/models/opportunities';
+import { OPPORTUNITIES_ICON } from '@/consts';
+import { GetOpportunitiesResponse } from '@/models/opportunities';
 import Gap from '@/components/atoms/Gap';
 import PageHeader from '@/components/molecules/PageHeader';
 import OpportunitiesList from '@/components/organisms/OpportunitiesList';
 import OpportunityFilter from '@/components/organisms/OpportunityFilter';
-import useFilter, { FilterProvider } from '@/hooks/useFilter';
-import { useLazyGetOpportunitiesQuery } from '@/services/opportunities';
 import styles from './styles';
 
-export default function OpportunitiesTemplate() {
+interface Props {
+   data: GetOpportunitiesResponse;
+   isFetching: boolean;
+}
+
+export default function OpportunitiesTemplate({ data, isFetching }: Props) {
    const { t } = useTranslation('opportunities');
 
-   const [getOpportunities, { data, isLoading }] =
-      useLazyGetOpportunitiesQuery();
-
-   const initialState: OpportunityFilterType = {
-      size: PAGE_SIZE,
-      page: FIRST_PAGE,
-      title: '',
-      type: undefined,
-      weeklyWorkload: undefined,
-      orderBy: 'title',
-      direction: DEFAULT_DIRECTION,
-   };
-   const filter = useFilter({
-      initialState,
-      onChangeState: getOpportunities,
-   });
-
    return (
-      <FilterProvider filter={filter}>
-         <ScrollView style={styles.container}>
-            <Gap gap={32}>
-               <PageHeader
-                  title={t('header.title')}
-                  icon={OPPORTUNITIES_ICON}
+      <ScrollView style={styles.container}>
+         <Gap gap={32}>
+            <PageHeader title={t('header.title')} icon={OPPORTUNITIES_ICON} />
+            <View style={styles.content}>
+               <OpportunityFilter />
+               <OpportunitiesList
+                  opportunities={data?.list ?? []}
+                  count={data?.count ?? 0}
+                  isLoading={isFetching}
                />
-               <View style={styles.content}>
-                  <OpportunityFilter />
-                  <OpportunitiesList
-                     opportunities={data?.list ?? []}
-                     count={data?.count ?? 0}
-                     isLoading={isLoading}
-                  />
-               </View>
-            </Gap>
-         </ScrollView>
-      </FilterProvider>
+            </View>
+         </Gap>
+      </ScrollView>
    );
 }
