@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ScrollView, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -9,6 +7,10 @@ import Gap from '@/components/atoms/Gap';
 import Button from '@/components/atoms/Button';
 import TextInputField from '@/components/molecules/TextInputField';
 import PageHeader from '@/components/molecules/PageHeader';
+import { Checkbox, Text } from 'react-native-paper';
+import MaskedField from '@/components/atoms/MaskedField';
+import Select from '@/components/atoms/Select';
+import DateField from '@/components/molecules/DateField';
 import styles from './styles';
 
 export default function CreateOpportunityForm() {
@@ -28,8 +30,13 @@ export default function CreateOpportunityForm() {
 
    function shouldDisableButton() {
       const hasEmptyValue = Object.keys(formik.values).some(
-         // @ts-expect-error string is different from keyof CreateOpportunityValues
-         (key) => !formik.values[key],
+         (key) =>
+            // @ts-expect-error string is different from keyof CreateOpportunityValues
+            formik.values[key] === '' ||
+            // @ts-expect-error string is different from keyof CreateOpportunityValues
+            formik.values[key] === null ||
+            // @ts-expect-error string is different from keyof CreateOpportunityValues
+            formik.values[key] === undefined,
       );
       if (hasEmptyValue) return true;
 
@@ -45,6 +52,13 @@ export default function CreateOpportunityForm() {
    function renderFields() {
       return (
          <>
+            <View style={styles.isActive}>
+               <Text>{t('labels.active')}</Text>
+               <Checkbox
+                  status={isActive ? 'checked' : 'unchecked'}
+                  onPress={() => formik.setFieldValue('isActive', !isActive)}
+               />
+            </View>
             <TextInputField
                multiline
                numberOfLines={6}
@@ -60,7 +74,54 @@ export default function CreateOpportunityForm() {
                }
                error={errors.description}
             />
-            <View />
+            <MaskedField
+               type="money"
+               label={t('labels.salary')}
+               value={String(salary)}
+               onChange={(value) => formik.setFieldValue('salary', value)}
+               onBlur={formik.handleBlur('salary')}
+               hasError={Boolean(errors.salary) && formik.touched.salary}
+               error={errors.salary}
+            />
+            <Select
+               label={t('labels.select.type')}
+               value={type}
+               items={[
+                  {
+                     label: t('labels.type.remote'),
+                     value: 'REMOTE',
+                  },
+                  {
+                     label: t('labels.type.local'),
+                     value: 'LOCAL',
+                  },
+               ]}
+               onValueChange={(value) => formik.setFieldValue('type', value)}
+            />
+            <TextInputField
+               inputMode="numeric"
+               label={t('labels.workload.form')}
+               value={String(weeklyWorkload)}
+               placeholder={t('placeholders.workload')}
+               onChangeText={(value) =>
+                  formik.setFieldValue('weeklyWorkload', value)
+               }
+               onBlur={formik.handleBlur('weeklyWorkload')}
+               hasError={
+                  Boolean(errors.weeklyWorkload) &&
+                  formik.touched.weeklyWorkload
+               }
+               error={errors.weeklyWorkload}
+            />
+            <DateField
+               label={t('labels.deadline')}
+               placeholder="13/08/2024"
+               date={deadline}
+               onChange={(newDate) => formik.setFieldValue('deadline', newDate)}
+               onBlur={formik.handleBlur('deadline')}
+               hasError={Boolean(errors.deadline) && formik.touched.deadline}
+               error={errors.deadline}
+            />
          </>
       );
    }

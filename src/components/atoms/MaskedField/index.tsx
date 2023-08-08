@@ -1,7 +1,8 @@
 import { Text, useTheme } from 'react-native-paper';
-import MaskInput, { Masks } from 'react-native-mask-input';
+import MaskInput, { Mask, Masks } from 'react-native-mask-input';
+import styles from './styles';
 
-type MaskedType = 'cnpj' | 'phone';
+type MaskedType = 'cnpj' | 'phone' | 'money';
 
 interface Props {
    label: string;
@@ -14,7 +15,7 @@ interface Props {
 }
 
 interface MaskedConfigs {
-   mask: (string | RegExp)[];
+   mask: (string | RegExp)[] | Mask;
    maxLength: number;
    placeholder: string;
 }
@@ -42,6 +43,11 @@ export default function MaskedField({
          maxLength: 15,
          placeholder: '(99) 99999-9999',
       },
+      money: {
+         mask: Masks.BRL_CURRENCY,
+         maxLength: 255,
+         placeholder: 'R$ 0,00',
+      },
    };
 
    return (
@@ -49,14 +55,7 @@ export default function MaskedField({
          <Text>{label}</Text>
          <MaskInput
             inputMode="numeric"
-            style={{
-               borderWidth: 1,
-               borderColor,
-               borderRadius: 4,
-               padding: 12,
-               marginVertical: 6,
-               color: 'black',
-            }}
+            style={[styles.input, { borderColor }]}
             value={value}
             onChangeText={onChange}
             onBlur={onBlur}

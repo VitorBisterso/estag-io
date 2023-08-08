@@ -57,7 +57,7 @@ export default function OpportunityDetailsTemplate({ opportunity }: Props) {
    }
 
    return (
-      <ScrollView>
+      <ScrollView style={styles.container}>
          <PageHeader title={opportunity.title} hasBackButton />
          <Gap gap={24} style={styles.content}>
             <TabGroup

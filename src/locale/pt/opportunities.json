@@ -24,9 +24,12 @@
    "labels.workload": "Carga horária semanal",
    "labels.deadline": "Data final para inscrições",
    "labels.active": "Vaga ativa",
+   "labels.select.type": "Selecione o tipo do estágio",
+   "labels.workload.form": "Carga horária semanal (horas)",
 
    "placeholders.title": "Estagiário de desenvolvimento",
    "placeholders.description": "Descreva mais sobre esta vaga",
+   "placeholders.workload": "30",
 
    "buttons.apply": "Inscrever-se",
    "buttons.already.applied": "Inscrito",

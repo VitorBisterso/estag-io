@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
@@ -122,13 +121,12 @@ export default function SignUpForm() {
       );
    }
 
-   const dateFormat = useMemo(() => new Intl.DateTimeFormat(['ban', 'id']), []);
    function renderUniqueFields() {
       if (profile === 'USER') {
-         const date = birthday ? dateFormat.format(birthday as any) : '';
          return (
             <DateField
-               date={date}
+               label={t('labels.birthday')}
+               date={birthday}
                onChange={(newDate) => formik.setFieldValue('birthday', newDate)}
                onBlur={formik.handleBlur('birthday')}
                hasError={Boolean(errors.birthday) && formik.touched.birthday}

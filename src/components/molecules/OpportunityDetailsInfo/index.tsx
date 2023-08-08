@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { Text } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -29,6 +30,11 @@ export default function OpportunityDetailsInfo({ opportunity }: Props) {
       companyName,
    } = opportunity;
 
+   const currencyFormatter = useMemo(
+      () =>
+         new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }),
+      [],
+   );
    return (
       <Gap gap={16}>
          <Text style={styles.descriptionTitle}>{t('labels.description')}</Text>
@@ -41,7 +47,7 @@ export default function OpportunityDetailsInfo({ opportunity }: Props) {
          )}
          <OpportunityParamInfo
             label={t('labels.salary')}
-            value={`R$ ${salary}`}
+            value={currencyFormatter.format(salary)}
          />
          <OpportunityParamInfo
             style={{ marginVertical: -16 }}

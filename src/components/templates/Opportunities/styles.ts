@@ -8,5 +8,6 @@ export default StyleSheet.create({
    },
    content: {
       marginHorizontal: 32,
+      marginBottom: 32,
    },
 });

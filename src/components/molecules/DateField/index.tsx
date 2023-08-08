@@ -1,10 +1,11 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useMemo, useState } from 'react';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 import TextInputField from '@/components/molecules/TextInputField';
 
 interface Props {
+   label: string;
+   placeholder?: string;
    date: string;
    onChange: (newDate: Date) => void;
    onBlur?: (e: any) => void;
@@ -13,26 +14,29 @@ interface Props {
 }
 
 export default function DateField({
+   label,
+   placeholder,
    date,
    onChange,
    onBlur,
    hasError,
    error,
 }: Props) {
-   const { t } = useTranslation('auth');
    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
    function hideDatePicker() {
       setDatePickerVisibility(false);
    }
 
+   const dateFormat = useMemo(() => new Intl.DateTimeFormat(['ban', 'id']), []);
+   const formattedDate = date ? dateFormat.format(date as any) : '';
    return (
       <>
          <TextInputField
             inputMode="none"
-            label={t('labels.birthday')}
-            placeholder="02/02/2002"
-            value={date}
+            label={label}
+            placeholder={placeholder}
+            value={formattedDate}
             onPressIn={() => setDatePickerVisibility(true)}
             onBlur={onBlur}
             hasError={hasError}
@@ -52,6 +56,7 @@ export default function DateField({
 }
 
 DateField.defaultProps = {
+   placeholder: '02/02/2002',
    onBlur: undefined,
    hasError: false,
    error: undefined,

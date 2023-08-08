@@ -104,6 +104,11 @@ export default function OpportunityCard({ opportunity }: Props) {
       );
    }
 
+   const currencyFormatter = useMemo(
+      () =>
+         new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }),
+      [],
+   );
    return (
       <Card
          title={title}
@@ -125,7 +130,11 @@ export default function OpportunityCard({ opportunity }: Props) {
             {description}
          </Text>
          <View style={styles.row}>
-            <CardItem icon="currency-usd" text={salary.toString()} />
+            <CardItem
+               icon="currency-usd"
+               text={currencyFormatter.format(salary)}
+               style={{ maxWidth: '30%', marginRight: 8 }}
+            />
             <CardItem
                icon={type === 'REMOTE' ? REMOTE_ICON : LOCAL_ICON}
                text={t(`filters.type.${type.toLowerCase()}`)}

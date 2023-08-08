@@ -32,7 +32,7 @@ export interface CreateOpportunityParams {
    title: string;
    description: string;
    type: OPPORTUNITY_TYPE;
-   salary: number;
+   salary: string;
    deadline: string;
    weeklyWorkload: number;
    isActive: boolean;

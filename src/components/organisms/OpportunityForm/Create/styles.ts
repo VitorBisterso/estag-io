@@ -9,6 +9,10 @@ export default StyleSheet.create({
       marginTop: 16,
       marginRight: 24,
    },
+   isActive: {
+      flexDirection: 'row',
+      alignItems: 'center',
+   },
    button: {
       marginBottom: 50,
    },
