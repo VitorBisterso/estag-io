@@ -17,6 +17,8 @@
 
       "buttons.clear.filters": "Limpar filtros",
       "buttons.save": "Salvar",
+      "buttons.cancel": "Cancelar",
+      "buttons.confirm": "Confirmar",
 
       "labels.pagination.total": "Total: {{total}}",
       "labels.pagination.current": "{{current}} de {{total}}",

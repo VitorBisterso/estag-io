@@ -17,6 +17,10 @@ export default StyleSheet.create({
       fontStyle: 'italic',
       color: 'rgba(37, 37, 37, 0.75)',
    },
+   currency: {
+      maxWidth: '30%',
+      marginRight: 8,
+   },
 
    companyTitle: {
       textAlign: 'left',

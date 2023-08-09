@@ -1,4 +1,4 @@
-import { StyleProp, ViewStyle } from 'react-native';
+import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { Button as PaperButton } from 'react-native-paper';
 
 import defaultStyles from './styles';
@@ -11,6 +11,8 @@ interface Props {
    loading?: boolean;
    uppercase?: boolean;
    mode?: 'text' | 'outlined' | 'contained' | 'elevated' | 'contained-tonal';
+   small?: boolean;
+   textStyle?: StyleProp<TextStyle>;
 }
 
 export default function Button({
@@ -21,15 +23,19 @@ export default function Button({
    loading,
    uppercase,
    mode,
+   small,
+   textStyle,
 }: Props) {
    return (
       <PaperButton
          mode={mode}
          onPress={onPress}
-         style={[style, defaultStyles.button]}
+         style={[defaultStyles.button, style]}
+         labelStyle={textStyle}
          disabled={disabled}
          loading={loading}
          uppercase={uppercase}
+         compact={small}
       >
          {label}
       </PaperButton>
@@ -42,4 +48,6 @@ Button.defaultProps = {
    loading: false,
    uppercase: true,
    mode: 'contained',
+   small: false,
+   textStyle: {},
 };
