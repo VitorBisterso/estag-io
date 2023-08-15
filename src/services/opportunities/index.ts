@@ -62,7 +62,7 @@ export const opportunityApi = api.injectEndpoints({
          },
          invalidatesTags: ['Opportunities', 'Opportunity'],
       }),
-      deleteOpportunity: builder.mutation<null, string | number>({
+      deleteOpportunity: builder.mutation<null, number>({
          query: (id) => ({
             url: `/opportunities/${id}`,
             method: 'DELETE',

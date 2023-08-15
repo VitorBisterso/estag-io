@@ -2,6 +2,7 @@ import { ScrollView } from 'react-native';
 import { Text } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 
 import { Opportunity } from '@/models/opportunities';
 import { RootState } from '@/store';
@@ -12,6 +13,7 @@ import OpportunityDetailsInfo from '@/components/molecules/OpportunityDetailsInf
 import TabGroup from '@/components/molecules/TabGroup';
 import Button from '@/components/atoms/Button';
 import useToast from '@/hooks/useToast';
+import { UPDATE_OPPORTUNTITY_PAGE } from '@/consts';
 import styles from './styles';
 
 interface Props {
@@ -22,6 +24,7 @@ export default function OpportunityDetailsTemplate({ opportunity }: Props) {
    const { t } = useTranslation('opportunities');
    const { profile } = useSelector((state: RootState) => state.ProfileSlice);
    const toast = useToast();
+   const navigation = useNavigation<any>();
 
    const [applyToOpportunity, { isLoading: isApplying }] =
       useApplyToOpportunityMutation();
@@ -30,7 +33,14 @@ export default function OpportunityDetailsTemplate({ opportunity }: Props) {
       if (profile === 'COMPANY')
          return (
             <Gap gap={16}>
-               <Button label={t('buttons.update')} onPress={() => undefined} />
+               <Button
+                  label={t('buttons.update')}
+                  onPress={() =>
+                     navigation.navigate(UPDATE_OPPORTUNTITY_PAGE, {
+                        id: opportunity.id,
+                     })
+                  }
+               />
                <Button
                   mode="outlined"
                   label={t('buttons.create.internship')}

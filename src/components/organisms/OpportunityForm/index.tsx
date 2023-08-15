@@ -2,7 +2,7 @@ import { ScrollView, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-import useCreateOpportunity from '@/hooks/useCreateOpportunity';
+import useOpportunityForm from '@/hooks/useOpportunityForm';
 import Gap from '@/components/atoms/Gap';
 import Button from '@/components/atoms/Button';
 import TextInputField from '@/components/molecules/TextInputField';
@@ -13,10 +13,14 @@ import Select from '@/components/atoms/Select';
 import DateField from '@/components/molecules/DateField';
 import styles from './styles';
 
-export default function CreateOpportunityForm() {
+interface Props {
+   isUpdating?: boolean;
+}
+
+export default function OpportunityForm({ isUpdating }: Props) {
    const { t } = useTranslation(['opportunities', 'common']);
 
-   const { formik, isLoading } = useCreateOpportunity();
+   const { formik, isLoading } = useOpportunityForm();
    const {
       title,
       description,
@@ -31,17 +35,17 @@ export default function CreateOpportunityForm() {
    function shouldDisableButton() {
       const hasEmptyValue = Object.keys(formik.values).some(
          (key) =>
-            // @ts-expect-error string is different from keyof CreateOpportunityValues
+            // @ts-expect-error string is different from keyof OpportunityFormValues
             formik.values[key] === '' ||
-            // @ts-expect-error string is different from keyof CreateOpportunityValues
+            // @ts-expect-error string is different from keyof OpportunityFormValues
             formik.values[key] === null ||
-            // @ts-expect-error string is different from keyof CreateOpportunityValues
+            // @ts-expect-error string is different from keyof OpportunityFormValues
             formik.values[key] === undefined,
       );
       if (hasEmptyValue) return true;
 
       const hasError = Object.keys(errors).some(
-         // @ts-expect-error string is different from keyof CreateOpportunityValues
+         // @ts-expect-error string is different from keyof OpportunityFormValues
          (key) => !!errors[key],
       );
       if (hasError) return true;
@@ -50,6 +54,12 @@ export default function CreateOpportunityForm() {
    }
 
    function renderFields() {
+      function getSalary() {
+         if (!isUpdating || salary.includes(',')) return salary;
+
+         return `${salary},00`;
+      }
+
       return (
          <>
             <View style={styles.isActive}>
@@ -77,7 +87,7 @@ export default function CreateOpportunityForm() {
             <MaskedField
                type="money"
                label={t('labels.salary')}
-               value={String(salary)}
+               value={getSalary()}
                onChange={(value) => formik.setFieldValue('salary', value)}
                onBlur={formik.handleBlur('salary')}
                hasError={Boolean(errors.salary) && formik.touched.salary}
@@ -157,3 +167,7 @@ export default function CreateOpportunityForm() {
       </>
    );
 }
+
+OpportunityForm.defaultProps = {
+   isUpdating: false,
+};

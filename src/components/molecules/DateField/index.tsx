@@ -29,7 +29,7 @@ export default function DateField({
    }
 
    const dateFormat = useMemo(() => new Intl.DateTimeFormat(['ban', 'id']), []);
-   const formattedDate = date ? dateFormat.format(date as any) : '';
+   const formattedDate = date ? dateFormat.format(new Date(date) as any) : '';
    return (
       <>
          <TextInputField

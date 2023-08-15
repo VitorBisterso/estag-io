@@ -37,3 +37,23 @@ export interface CreateOpportunityParams {
    weeklyWorkload: number;
    isActive: boolean;
 }
+
+export interface ProcessStep {
+   title: string;
+   description: string;
+   deadline: string;
+   onlyOnDeadline: boolean;
+   applicants: Array<number>;
+}
+
+export interface CreateProcessStepParams {
+   opportunityId: number;
+   processSteps: Array<ProcessStep>;
+}
+
+export interface UpdateProcessStepParams {
+   opportunityId: number;
+   processSteps: Array<ProcessStep>;
+   newApplicants: Array<number>;
+   removedApplicants: Array<number>;
+}

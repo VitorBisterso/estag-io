@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import useToast from '@/hooks/useToast';
 import { useCreateOpportunityMutation } from '@/services';
-import { CreateOpportunityContext } from '@/hooks/useCreateOpportunity';
+import { OpportunityFormContext } from '@/hooks/useOpportunityForm';
 import { OPPORTUNITY_TYPE } from '@/models/opportunities';
 import CreateOpportunityTemplate from '@/components/templates/CreateOpportunity';
 import { OPPORTUNITIES_PAGE } from '@/consts';
@@ -63,8 +63,8 @@ export default function CreateOpportunityPage() {
    );
 
    return (
-      <CreateOpportunityContext.Provider value={providerValue}>
+      <OpportunityFormContext.Provider value={providerValue}>
          <CreateOpportunityTemplate />
-      </CreateOpportunityContext.Provider>
+      </OpportunityFormContext.Provider>
    );
 }

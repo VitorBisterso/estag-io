@@ -46,6 +46,7 @@
    "messages.activated": "Vaga ativada com sucesso!",
    "messages.inactivated": "Vaga desativada com sucesso!",
    "messages.deleted": "Vaga deletada com sucesso!",
+   "messages.updated": "Vaga atulizada com sucesso!",
 
    "errors.salary": "O salário deve ser um número maior que zero",
    "errors.workload": "As carga horária semanal deve ser um número maior que zero",

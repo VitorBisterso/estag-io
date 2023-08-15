@@ -14,7 +14,12 @@ import { Opportunity } from '@/models/opportunities';
 import { formatDate } from '@/utils';
 import CardItem from '@/components/atoms/CardItem';
 import Card from '@/components/molecules/Card';
-import { LOCAL_ICON, OPPORTUNITY_DETAILS_PAGE, REMOTE_ICON } from '@/consts';
+import {
+   LOCAL_ICON,
+   OPPORTUNITY_DETAILS_PAGE,
+   REMOTE_ICON,
+   UPDATE_OPPORTUNTITY_PAGE,
+} from '@/consts';
 import useToast from '@/hooks/useToast';
 import ConfirmationModal from '../ConfirmationModal';
 import styles from './styles';
@@ -84,6 +89,11 @@ export default function OpportunityCard({ opportunity }: Props) {
                style={styles.iconButton}
                icon="pencil"
                iconColor="black"
+               onPress={() =>
+                  navigation.navigate(UPDATE_OPPORTUNTITY_PAGE, {
+                     id: opportunity.id,
+                  })
+               }
             />
             <IconButton
                style={styles.iconButton}

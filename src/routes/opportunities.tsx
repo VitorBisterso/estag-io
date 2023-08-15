@@ -3,10 +3,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import OpportunitiesPage from '@/components/pages/Opportunities';
 import OpportunityDetails from '@/components/pages/OpportunityDetails';
 import CreateOpportunity from '@/components/pages/CreateOpportunity';
+import UpdateOpportunity from '@/components/pages/UpdateOpportunity';
 import {
    CREATE_OPPORTUNTITY_PAGE,
    OPPORTUNITIES_PAGE,
    OPPORTUNITY_DETAILS_PAGE,
+   UPDATE_OPPORTUNTITY_PAGE,
 } from '@/consts';
 
 const Stack = createNativeStackNavigator();
@@ -28,6 +30,10 @@ export default function OpportunitiesRoutes() {
          <Stack.Screen
             name={CREATE_OPPORTUNTITY_PAGE}
             component={CreateOpportunity}
+         />
+         <Stack.Screen
+            name={UPDATE_OPPORTUNTITY_PAGE}
+            component={UpdateOpportunity}
          />
       </Stack.Navigator>
    );
