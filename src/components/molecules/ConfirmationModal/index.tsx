@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Modal, Text } from 'react-native-paper';
+import { Modal, Portal, Text } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 
 import Button from '@/components/atoms/Button';
@@ -34,36 +34,38 @@ export default function ConfirmationModal({
    const { t } = useTranslation('common');
 
    return (
-      <Modal
-         visible={visible}
-         onDismiss={onDismiss}
-         contentContainerStyle={styles.container}
-      >
-         <Text style={styles.title}>{title}</Text>
-         <Text style={styles.description}>{description}</Text>
-         <View style={styles.buttons}>
-            <Button
-               style={[styles.button, { marginRight: 8 }]}
-               textStyle={styles.buttonText}
-               mode="outlined"
-               small
-               label={cancelText || t('buttons.cancel')}
-               onPress={() => {
-                  onCancel();
-               }}
-               disabled={isLoading}
-            />
-            <Button
-               style={styles.button}
-               textStyle={styles.buttonText}
-               label={confirmText || t('buttons.confirm')}
-               small
-               onPress={() => {
-                  onConfirm();
-               }}
-               loading={isLoading}
-            />
-         </View>
-      </Modal>
+      <Portal>
+         <Modal
+            visible={visible}
+            onDismiss={onDismiss}
+            contentContainerStyle={styles.container}
+         >
+            <Text style={styles.title}>{title}</Text>
+            <Text style={styles.description}>{description}</Text>
+            <View style={styles.buttons}>
+               <Button
+                  style={[styles.button, { marginRight: 8 }]}
+                  textStyle={styles.buttonText}
+                  mode="outlined"
+                  small
+                  label={cancelText || t('buttons.cancel')}
+                  onPress={() => {
+                     onCancel();
+                  }}
+                  disabled={isLoading}
+               />
+               <Button
+                  style={styles.button}
+                  textStyle={styles.buttonText}
+                  label={confirmText || t('buttons.confirm')}
+                  small
+                  onPress={() => {
+                     onConfirm();
+                  }}
+                  loading={isLoading}
+               />
+            </View>
+         </Modal>
+      </Portal>
    );
 }

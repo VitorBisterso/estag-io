@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { StyleProp, TextStyle, View, ViewStyle } from 'react-native';
 import { useSelector } from 'react-redux';
-import { IconButton, Portal, Switch, Text } from 'react-native-paper';
+import { IconButton, Switch, Text } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 
@@ -119,27 +119,25 @@ export default function OpportunityCard({ opportunity }: Props) {
    const currencyFormatter = useMemo(intlCurrencyFormatter, []);
    return (
       <>
-         <Portal>
-            <ConfirmationModal
-               visible={modalVisible}
-               title={t('labels.deleting.title')}
-               description={t('labels.deleting.description', {
-                  opportunity: title,
-               })}
-               confirmText={t('buttons.delete')}
-               onDismiss={hideModal}
-               onCancel={hideModal}
-               onConfirm={() => {
-                  deleteOpportunity(id)
-                     .unwrap()
-                     .then(() => {
-                        toast.success(t('messages.deleted'));
-                        hideModal();
-                     });
-               }}
-               isLoading={isDeleting}
-            />
-         </Portal>
+         <ConfirmationModal
+            visible={modalVisible}
+            title={t('labels.deleting.title')}
+            description={t('labels.deleting.description', {
+               opportunity: title,
+            })}
+            confirmText={t('buttons.delete')}
+            onDismiss={hideModal}
+            onCancel={hideModal}
+            onConfirm={() => {
+               deleteOpportunity(id)
+                  .unwrap()
+                  .then(() => {
+                     toast.success(t('messages.deleted'));
+                     hideModal();
+                  });
+            }}
+            isLoading={isDeleting}
+         />
          <Card
             title={title}
             border={companyStyles.border}
