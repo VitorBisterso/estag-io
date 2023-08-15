@@ -1,5 +1,5 @@
-import { View } from 'react-native';
 import React, { useMemo } from 'react';
+import { View } from 'react-native';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
@@ -10,7 +10,8 @@ import { OpportunityFormContext } from '@/hooks/useOpportunityForm';
 import { Opportunity } from '@/models/opportunities';
 import { OPPORTUNITIES_PAGE } from '@/consts';
 import OpportunityForm from '@/components/organisms/OpportunityForm';
-import validations from './validations';
+import { formatMaskedCurrency } from '@/utils';
+import validations from '@/hooks/useOpportunityForm/validations';
 import styles from './styles';
 
 interface Props {
@@ -25,12 +26,19 @@ export default function UpdateOpportunityTemplate({ opportunity }: Props) {
    const [updateOpportunity, { isLoading: isUpdating }] =
       useUpdateOpportunityMutation();
 
+   function formatSalary() {
+      const { salary } = opportunity;
+
+      const fixed = Number(salary).toFixed(2);
+      return fixed.replaceAll('.', ',');
+   }
+
    const formik = useFormik({
       initialValues: {
          title: opportunity.title,
          description: opportunity.description,
          type: opportunity.type,
-         salary: String(opportunity.salary),
+         salary: formatSalary() as any,
          deadline: opportunity.deadline,
          weeklyWorkload: opportunity.weeklyWorkload,
          isActive: Boolean(opportunity.isActive),
@@ -40,10 +48,7 @@ export default function UpdateOpportunityTemplate({ opportunity }: Props) {
          const { salary: maskedSalary, weeklyWorkload: workload } =
             formik.values;
 
-         const salary = maskedSalary
-            .slice(3)
-            .replaceAll('.', '')
-            .replaceAll(',', '.');
+         const salary = formatMaskedCurrency(maskedSalary);
          const weeklyWorkload = Number(workload);
 
          updateOpportunity({
@@ -71,7 +76,7 @@ export default function UpdateOpportunityTemplate({ opportunity }: Props) {
    return (
       <View style={styles.container}>
          <OpportunityFormContext.Provider value={providerValue}>
-            <OpportunityForm isUpdating />
+            <OpportunityForm />
          </OpportunityFormContext.Provider>
       </View>
    );

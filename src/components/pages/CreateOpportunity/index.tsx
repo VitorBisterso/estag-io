@@ -9,7 +9,7 @@ import { OpportunityFormContext } from '@/hooks/useOpportunityForm';
 import { OPPORTUNITY_TYPE } from '@/models/opportunities';
 import CreateOpportunityTemplate from '@/components/templates/CreateOpportunity';
 import { OPPORTUNITIES_PAGE } from '@/consts';
-import validations from './validations';
+import validations from '@/hooks/useOpportunityForm/validations';
 
 export default function CreateOpportunityPage() {
    const { t } = useTranslation('opportunities');
@@ -24,7 +24,7 @@ export default function CreateOpportunityPage() {
          title: '',
          description: '',
          type: 'REMOTE' as OPPORTUNITY_TYPE,
-         salary: '0',
+         salary: '0' as any,
          deadline: '',
          weeklyWorkload: 0,
          isActive: false,

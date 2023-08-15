@@ -13,11 +13,7 @@ import Select from '@/components/atoms/Select';
 import DateField from '@/components/molecules/DateField';
 import styles from './styles';
 
-interface Props {
-   isUpdating?: boolean;
-}
-
-export default function OpportunityForm({ isUpdating }: Props) {
+export default function OpportunityForm() {
    const { t } = useTranslation(['opportunities', 'common']);
 
    const { formik, isLoading } = useOpportunityForm();
@@ -54,12 +50,6 @@ export default function OpportunityForm({ isUpdating }: Props) {
    }
 
    function renderFields() {
-      function getSalary() {
-         if (!isUpdating || salary.includes(',')) return salary;
-
-         return `${salary},00`;
-      }
-
       return (
          <>
             <View style={styles.isActive}>
@@ -87,7 +77,7 @@ export default function OpportunityForm({ isUpdating }: Props) {
             <MaskedField
                type="money"
                label={t('labels.salary')}
-               value={getSalary()}
+               value={String(salary)}
                onChange={(value) => formik.setFieldValue('salary', value)}
                onBlur={formik.handleBlur('salary')}
                hasError={Boolean(errors.salary) && formik.touched.salary}

@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-import { TranslationFunctionType } from '@/utils';
+import { TranslationFunctionType, formatMaskedCurrency } from '@/utils';
 
 function isSalaryValid(s?: string) {
    if (!s) return false;
@@ -8,8 +8,7 @@ function isSalaryValid(s?: string) {
    const salary = s.trim();
    if (salary.length < 4) return false;
 
-   const onlyNumbers = s.slice(3).replaceAll('.', '').replaceAll(',', '');
-
+   const onlyNumbers = formatMaskedCurrency(s);
    return Number(onlyNumbers) > 0;
 }
 

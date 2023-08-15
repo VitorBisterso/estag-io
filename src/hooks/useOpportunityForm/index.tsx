@@ -7,7 +7,7 @@ export type OpportunityFormValues = {
    title: string;
    description: string;
    type: OPPORTUNITY_TYPE;
-   salary: string;
+   salary: string | number;
    deadline: string;
    weeklyWorkload: number;
    isActive: boolean;
