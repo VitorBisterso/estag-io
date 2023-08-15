@@ -28,6 +28,8 @@
    "labels.workload.form": "Carga horária semanal (horas)",
    "labels.deleting.title": "Deletando vaga",
    "labels.deleting.description": "Deseja realmente deletar a vaga \"{{opportunity}}\"?",
+   "labels.edit.menu.basic.info": "Informações básicas",
+   "labels.edit.menu.steps": "Processo seletivo",
 
    "placeholders.title": "Estagiário de desenvolvimento",
    "placeholders.description": "Descreva mais sobre esta vaga",

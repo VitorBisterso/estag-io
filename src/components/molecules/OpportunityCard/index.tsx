@@ -11,17 +11,13 @@ import {
    useUpdateOpportunityMutation,
 } from '@/services';
 import { Opportunity } from '@/models/opportunities';
-import { formatDate } from '@/utils';
+import { formatDate, intlCurrencyFormatter } from '@/utils';
 import CardItem from '@/components/atoms/CardItem';
 import Card from '@/components/molecules/Card';
-import {
-   LOCAL_ICON,
-   OPPORTUNITY_DETAILS_PAGE,
-   REMOTE_ICON,
-   UPDATE_OPPORTUNTITY_PAGE,
-} from '@/consts';
+import { LOCAL_ICON, OPPORTUNITY_DETAILS_PAGE, REMOTE_ICON } from '@/consts';
 import useToast from '@/hooks/useToast';
 import ConfirmationModal from '../ConfirmationModal';
+import EditOpportunityMenu from '../EditOpportunityMenu';
 import styles from './styles';
 
 interface Props {
@@ -85,16 +81,7 @@ export default function OpportunityCard({ opportunity }: Props) {
 
       return (
          <View style={styles.icons}>
-            <IconButton
-               style={styles.iconButton}
-               icon="pencil"
-               iconColor="black"
-               onPress={() =>
-                  navigation.navigate(UPDATE_OPPORTUNTITY_PAGE, {
-                     id: opportunity.id,
-                  })
-               }
-            />
+            <EditOpportunityMenu opportunityId={id} />
             <IconButton
                style={styles.iconButton}
                icon="delete"
@@ -129,11 +116,7 @@ export default function OpportunityCard({ opportunity }: Props) {
       );
    }
 
-   const currencyFormatter = useMemo(
-      () =>
-         new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }),
-      [],
-   );
+   const currencyFormatter = useMemo(intlCurrencyFormatter, []);
    return (
       <>
          <Portal>

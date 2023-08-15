@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import Gap from '@/components/atoms/Gap';
 import OpportunityParamInfo from '@/components/atoms/OpportunityParamInfo';
 import { Opportunity } from '@/models/opportunities';
-import { formatDate } from '@/utils';
+import { formatDate, intlCurrencyFormatter } from '@/utils';
 import { RootState } from '@/store';
 import { LOCAL_ICON, REMOTE_ICON } from '@/consts';
 import styles from './styles';
@@ -30,11 +30,7 @@ export default function OpportunityDetailsInfo({ opportunity }: Props) {
       companyName,
    } = opportunity;
 
-   const currencyFormatter = useMemo(
-      () =>
-         new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }),
-      [],
-   );
+   const currencyFormatter = useMemo(intlCurrencyFormatter, []);
    return (
       <Gap gap={16}>
          <Text style={styles.descriptionTitle}>{t('labels.description')}</Text>

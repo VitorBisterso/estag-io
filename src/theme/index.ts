@@ -10,10 +10,13 @@ export default {
       ...DefaultTheme.colors,
       primary: PRIMARY_COLOR,
       primaryContainer: PRIMARY_COLOR,
-      onPrimaryContainer: '#FFFFFF',
+      onPrimaryContainer: 'white',
       secondary: SECONDARY_COLOR,
       secondaryContainer: '#42CB58',
-      onSecondaryContainer: '#FFFFFF',
+      onSecondaryContainer: 'white',
       outline: PRIMARY_COLOR,
+      elevation: {
+         level2: 'white',
+      },
    },
 };
