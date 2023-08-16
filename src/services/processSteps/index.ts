@@ -1,4 +1,4 @@
-import { ProcessStep } from '@/models/processSteps';
+import { CreateProcessStepParams, ProcessStep } from '@/models/processSteps';
 import { api } from '../api';
 
 export const processStepApi = api.injectEndpoints({
@@ -10,7 +10,16 @@ export const processStepApi = api.injectEndpoints({
          }),
          providesTags: ['ProcessSteps'],
       }),
+      createProcessStep: builder.mutation<null, CreateProcessStepParams>({
+         query: (params) => ({
+            url: `/process-steps/opportunity/${params.opportunityId}`,
+            method: 'POST',
+            body: params.processStep,
+         }),
+         invalidatesTags: ['ProcessSteps'],
+      }),
    }),
 });
 
-export const { useGetProcessStepsQuery } = processStepApi;
+export const { useGetProcessStepsQuery, useCreateProcessStepMutation } =
+   processStepApi;

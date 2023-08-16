@@ -6,6 +6,7 @@ export const OPPORTUNITY_DETAILS_PAGE = 'OpportunitiesDetailsPage';
 export const CREATE_OPPORTUNTITY_PAGE = 'CreateOpportunityPage';
 export const UPDATE_OPPORTUNTITY_PAGE = 'UpdateOpportunityPage';
 export const MANAGE_PROCESS_STEPS_PAGE = 'ManageProcessStepsPage';
+export const CREATE_PROCESS_STEP_PAGE = 'CreateProcessStepPage';
 
 export const INTERNSHIPS_PAGE = 'Internships';
 export const REVIEWS_PAGE = 'Reviews';

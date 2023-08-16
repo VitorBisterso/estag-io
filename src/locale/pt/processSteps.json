@@ -1,4 +1,7 @@
 {
    "labels.deadline.until": "até {{date}}",
-   "labels.deadline.on": "no dia {{date}}"
+   "labels.deadline.on": "no dia {{date}}",
+   "labels.success.process.step": "Etapa do processo seletivo",
+   
+   "errors.invalid.date": "A data limite deve ser uma data no futuro"
 }

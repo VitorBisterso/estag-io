@@ -19,6 +19,7 @@ export default function ManageProcessStepsPage({ route }: Props) {
 
    return (
       <ManageProcessStepsTemplate
+         opportunityId={id}
          opportunityTitle={title}
          processSteps={processSteps ?? []}
       />

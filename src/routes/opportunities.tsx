@@ -5,12 +5,14 @@ import OpportunityDetails from '@/components/pages/OpportunityDetails';
 import CreateOpportunity from '@/components/pages/CreateOpportunity';
 import UpdateOpportunity from '@/components/pages/UpdateOpportunity';
 import ManageProcessStepsPage from '@/components/pages/ManageProcessSteps';
+import CreateProcessStepPage from '@/components/pages/CreateProcessStep';
 import {
    CREATE_OPPORTUNTITY_PAGE,
    OPPORTUNITIES_PAGE,
    OPPORTUNITY_DETAILS_PAGE,
    MANAGE_PROCESS_STEPS_PAGE,
    UPDATE_OPPORTUNTITY_PAGE,
+   CREATE_PROCESS_STEP_PAGE,
 } from '@/consts';
 
 const Stack = createNativeStackNavigator();
@@ -40,6 +42,10 @@ export default function OpportunitiesRoutes() {
          <Stack.Screen
             name={MANAGE_PROCESS_STEPS_PAGE}
             component={ManageProcessStepsPage}
+         />
+         <Stack.Screen
+            name={CREATE_PROCESS_STEP_PAGE}
+            component={CreateProcessStepPage}
          />
       </Stack.Navigator>
    );

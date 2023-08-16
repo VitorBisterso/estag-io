@@ -14,12 +14,18 @@ export interface ProcessStep {
 
 export interface CreateProcessStepParams {
    opportunityId: number;
-   processSteps: ProcessStep;
+   processStep: {
+      title: string;
+      description: string;
+      deadline: string;
+      onlyOnDeadline: boolean;
+      applicants: Array<number>;
+   };
 }
 
 export interface UpdateProcessStepParams {
    opportunityId: number;
-   processSteps: ProcessStep;
+   processStep: ProcessStep;
    newApplicants: Array<number>;
    removedApplicants: Array<number>;
 }

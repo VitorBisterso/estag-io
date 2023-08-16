@@ -61,6 +61,7 @@ export default function ProcessStepList({ processSteps, withCards }: Props) {
    function renderWithCards() {
       return processSteps.map((step, index) => (
          <Card
+            key={step.id}
             title={`${index + 1}. ${step.title}`}
             titleStyle={styles.cardTitle}
             headerStyle={styles.cardHeader}
