@@ -1,4 +1,5 @@
 import { Filters } from '@/models/filters';
+import { Applicant } from '../processSteps';
 
 export type OPPORTUNITY_TYPE = 'REMOTE' | 'LOCAL';
 
@@ -13,7 +14,7 @@ export interface Opportunity {
    companyName?: string;
    isActive?: boolean;
    applied?: boolean;
-   applicants?: Array<{ id: number }>;
+   applicants?: Array<Applicant>;
 }
 
 export interface OpportunityFilter extends Filters<Opportunity> {

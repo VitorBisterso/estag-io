@@ -157,7 +157,3 @@ export default function OpportunityForm() {
       </>
    );
 }
-
-OpportunityForm.defaultProps = {
-   isUpdating: false,
-};

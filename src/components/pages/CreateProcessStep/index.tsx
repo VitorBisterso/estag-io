@@ -9,6 +9,8 @@ import validations from '@/hooks/useProcessStepForm/validations';
 import { OPPORTUNITY_DETAILS_PAGE } from '@/consts';
 import { ProcessStepFormContext } from '@/hooks/useProcessStepForm';
 import CreateProcessStepTemplate from '@/components/templates/CreateProcessStep';
+import { useGetOpportunityByIdQuery } from '@/services';
+import Loader from '@/components/atoms/Loader';
 
 interface Props {
    // eslint-disable-next-line react/require-default-props
@@ -25,6 +27,8 @@ export default function CreateProcessStepPage({ route }: Props) {
 
    const [createProcessStep, { isLoading: isCreating }] =
       useCreateProcessStepMutation();
+   const { data: opportunity, isFetching } =
+      useGetOpportunityByIdQuery(opportunityId);
 
    const formik = useFormik({
       initialValues: {
@@ -32,12 +36,19 @@ export default function CreateProcessStepPage({ route }: Props) {
          description: '',
          deadline: '',
          onlyOnDeadline: false,
-         everyone: false,
+         everyone: true,
          applicants: [] as Array<number>,
       },
       validationSchema: validations(t),
       onSubmit: () => {
-         createProcessStep({ opportunityId, processStep: formik.values })
+         const { values } = formik;
+         if (values.everyone) {
+            values.applicants = [];
+         } else if (values.applicants.length <= 0) {
+            toast.error('errors.applicants');
+            return;
+         }
+         createProcessStep({ opportunityId, processStep: values })
             .unwrap()
             .then(() => {
                toast.success(
@@ -61,9 +72,13 @@ export default function CreateProcessStepPage({ route }: Props) {
       [formik, isCreating],
    );
 
+   if (isFetching) return <Loader size={64} />;
+
    return (
       <ProcessStepFormContext.Provider value={providerValue}>
-         <CreateProcessStepTemplate />
+         <CreateProcessStepTemplate
+            applicants={opportunity?.applicants ?? []}
+         />
       </ProcessStepFormContext.Provider>
    );
 }

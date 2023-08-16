@@ -2,6 +2,18 @@
    "labels.deadline.until": "até {{date}}",
    "labels.deadline.on": "no dia {{date}}",
    "labels.success.process.step": "Etapa do processo seletivo",
+   "labels.title": "Título da etapa",
+   "labels.description": "Descrição da etapa",
+   "labels.deadline": "Data da etapa",
+   "labels.radio.deadline.only": "Etapa apenas nesse dia",
+   "labels.radio.deadline.until": "Etapa até esse dia",
+   "labels.applicants.multiselect.no.items": "Nenhum aluno encontrado",
+   "labels.everyone": "Todos os inscritos participam",
+
+   "placeholders.title": "Dinâmica em grupo",
+   "placeholders.description": "Descreva mais sobre esta etapa",
+   "placeholders.applicants": "Selecione os participantes",
    
-   "errors.invalid.date": "A data limite deve ser uma data no futuro"
+   "errors.invalid.date": "A data limite deve ser uma data no futuro",
+   "errors.applicants": "Selecione ao menos um integrante"
 }
