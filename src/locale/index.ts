@@ -4,6 +4,7 @@ import { initReactI18next } from 'react-i18next';
 import common from '@/locale/pt/common.json';
 import auth from '@/locale/pt/auth.json';
 import opportunities from '@/locale/pt/opportunities.json';
+import processSteps from '@/locale/pt/processSteps.json';
 import tabs from '@/locale/pt/tabs.json';
 import toast from '@/locale/pt/toast.json';
 
@@ -27,6 +28,7 @@ i18n.use(initReactI18next).init({
 
 i18n.addResourceBundle('pt', 'auth', auth);
 i18n.addResourceBundle('pt', 'opportunities', opportunities);
+i18n.addResourceBundle('pt', 'processSteps', processSteps);
 i18n.addResourceBundle('pt', 'tabs', tabs);
 i18n.addResourceBundle('pt', 'toast', toast);
 

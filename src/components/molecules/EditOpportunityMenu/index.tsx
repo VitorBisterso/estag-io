@@ -3,14 +3,18 @@ import { IconButton, Menu } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 
-import { UPDATE_OPPORTUNTITY_PAGE } from '@/consts';
+import { MANAGE_PROCESS_STEPS_PAGE, UPDATE_OPPORTUNTITY_PAGE } from '@/consts';
 import styles from './styles';
 
 interface Props {
    opportunityId: number;
+   opportunityTitle: string;
 }
 
-export default function EditOpportunityMenu({ opportunityId }: Props) {
+export default function EditOpportunityMenu({
+   opportunityId,
+   opportunityTitle,
+}: Props) {
    const { t } = useTranslation('opportunities');
    const navigation = useNavigation<any>();
    const [visible, setVisible] = useState(false);
@@ -43,7 +47,16 @@ export default function EditOpportunityMenu({ opportunityId }: Props) {
             }}
             title={t('labels.edit.menu.basic.info')}
          />
-         <Menu.Item onPress={undefined} title={t('labels.edit.menu.steps')} />
+         <Menu.Item
+            onPress={() => {
+               closeMenu();
+               navigation.navigate(MANAGE_PROCESS_STEPS_PAGE, {
+                  id: opportunityId,
+                  title: opportunityTitle,
+               });
+            }}
+            title={t('labels.edit.menu.steps')}
+         />
       </Menu>
    );
 }

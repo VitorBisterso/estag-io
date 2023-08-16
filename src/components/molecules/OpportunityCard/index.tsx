@@ -81,7 +81,7 @@ export default function OpportunityCard({ opportunity }: Props) {
 
       return (
          <View style={styles.icons}>
-            <EditOpportunityMenu opportunityId={id} />
+            <EditOpportunityMenu opportunityId={id} opportunityTitle={title} />
             <IconButton
                style={styles.iconButton}
                icon="delete"

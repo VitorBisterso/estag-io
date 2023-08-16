@@ -1,0 +1,4 @@
+{
+   "labels.deadline.until": "até {{date}}",
+   "labels.deadline.on": "no dia {{date}}"
+}

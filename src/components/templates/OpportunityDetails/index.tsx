@@ -1,5 +1,5 @@
+import { useState } from 'react';
 import { ScrollView } from 'react-native';
-import { Text } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
@@ -8,12 +8,13 @@ import { Opportunity } from '@/models/opportunities';
 import { RootState } from '@/store';
 import { useApplyToOpportunityMutation } from '@/services';
 import Gap from '@/components/atoms/Gap';
+import Button from '@/components/atoms/Button';
 import PageHeader from '@/components/molecules/PageHeader';
 import OpportunityDetailsInfo from '@/components/molecules/OpportunityDetailsInfo';
 import TabGroup from '@/components/molecules/TabGroup';
-import Button from '@/components/atoms/Button';
+import OpportunityProcessSteps from '@/components/organisms/OpportunityProcessSteps';
 import useToast from '@/hooks/useToast';
-import { UPDATE_OPPORTUNTITY_PAGE } from '@/consts';
+import { MANAGE_PROCESS_STEPS_PAGE, UPDATE_OPPORTUNTITY_PAGE } from '@/consts';
 import styles from './styles';
 
 interface Props {
@@ -26,8 +27,24 @@ export default function OpportunityDetailsTemplate({ opportunity }: Props) {
    const toast = useToast();
    const navigation = useNavigation<any>();
 
+   const [tabIndex, setTabIndex] = useState(0);
+
    const [applyToOpportunity, { isLoading: isApplying }] =
       useApplyToOpportunityMutation();
+
+   function navigateToUpdatePage() {
+      if (tabIndex === 0) {
+         navigation.navigate(UPDATE_OPPORTUNTITY_PAGE, {
+            id: opportunity.id,
+         });
+         return;
+      }
+
+      navigation.navigate(MANAGE_PROCESS_STEPS_PAGE, {
+         id: opportunity.id,
+         title: opportunity.title,
+      });
+   }
 
    function renderButtons() {
       if (profile === 'COMPANY')
@@ -35,11 +52,7 @@ export default function OpportunityDetailsTemplate({ opportunity }: Props) {
             <Gap gap={16}>
                <Button
                   label={t('buttons.update')}
-                  onPress={() =>
-                     navigation.navigate(UPDATE_OPPORTUNTITY_PAGE, {
-                        id: opportunity.id,
-                     })
-                  }
+                  onPress={navigateToUpdatePage}
                />
                <Button
                   mode="outlined"
@@ -71,6 +84,9 @@ export default function OpportunityDetailsTemplate({ opportunity }: Props) {
          <PageHeader title={opportunity.title} hasBackButton />
          <Gap gap={24} style={styles.content}>
             <TabGroup
+               controlled
+               currentTab={tabIndex}
+               setTab={setTabIndex}
                tabs={[
                   {
                      title: t('tabs.general.info'),
@@ -79,8 +95,8 @@ export default function OpportunityDetailsTemplate({ opportunity }: Props) {
                      ),
                   },
                   {
-                     title: t('tabs.proccess'),
-                     component: <Text>processo</Text>,
+                     title: t('tabs.process'),
+                     component: <OpportunityProcessSteps id={opportunity.id} />,
                   },
                ]}
             />

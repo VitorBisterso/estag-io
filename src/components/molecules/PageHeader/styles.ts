@@ -17,6 +17,7 @@ export default StyleSheet.create({
       fontWeight: 'bold',
       fontSize: 32,
       marginLeft: 8,
+      maxWidth: '80%',
    },
    icon: {
       marginLeft: 'auto',

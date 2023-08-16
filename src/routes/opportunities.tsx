@@ -4,10 +4,12 @@ import OpportunitiesPage from '@/components/pages/Opportunities';
 import OpportunityDetails from '@/components/pages/OpportunityDetails';
 import CreateOpportunity from '@/components/pages/CreateOpportunity';
 import UpdateOpportunity from '@/components/pages/UpdateOpportunity';
+import ManageProcessStepsPage from '@/components/pages/ManageProcessSteps';
 import {
    CREATE_OPPORTUNTITY_PAGE,
    OPPORTUNITIES_PAGE,
    OPPORTUNITY_DETAILS_PAGE,
+   MANAGE_PROCESS_STEPS_PAGE,
    UPDATE_OPPORTUNTITY_PAGE,
 } from '@/consts';
 
@@ -34,6 +36,10 @@ export default function OpportunitiesRoutes() {
          <Stack.Screen
             name={UPDATE_OPPORTUNTITY_PAGE}
             component={UpdateOpportunity}
+         />
+         <Stack.Screen
+            name={MANAGE_PROCESS_STEPS_PAGE}
+            component={ManageProcessStepsPage}
          />
       </Stack.Navigator>
    );
