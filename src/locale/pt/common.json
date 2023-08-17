@@ -19,6 +19,7 @@
       "buttons.save": "Salvar",
       "buttons.cancel": "Cancelar",
       "buttons.confirm": "Confirmar",
+      "buttons.delete": "Deletar",
 
       "labels.pagination.total": "Total: {{total}}",
       "labels.pagination.current": "{{current}} de {{total}}",

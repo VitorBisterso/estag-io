@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { View } from 'react-native';
 import { IconButton, Text } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
@@ -6,6 +7,9 @@ import { ProcessStep } from '@/models/processSteps';
 import { formatDate } from '@/utils';
 import Gap from '@/components/atoms/Gap';
 import Card from '@/components/molecules/Card';
+import ConfirmationModal from '@/components/molecules/ConfirmationModal';
+import { useDeleteProcessStepMutation } from '@/services/processSteps';
+import useToast from '@/hooks/useToast';
 import styles from './styles';
 
 interface Props {
@@ -14,7 +18,17 @@ interface Props {
 }
 
 export default function ProcessStepList({ processSteps, withCards }: Props) {
-   const { t } = useTranslation('processSteps');
+   const { t } = useTranslation(['processSteps', 'common']);
+   const toast = useToast();
+
+   const [deleteStep, { isLoading: isDeleting }] =
+      useDeleteProcessStepMutation();
+
+   const [modalVisible, setModalVisibility] = useState(false);
+   const [stepToDelete, setStepToDelete] = useState<ProcessStep>(
+      {} as ProcessStep,
+   );
+
    function renderDate(deadline: string, onlyOnDeadline: boolean) {
       const date = formatDate(deadline);
       if (onlyOnDeadline) return t('labels.deadline.on', { date });
@@ -28,10 +42,10 @@ export default function ProcessStepList({ processSteps, withCards }: Props) {
             <Text style={styles.title} numberOfLines={2}>
                {`${stepNumber}. ${step.title}`}
             </Text>
-            <Text style={styles.title}>{` - ${renderDate(
+            <Text style={styles.title}>{`(${renderDate(
                step.deadline,
                step.onlyOnDeadline,
-            )}`}</Text>
+            )})`}</Text>
          </View>
       );
    }
@@ -49,11 +63,19 @@ export default function ProcessStepList({ processSteps, withCards }: Props) {
       );
    }
 
-   function renderIcons() {
+   function renderIcons(step: ProcessStep) {
       return (
          <View style={styles.row}>
             <IconButton icon="pencil" style={styles.icon} />
-            <IconButton icon="delete" iconColor="red" style={styles.icon} />
+            <IconButton
+               icon="delete"
+               iconColor="red"
+               style={styles.icon}
+               onPress={() => {
+                  setStepToDelete(step);
+                  setModalVisibility(true);
+               }}
+            />
          </View>
       );
    }
@@ -65,7 +87,7 @@ export default function ProcessStepList({ processSteps, withCards }: Props) {
             title={`${index + 1}. ${step.title}`}
             titleStyle={styles.cardTitle}
             headerStyle={styles.cardHeader}
-            renderIcons={renderIcons}
+            renderIcons={() => renderIcons(step)}
          >
             <Text style={styles.description} numberOfLines={3}>
                {step.description}
@@ -80,10 +102,35 @@ export default function ProcessStepList({ processSteps, withCards }: Props) {
       return renderSimplifiedView();
    }
 
+   function hideModal() {
+      setModalVisibility(false);
+   }
+
    return (
-      <Gap gap={16} style={{ justifyContent: 'center' }}>
-         {renderContent()}
-      </Gap>
+      <>
+         <ConfirmationModal
+            visible={modalVisible}
+            title={t('modals.delete.title')}
+            description={t('modals.delete.description', {
+               step: stepToDelete.title,
+            })}
+            confirmText={t('buttons.delete', { ns: 'common' })}
+            onDismiss={hideModal}
+            onCancel={hideModal}
+            onConfirm={() => {
+               deleteStep(stepToDelete.id)
+                  .unwrap()
+                  .then(() => {
+                     toast.success(t('messages.deleted'));
+                     hideModal();
+                  });
+            }}
+            isLoading={isDeleting}
+         />
+         <Gap gap={16} style={{ justifyContent: 'center' }}>
+            {renderContent()}
+         </Gap>
+      </>
    );
 }
 

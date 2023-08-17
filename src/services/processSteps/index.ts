@@ -18,8 +18,18 @@ export const processStepApi = api.injectEndpoints({
          }),
          invalidatesTags: ['ProcessSteps'],
       }),
+      deleteProcessStep: builder.mutation<null, number>({
+         query: (id) => ({
+            url: `/process-steps/${id}`,
+            method: 'DELETE',
+         }),
+         invalidatesTags: ['ProcessSteps'],
+      }),
    }),
 });
 
-export const { useGetProcessStepsQuery, useCreateProcessStepMutation } =
-   processStepApi;
+export const {
+   useGetProcessStepsQuery,
+   useCreateProcessStepMutation,
+   useDeleteProcessStepMutation,
+} = processStepApi;

@@ -10,6 +10,12 @@
    "labels.applicants.multiselect.no.items": "Nenhum aluno encontrado",
    "labels.everyone": "Todos os inscritos participam",
 
+   "modals.delete.title": "Deletando etapa",
+   "modals.delete.description": "Deseja realmente deletar a etapa \"{{step}}\"?",
+
+   "messages.deleted": "Etapa deletada com sucesso!",
+   "messages.updated": "Etapa atulizada com sucesso!",
+
    "placeholders.title": "Dinâmica em grupo",
    "placeholders.description": "Descreva mais sobre esta etapa",
    "placeholders.applicants": "Selecione os participantes",
