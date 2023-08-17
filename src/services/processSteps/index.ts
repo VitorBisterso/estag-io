@@ -1,4 +1,8 @@
-import { CreateProcessStepParams, ProcessStep } from '@/models/processSteps';
+import {
+   CreateProcessStepParams,
+   ProcessStep,
+   UpdateProcessStepParams,
+} from '@/models/processSteps';
 import { api } from '../api';
 
 export const processStepApi = api.injectEndpoints({
@@ -18,6 +22,14 @@ export const processStepApi = api.injectEndpoints({
          }),
          invalidatesTags: ['ProcessSteps'],
       }),
+      updateProcessStep: builder.mutation<null, UpdateProcessStepParams>({
+         query: (params) => ({
+            url: `/process-steps/${params.id}`,
+            method: 'PUT',
+            body: params,
+         }),
+         invalidatesTags: ['ProcessSteps'],
+      }),
       deleteProcessStep: builder.mutation<null, number>({
          query: (id) => ({
             url: `/process-steps/${id}`,
@@ -31,5 +43,6 @@ export const processStepApi = api.injectEndpoints({
 export const {
    useGetProcessStepsQuery,
    useCreateProcessStepMutation,
+   useUpdateProcessStepMutation,
    useDeleteProcessStepMutation,
 } = processStepApi;

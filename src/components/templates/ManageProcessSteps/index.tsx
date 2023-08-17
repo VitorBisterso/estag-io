@@ -25,7 +25,11 @@ export default function ManageProcessStepsTemplate({
       <View style={styles.container}>
          <PageHeader withTitle title={opportunityTitle} hasBackButton />
          <ScrollView style={styles.listContainer}>
-            <ProcessStepList processSteps={processSteps} withCards />
+            <ProcessStepList
+               opportunityId={opportunityId}
+               processSteps={processSteps}
+               withCards
+            />
          </ScrollView>
          <Fab
             icon="plus"

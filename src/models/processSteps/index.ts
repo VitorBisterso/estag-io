@@ -24,8 +24,11 @@ export interface CreateProcessStepParams {
 }
 
 export interface UpdateProcessStepParams {
-   opportunityId: number;
-   processStep: ProcessStep;
+   id: number;
+   title: string;
+   description: string;
+   deadline: string;
+   onlyOnDeadline: boolean;
    newApplicants: Array<number>;
    removedApplicants: Array<number>;
 }

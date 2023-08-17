@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { View } from 'react-native';
 import { IconButton, Text } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
+import { useNavigation } from '@react-navigation/native';
 
 import { ProcessStep } from '@/models/processSteps';
 import { formatDate } from '@/utils';
@@ -10,16 +11,23 @@ import Card from '@/components/molecules/Card';
 import ConfirmationModal from '@/components/molecules/ConfirmationModal';
 import { useDeleteProcessStepMutation } from '@/services/processSteps';
 import useToast from '@/hooks/useToast';
+import { UPDATE_PROCESS_STEP_PAGE } from '@/consts';
 import styles from './styles';
 
 interface Props {
+   opportunityId: number;
    processSteps: Array<ProcessStep>;
    withCards?: boolean;
 }
 
-export default function ProcessStepList({ processSteps, withCards }: Props) {
+export default function ProcessStepList({
+   opportunityId,
+   processSteps,
+   withCards,
+}: Props) {
    const { t } = useTranslation(['processSteps', 'common']);
    const toast = useToast();
+   const navigation = useNavigation<any>();
 
    const [deleteStep, { isLoading: isDeleting }] =
       useDeleteProcessStepMutation();
@@ -66,7 +74,16 @@ export default function ProcessStepList({ processSteps, withCards }: Props) {
    function renderIcons(step: ProcessStep) {
       return (
          <View style={styles.row}>
-            <IconButton icon="pencil" style={styles.icon} />
+            <IconButton
+               icon="pencil"
+               style={styles.icon}
+               onPress={() =>
+                  navigation.navigate(UPDATE_PROCESS_STEP_PAGE, {
+                     opportunityId,
+                     step,
+                  })
+               }
+            />
             <IconButton
                icon="delete"
                iconColor="red"

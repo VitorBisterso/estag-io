@@ -28,7 +28,10 @@ export default function DateField({
       setDatePickerVisibility(false);
    }
 
-   const dateFormat = useMemo(() => new Intl.DateTimeFormat(['ban', 'id']), []);
+   const dateFormat = useMemo(
+      () => new Intl.DateTimeFormat('pt-br', { timeZone: 'Australia/Sydney' }),
+      [],
+   );
    const formattedDate = date ? dateFormat.format(new Date(date) as any) : '';
    return (
       <>

@@ -11,5 +11,7 @@ export default function OpportunityProcessSteps({ id }: Props) {
 
    if (isFetching) return <Loader size={64} />;
 
-   return <ProcessStepList processSteps={processSteps ?? []} />;
+   return (
+      <ProcessStepList opportunityId={id} processSteps={processSteps ?? []} />
+   );
 }
