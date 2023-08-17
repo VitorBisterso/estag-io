@@ -14,7 +14,11 @@ import OpportunityDetailsInfo from '@/components/molecules/OpportunityDetailsInf
 import TabGroup from '@/components/molecules/TabGroup';
 import OpportunityProcessSteps from '@/components/organisms/OpportunityProcessSteps';
 import useToast from '@/hooks/useToast';
-import { MANAGE_PROCESS_STEPS_PAGE, UPDATE_OPPORTUNTITY_PAGE } from '@/consts';
+import {
+   MANAGE_PROCESS_STEPS_PAGE,
+   OPPORTUNITIES_PAGE,
+   UPDATE_OPPORTUNTITY_PAGE,
+} from '@/consts';
 import styles from './styles';
 
 interface Props {
@@ -81,7 +85,11 @@ export default function OpportunityDetailsTemplate({ opportunity }: Props) {
 
    return (
       <ScrollView style={styles.container}>
-         <PageHeader title={opportunity.title} hasBackButton />
+         <PageHeader
+            title={opportunity.title}
+            hasBackButton
+            onBack={() => navigation.navigate(OPPORTUNITIES_PAGE)}
+         />
          <Gap gap={24} style={styles.content}>
             <TabGroup
                controlled

@@ -25,7 +25,6 @@ export default StyleSheet.create({
    titleContainer: {
       flexDirection: 'row',
       flexWrap: 'wrap',
-      justifyContent: 'center',
    },
    title: {
       fontSize: 22,

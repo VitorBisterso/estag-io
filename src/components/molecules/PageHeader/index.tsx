@@ -12,6 +12,8 @@ interface Props {
    children?: React.ReactNode;
    icon?: string;
    hasBackButton?: boolean;
+   // eslint-disable-next-line react/require-default-props
+   onBack?: () => void;
 }
 
 export default function PageHeader({
@@ -20,19 +22,21 @@ export default function PageHeader({
    children,
    icon,
    hasBackButton,
+   onBack,
 }: Props) {
    const theme = useTheme();
    const navigation = useNavigation();
 
+   function getBackPress() {
+      if (onBack) return onBack;
+
+      return () => navigation.goBack();
+   }
+
    function renderBackButton() {
       if (!hasBackButton) return null;
 
-      return (
-         <ThemedIconButton
-            icon="chevron-left"
-            onPress={() => navigation.goBack()}
-         />
-      );
+      return <ThemedIconButton icon="chevron-left" onPress={getBackPress()} />;
    }
 
    function renderMainContent() {
