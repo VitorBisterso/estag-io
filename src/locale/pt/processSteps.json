@@ -9,6 +9,7 @@
    "labels.radio.deadline.until": "Etapa até esse dia",
    "labels.applicants.multiselect.no.items": "Nenhum aluno encontrado",
    "labels.everyone": "Todos os inscritos participam",
+   "labels.empty.steps": "Esta vaga ainda não possui um processo seletivo definido...",
 
    "modals.delete.title": "Deletando etapa",
    "modals.delete.description": "Deseja realmente deletar a etapa \"{{step}}\"?",

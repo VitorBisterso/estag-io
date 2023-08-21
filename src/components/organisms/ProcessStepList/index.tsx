@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 
 import { ProcessStep } from '@/models/processSteps';
-import { formatDate } from '@/utils';
 import Gap from '@/components/atoms/Gap';
 import Card from '@/components/molecules/Card';
 import ConfirmationModal from '@/components/molecules/ConfirmationModal';
@@ -13,6 +12,7 @@ import { useDeleteProcessStepMutation } from '@/services/processSteps';
 import useToast from '@/hooks/useToast';
 import { UPDATE_PROCESS_STEP_PAGE } from '@/consts';
 import styles from './styles';
+import SimplifiedView from './simplified';
 
 interface Props {
    opportunityId: number;
@@ -36,40 +36,6 @@ export default function ProcessStepList({
    const [stepToDelete, setStepToDelete] = useState<ProcessStep>(
       {} as ProcessStep,
    );
-
-   function renderDate(deadline: string, onlyOnDeadline: boolean) {
-      const date = formatDate(deadline);
-      if (onlyOnDeadline) return t('labels.deadline.on', { date });
-
-      return t('labels.deadline.until', { date });
-   }
-
-   function renderTitle(step: ProcessStep, stepNumber: number) {
-      return (
-         <View style={styles.titleContainer}>
-            <Text style={styles.title} numberOfLines={2}>
-               {`${stepNumber}. ${step.title}`}
-            </Text>
-            <Text style={styles.title}>{`(${renderDate(
-               step.deadline,
-               step.onlyOnDeadline,
-            )})`}</Text>
-         </View>
-      );
-   }
-
-   function renderSimplifiedView() {
-      return (
-         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-            {processSteps.map((step, index) => (
-               <View key={step.id} style={styles.simplifiedContainer}>
-                  {renderTitle(step, index + 1)}
-                  <Text style={styles.description}>{step.description}</Text>
-               </View>
-            ))}
-         </View>
-      );
-   }
 
    function renderIcons(step: ProcessStep) {
       return (
@@ -116,7 +82,7 @@ export default function ProcessStepList({
    function renderContent() {
       if (withCards) return renderWithCards();
 
-      return renderSimplifiedView();
+      return <SimplifiedView processSteps={processSteps} />;
    }
 
    function hideModal() {

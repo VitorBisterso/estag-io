@@ -9,7 +9,8 @@ export interface ProcessStep {
    description: string;
    deadline: string;
    onlyOnDeadline: boolean;
-   applicants: Array<Applicant>;
+   applicants?: Array<Applicant>;
+   isApplied?: boolean;
 }
 
 export interface CreateProcessStepParams {

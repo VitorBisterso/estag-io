@@ -66,7 +66,7 @@ export default function OpportunityDetailsTemplate({ opportunity }: Props) {
             </Gap>
          );
 
-      const isApplied = opportunity.applied;
+      const { isApplied } = opportunity;
       return (
          <Button
             label={
@@ -104,7 +104,12 @@ export default function OpportunityDetailsTemplate({ opportunity }: Props) {
                   },
                   {
                      title: t('tabs.process'),
-                     component: <OpportunityProcessSteps id={opportunity.id} />,
+                     component: (
+                        <OpportunityProcessSteps
+                           id={opportunity.id}
+                           isApplied={Boolean(opportunity.isApplied)}
+                        />
+                     ),
                   },
                ]}
             />

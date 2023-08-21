@@ -13,7 +13,7 @@ export interface Opportunity {
    weeklyWorkload: number;
    companyName?: string;
    isActive?: boolean;
-   applied?: boolean;
+   isApplied?: boolean;
    applicants?: Array<Applicant>;
 }
 

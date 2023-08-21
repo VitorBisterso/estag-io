@@ -36,4 +36,15 @@ export default StyleSheet.create({
       textAlign: 'justify',
       marginTop: 16,
    },
+
+   stepUserIcon: {
+      flexDirection: 'column',
+      alignItems: 'center',
+      marginVertical: -15,
+   },
+   stepUserLine: {
+      width: 4,
+      height: 50,
+      marginVertical: -8,
+   },
 });
