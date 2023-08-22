@@ -1,4 +1,9 @@
-import { Internship } from '@/models/internships';
+import {
+   GetInternshipsResponse,
+   Internship,
+   InternshipFilter,
+} from '@/models/internships';
+import { getResponseCount } from '@/utils';
 import { api } from '../api';
 
 export const internshipApi = api.injectEndpoints({
@@ -9,7 +14,23 @@ export const internshipApi = api.injectEndpoints({
             method: 'GET',
          }),
       }),
+      getInternships: builder.query<GetInternshipsResponse, InternshipFilter>({
+         query: (params) => ({
+            url: 'internships',
+            method: 'GET',
+            params,
+         }),
+         transformResponse: (
+            res: { internships: Array<Internship> },
+            info: { response: Record<string, any> },
+         ) => ({
+            list: res.internships,
+            count: getResponseCount(info.response),
+         }),
+         providesTags: ['Internships'],
+      }),
    }),
 });
 
-export const { useGetMyInternshipQuery } = internshipApi;
+export const { useGetMyInternshipQuery, useLazyGetInternshipsQuery } =
+   internshipApi;

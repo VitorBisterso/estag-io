@@ -1,5 +1,6 @@
 {
    "student.header.title": "Seu estágio",
+   "company.header.title": "Seus estágios",
 
    "student.labels.empty": "Por enquanto, você não possui nenhum estágio cadastrado...",
    
@@ -9,5 +10,13 @@
    "labels.type": "Tipo de estágio",
    "labels.workload": "Carga horária semanal",
    "labels.initial.date": "Data de início",
-   "labels.until": "Data de término"
+   "labels.until": "Data de término",
+
+   "filters.student.name": "Nome do(a) estagiário(a)",
+   "filters.type": "Tipo de estágio",
+   "filters.workload": "Carga horária semanal",
+
+   "filters.order.by.student": "Estudante",
+   "filters.order.by.initial.date": "Data de início",
+   "filters.order.by.until": "Data de término"
 }

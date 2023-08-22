@@ -20,8 +20,8 @@ export default function OpportunityFilter() {
    const { state, set, reset } = useFilterContext<OpportunityFilterType>();
 
    const opportunityTypes = [
-      { label: t('filters.type.local'), value: 'LOCAL' },
-      { label: t('filters.type.remote'), value: 'REMOTE' },
+      { label: t('labels.local', { ns: 'common' }), value: 'LOCAL' },
+      { label: t('labels.remote', { ns: 'common' }), value: 'REMOTE' },
    ];
    const weeklyWorkloads = [
       { label: '20h', value: 20 },
