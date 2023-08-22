@@ -17,7 +17,7 @@ interface Props {
    checkboxValue?: boolean;
 }
 
-export default function OpportunityParamInfo({
+export default function DetailsItem({
    label,
    value,
    style,
@@ -48,7 +48,7 @@ export default function OpportunityParamInfo({
    );
 }
 
-OpportunityParamInfo.defaultProps = {
+DetailsItem.defaultProps = {
    style: {},
    valueIcon: '',
    hasCheckbox: false,

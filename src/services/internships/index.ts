@@ -1,9 +1,9 @@
-import { MyInternship } from '@/models/internships';
+import { Internship } from '@/models/internships';
 import { api } from '../api';
 
 export const internshipApi = api.injectEndpoints({
    endpoints: (builder) => ({
-      getMyInternship: builder.query<MyInternship, null>({
+      getMyInternship: builder.query<Internship, null>({
          query: () => ({
             url: 'internships/me',
             method: 'GET',

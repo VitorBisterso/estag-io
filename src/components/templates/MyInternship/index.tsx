@@ -3,13 +3,14 @@ import { View } from 'react-native';
 import { IconButton, Text, useTheme } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 
-import { MyInternship } from '@/models/internships';
+import { Internship } from '@/models/internships';
 import PageHeader from '@/components/molecules/PageHeader';
+import InternshipDetails from '@/components/molecules/InternshipDetails';
 import { INTERNSHIPS_ICON } from '@/consts';
 import styles from './styles';
 
 interface Props {
-   internship?: MyInternship;
+   internship?: Internship;
 }
 
 export default function MyInternshipTemplate({ internship }: Props) {
@@ -24,17 +25,19 @@ export default function MyInternshipTemplate({ internship }: Props) {
    function renderContent() {
       if (isEmpty)
          return (
-            <>
+            <View style={styles.emptyContainer}>
                <Text style={styles.emptyText}>{t('student.labels.empty')}</Text>
                <IconButton
                   icon="account-off-outline"
                   iconColor={theme.colors.primary}
                   size={96}
                />
-            </>
+            </View>
          );
 
-      return <View />;
+      return (
+         <InternshipDetails internship={internship ?? ({} as Internship)} />
+      );
    }
 
    return (

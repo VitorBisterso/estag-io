@@ -4,11 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import Gap from '@/components/atoms/Gap';
-import OpportunityParamInfo from '@/components/atoms/OpportunityParamInfo';
 import { Opportunity } from '@/models/opportunities';
 import { formatDate, intlCurrencyFormatter } from '@/utils';
 import { RootState } from '@/store';
 import { LOCAL_ICON, REMOTE_ICON } from '@/consts';
+import DetailsItem from '@/components/atoms/DetailsItem';
 import styles from './styles';
 
 interface Props {
@@ -36,32 +36,32 @@ export default function OpportunityDetailsInfo({ opportunity }: Props) {
          <Text style={styles.descriptionTitle}>{t('labels.description')}</Text>
          <Text style={styles.description}>{description}</Text>
          {!isCompany && (
-            <OpportunityParamInfo
+            <DetailsItem
                label={t('labels.company')}
                value={companyName as string}
             />
          )}
-         <OpportunityParamInfo
+         <DetailsItem
             label={t('labels.salary')}
             value={currencyFormatter.format(salary)}
          />
-         <OpportunityParamInfo
+         <DetailsItem
             style={{ marginVertical: -16 }}
             label={t('labels.type')}
             value={t(`labels.type.${type.toLowerCase()}`)}
             valueIcon={type === 'REMOTE' ? REMOTE_ICON : LOCAL_ICON}
          />
-         <OpportunityParamInfo
+         <DetailsItem
             label={t('labels.workload')}
             value={`${weeklyWorkload}h`}
          />
-         <OpportunityParamInfo
+         <DetailsItem
             label={t('labels.deadline')}
             value={formatDate(deadline)}
             valueColor="red"
          />
          {isCompany && (
-            <OpportunityParamInfo
+            <DetailsItem
                style={{ marginTop: -8 }}
                label={t('labels.active')}
                value=""

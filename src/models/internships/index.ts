@@ -1,14 +1,22 @@
-export interface MyInternship {
+import { OPPORTUNITY_TYPE } from '../opportunities';
+
+export interface Internship {
+   id: number;
+   student?: {
+      id: number;
+      name: string;
+   };
    initialDate: string;
    until: string;
    managerName: string;
    job: {
+      id: number;
       title: string;
-      type: string;
+      type: OPPORTUNITY_TYPE;
       company: {
          name: string;
       };
-      salary: string;
-      weeklyWorkload: string;
+      salary: number;
+      weeklyWorkload: number;
    };
 }
