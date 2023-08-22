@@ -24,6 +24,10 @@ export default function InternshipDetails({ internship }: Props) {
             value={internship.managerName}
          />
          <DetailsItem
+            label={t('labels.advisor')}
+            value={internship.advisorName}
+         />
+         <DetailsItem
             label={t('labels.salary')}
             value={currencyFormatter.format(internship.job.salary)}
          />

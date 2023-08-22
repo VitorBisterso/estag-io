@@ -5,7 +5,7 @@ import { IconSource } from 'react-native-paper/lib/typescript/src/components/Ico
 import { ProcessStep } from '@/models/processSteps';
 
 import { formatDate } from '@/utils';
-import { PRIMARY_LIGHT } from '@/theme';
+import { PRIMARY_LIGHT, RED } from '@/theme';
 import styles from './styles';
 
 interface SimplifiedViewProps {
@@ -33,7 +33,7 @@ export default function SimplifiedView({
          (stepNumber !== length && alreadyDone) || (!isPast && !step.isApplied);
 
       let color = '';
-      if (failed) color = 'red';
+      if (failed) color = RED;
       else if (alreadyDone) color = theme.colors.primary;
       else color = 'black';
 
@@ -103,8 +103,8 @@ export default function SimplifiedView({
       if (failed) {
          iconStyles = {
             icon: 'close',
-            background: 'red',
-            borderColor: 'red',
+            background: RED,
+            borderColor: RED,
             iconColor: 'white',
          };
       } else if (alreadyDone) {

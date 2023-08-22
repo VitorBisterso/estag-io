@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import { GRAY, LIGHT_GRAY } from '@/theme';
+
 export default StyleSheet.create({
    row: {
       flexDirection: 'row',
@@ -10,16 +12,12 @@ export default StyleSheet.create({
    },
    subtitleText: {
       maxWidth: '40%',
-      color: 'gray',
+      color: GRAY,
    },
    description: {
       marginVertical: 16,
       fontStyle: 'italic',
-      color: 'rgba(37, 37, 37, 0.75)',
-   },
-   currency: {
-      maxWidth: '30%',
-      marginRight: 8,
+      color: LIGHT_GRAY,
    },
 
    companyTitle: {

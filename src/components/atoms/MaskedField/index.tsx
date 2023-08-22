@@ -1,5 +1,7 @@
 import { Text, useTheme } from 'react-native-paper';
 import MaskInput, { Mask, Masks } from 'react-native-mask-input';
+
+import { RED } from '@/theme';
 import styles from './styles';
 
 type MaskedType = 'cnpj' | 'phone' | 'money';
@@ -30,7 +32,7 @@ export default function MaskedField({
    error,
 }: Props) {
    const theme = useTheme();
-   const borderColor = hasError ? 'red' : theme.colors.primary;
+   const borderColor = hasError ? RED : theme.colors.primary;
 
    const configs: Record<MaskedType, MaskedConfigs> = {
       cnpj: {
@@ -64,7 +66,7 @@ export default function MaskedField({
             placeholder={configs[type].placeholder}
             placeholderTextColor={theme.colors.onSurfaceDisabled}
          />
-         {hasError && <Text style={{ color: 'red' }}>{error}</Text>}
+         {hasError && <Text style={{ color: RED }}>{error}</Text>}
       </>
    );
 }

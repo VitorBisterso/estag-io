@@ -6,6 +6,7 @@
    
    "labels.role": "Função",
    "labels.manager": "Gerente",
+   "labels.advisor": "Orientador",
    "labels.salary": "Salário",
    "labels.type": "Tipo de estágio",
    "labels.workload": "Carga horária semanal",

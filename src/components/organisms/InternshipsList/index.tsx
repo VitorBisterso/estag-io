@@ -1,11 +1,11 @@
 import { View } from 'react-native';
-import { Text } from 'react-native-paper';
 
 import EmptyResults from '@/components/atoms/EmptyResults';
 import Loader from '@/components/atoms/Loader';
 import { useFilterContext } from '@/hooks/useFilter';
 import { Internship, InternshipFilter } from '@/models/internships';
 import Pagination from '@/components/molecules/Pagination';
+import InternshipCard from '@/components/molecules/InternshipCard';
 import styles from './styles';
 
 interface Props {
@@ -29,7 +29,7 @@ export default function InternshipsList({
    return (
       <>
          {internships.map((internship) => (
-            <Text>{internship.job.title}</Text>
+            <InternshipCard key={internship.id} internship={internship} />
          ))}
          <View style={styles.pagination}>
             <Pagination

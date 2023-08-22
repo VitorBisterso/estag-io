@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { PRIMARY_COLOR } from '@/theme';
+import { LIGHT_GRAY, PRIMARY_COLOR } from '@/theme';
 
 export default StyleSheet.create({
    container: {
@@ -19,7 +19,7 @@ export default StyleSheet.create({
    },
    description: {
       fontStyle: 'italic',
-      color: 'rgba(37, 37, 37, 0.75)',
+      color: LIGHT_GRAY,
       marginTop: 16,
    },
    buttons: {

@@ -11,11 +11,11 @@ import {
    useUpdateOpportunityMutation,
 } from '@/services';
 import { Opportunity } from '@/models/opportunities';
-import { formatDate, intlCurrencyFormatter } from '@/utils';
-import CardItem from '@/components/atoms/CardItem';
+import { formatDate } from '@/utils';
 import Card from '@/components/molecules/Card';
-import { LOCAL_ICON, OPPORTUNITY_DETAILS_PAGE, REMOTE_ICON } from '@/consts';
+import { OPPORTUNITY_DETAILS_PAGE } from '@/consts';
 import useToast from '@/hooks/useToast';
+import CardBottomInfo from '@/components/atoms/CardBottomInfo';
 import ConfirmationModal from '../ConfirmationModal';
 import EditOpportunityMenu from '../EditOpportunityMenu';
 import styles from './styles';
@@ -116,7 +116,6 @@ export default function OpportunityCard({ opportunity }: Props) {
       );
    }
 
-   const currencyFormatter = useMemo(intlCurrencyFormatter, []);
    return (
       <>
          <ConfirmationModal
@@ -159,21 +158,11 @@ export default function OpportunityCard({ opportunity }: Props) {
             <Text style={styles.description} numberOfLines={2}>
                {description}
             </Text>
-            <View style={styles.row}>
-               <CardItem
-                  icon="currency-usd"
-                  text={currencyFormatter.format(salary)}
-                  style={styles.currency}
-               />
-               <CardItem
-                  icon={type === 'REMOTE' ? REMOTE_ICON : LOCAL_ICON}
-                  text={t(`labels.${type.toLowerCase()}`, { ns: 'common' })}
-               />
-               <CardItem
-                  icon="clock-time-eight-outline"
-                  text={`${weeklyWorkload.toString()}h`}
-               />
-            </View>
+            <CardBottomInfo
+               salary={salary}
+               type={type}
+               workload={weeklyWorkload}
+            />
             {renderActiveToggle()}
          </Card>
       </>
