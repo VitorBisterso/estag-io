@@ -23,6 +23,8 @@
 
       "labels.pagination.total": "Total: {{total}}",
       "labels.pagination.current": "{{current}} de {{total}}",
-      "labels.pagination.go.to": "Ir para página"
+      "labels.pagination.go.to": "Ir para página",
+      "labels.local": "Presencial",
+      "labels.remote": "Remoto"
    }
 }

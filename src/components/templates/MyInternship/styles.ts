@@ -1,0 +1,20 @@
+import { StyleSheet } from 'react-native';
+
+export default StyleSheet.create({
+   wrapper: {
+      flex: 1,
+   },
+   container: {
+      flex: 1,
+      backgroundColor: 'white',
+      justifyContent: 'center',
+      alignItems: 'center',
+   },
+   emptyText: {
+      fontSize: 24,
+      color: 'black',
+      textAlign: 'center',
+      maxWidth: '75%',
+      fontWeight: 'bold',
+   },
+});

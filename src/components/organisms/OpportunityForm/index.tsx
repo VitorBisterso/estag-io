@@ -88,11 +88,11 @@ export default function OpportunityForm() {
                value={type}
                items={[
                   {
-                     label: t('labels.type.remote'),
+                     label: t('labels.remote', { ns: 'common' }),
                      value: 'REMOTE',
                   },
                   {
-                     label: t('labels.type.local'),
+                     label: t('labels.local', { ns: 'common' }),
                      value: 'LOCAL',
                   },
                ]}

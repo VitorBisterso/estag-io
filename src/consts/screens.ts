@@ -14,3 +14,4 @@ export const REVIEWS_PAGE = 'Reviews';
 
 export const LOGGED_ROUTES = 'Logged';
 export const OPPORTUNITIES_ROUTES = 'OpportunitiesRoutes';
+export const INTERNSHIPS_ROUTES = 'InternshipsRoutes';

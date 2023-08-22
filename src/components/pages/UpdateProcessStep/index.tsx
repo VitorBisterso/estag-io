@@ -14,10 +14,10 @@ export default function UpdateProcessStepPage({ route }: Props) {
    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
    const { opportunityId, step } = route!.params;
 
-   const { data: opportunity, isLoading } =
+   const { data: opportunity, isFetching } =
       useGetOpportunityByIdQuery(opportunityId);
 
-   if (isLoading) return <Loader size={64} />;
+   if (isFetching) return <Loader size={64} />;
 
    return (
       <UpdateProcessStepTemplate

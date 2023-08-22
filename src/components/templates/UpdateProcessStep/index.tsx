@@ -33,7 +33,7 @@ export default function UpdateProcessStepTemplate({
       [availableApplicants],
    );
    const mappedApplicants = useMemo(
-      () => processStep.applicants.map((applicant) => applicant.id),
+      () => (processStep.applicants ?? []).map((applicant) => applicant.id),
       [processStep.applicants],
    );
 
@@ -58,7 +58,8 @@ export default function UpdateProcessStepTemplate({
          description: processStep.description,
          deadline: processStep.deadline,
          onlyOnDeadline: processStep.onlyOnDeadline,
-         everyone: availableApplicants.length === processStep.applicants.length,
+         everyone:
+            availableApplicants.length === processStep.applicants?.length,
          applicants: mappedApplicants,
       },
       validationSchema: validations(t),

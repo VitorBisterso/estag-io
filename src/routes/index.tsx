@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 import { RootState } from '@/store';
 import {
    AUTH_PAGE,
-   INTERNSHIPS_PAGE,
    LOGGED_ROUTES,
    OPPORTUNITIES_ROUTES,
    REVIEWS_PAGE,
@@ -15,14 +14,15 @@ import {
    OPPORTUNITIES_ICON,
    COMPANY_REVIEWS_ICON,
    USER_REVIEWS_ICON,
+   INTERNSHIPS_ROUTES,
 } from '@/consts';
 import TabBar from '@/components/molecules/TabBar';
 import SplashScreenPage from '@/components/pages/SplashScreen';
 import AuthPage from '@/components/pages/Auth';
-import InternshipsPage from '@/components/pages/Internships';
 import ReviewsPage from '@/components/pages/Reviews';
 
 import OpportunitiesRoutes from './opportunities';
+import InternshipsRoutes from './internships';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -53,8 +53,8 @@ function Tabs() {
             }}
          />
          <Tab.Screen
-            name={INTERNSHIPS_PAGE}
-            component={InternshipsPage}
+            name={INTERNSHIPS_ROUTES}
+            component={InternshipsRoutes}
             options={{
                tabBarLabel: t(`${profile}.internships`),
                // @ts-expect-error str is not a function

@@ -1,8 +1,6 @@
 {
    "header.title": "Vagas\ndisponíveis",
    "filters.type": "Tipo de estágio",
-   "filters.type.local": "Local",
-   "filters.type.remote": "Remoto",
    "filters.workload": "Carga horária semanal",
    "filters.only.applied": "Apenas vagas que estou inscrito",
    
@@ -19,8 +17,6 @@
    "labels.company": "Empresa",
    "labels.salary": "Salário",
    "labels.type": "Tipo de estágio",
-   "labels.type.local": "Local",
-   "labels.type.remote": "Remoto",
    "labels.workload": "Carga horária semanal",
    "labels.deadline": "Data final para inscrições",
    "labels.active": "Vaga ativa",

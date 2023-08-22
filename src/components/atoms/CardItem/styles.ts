@@ -10,4 +10,7 @@ export default StyleSheet.create({
       margin: 0,
       padding: 0,
    },
+   text: {
+      fontSize: 13,
+   },
 });

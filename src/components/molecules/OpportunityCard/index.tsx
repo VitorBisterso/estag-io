@@ -31,7 +31,7 @@ type CompanyStyles = {
 };
 
 export default function OpportunityCard({ opportunity }: Props) {
-   const { t } = useTranslation('opportunities');
+   const { t } = useTranslation(['opportunities', 'common']);
    const navigation = useNavigation<any>();
    const { profile } = useSelector((state: RootState) => state.ProfileSlice);
    const toast = useToast();
@@ -167,7 +167,7 @@ export default function OpportunityCard({ opportunity }: Props) {
                />
                <CardItem
                   icon={type === 'REMOTE' ? REMOTE_ICON : LOCAL_ICON}
-                  text={t(`filters.type.${type.toLowerCase()}`)}
+                  text={t(`labels.${type.toLowerCase()}`, { ns: 'common' })}
                />
                <CardItem
                   icon="clock-time-eight-outline"

@@ -20,7 +20,9 @@ export default function CardItem({ icon, text, style }: CardItemProps) {
             iconColor={theme.colors.primary}
             style={styles.icon}
          />
-         <Text numberOfLines={1}>{text}</Text>
+         <Text numberOfLines={1} style={styles.text}>
+            {text}
+         </Text>
       </View>
    );
 }
