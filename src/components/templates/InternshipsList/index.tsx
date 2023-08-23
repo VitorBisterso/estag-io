@@ -1,7 +1,8 @@
 import { ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { useNavigation } from '@react-navigation/native';
 
-import { INTERNSHIPS_ICON } from '@/consts';
+import { CREATE_INTERNSHIP_PAGE, INTERNSHIPS_ICON } from '@/consts';
 import Gap from '@/components/atoms/Gap';
 import Fab from '@/components/atoms/Fab';
 import PageHeader from '@/components/molecules/PageHeader';
@@ -17,6 +18,7 @@ interface Props {
 
 export default function InternshipsListTemplate({ data, isFetching }: Props) {
    const { t } = useTranslation('internships');
+   const navigation = useNavigation<any>();
 
    return (
       <>
@@ -34,8 +36,10 @@ export default function InternshipsListTemplate({ data, isFetching }: Props) {
                />
             </Gap>
          </ScrollView>
-         {/* eslint-disable-next-line no-console */}
-         <Fab icon="plus" onPress={() => console.log('navigate')} />
+         <Fab
+            icon="plus"
+            onPress={() => navigation.navigate(CREATE_INTERNSHIP_PAGE)}
+         />
       </>
    );
 }

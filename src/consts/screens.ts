@@ -10,6 +10,8 @@ export const CREATE_PROCESS_STEP_PAGE = 'CreateProcessStepPage';
 export const UPDATE_PROCESS_STEP_PAGE = 'UpdateProcessStepPage';
 
 export const INTERNSHIPS_PAGE = 'Internships';
+export const CREATE_INTERNSHIP_PAGE = 'CreateInternshipPage';
+
 export const REVIEWS_PAGE = 'Reviews';
 
 export const LOGGED_ROUTES = 'Logged';

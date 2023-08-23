@@ -33,3 +33,12 @@ export interface GetInternshipsResponse {
    list: Array<Internship>;
    count: number;
 }
+
+export interface CreateInternshipParams {
+   initialDate: string;
+   until: string;
+   managerName: string;
+   advisorName: string;
+   studentId: number;
+   jobId: number;
+}

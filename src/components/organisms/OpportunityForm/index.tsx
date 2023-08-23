@@ -1,13 +1,13 @@
 import { ScrollView, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { Checkbox, Text } from 'react-native-paper';
 
 import useOpportunityForm from '@/hooks/useOpportunityForm';
 import Gap from '@/components/atoms/Gap';
 import Button from '@/components/atoms/Button';
 import TextInputField from '@/components/molecules/TextInputField';
 import PageHeader from '@/components/molecules/PageHeader';
-import { Checkbox, Text } from 'react-native-paper';
 import MaskedField from '@/components/atoms/MaskedField';
 import Select from '@/components/atoms/Select';
 import DateField from '@/components/molecules/DateField';

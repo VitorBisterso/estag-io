@@ -4,6 +4,7 @@
 
    "student.labels.empty": "Por enquanto, você não possui nenhum estágio cadastrado...",
    
+   "labels.internship": "Estágio",
    "labels.role": "Função",
    "labels.manager": "Gerente",
    "labels.advisor": "Orientador",
@@ -12,6 +13,12 @@
    "labels.workload": "Carga horária semanal",
    "labels.initial.date": "Data de início",
    "labels.until": "Data de término",
+   "labels.create": "Criando um novo estágio",
+   "labels.opportunity": "Vaga",
+   "labels.intern": "Estagiário",
+
+   "placeholders.manager": "Abel Ferreira",
+   "placeholders.advisor": "Raphael Veiga",
 
    "filters.student.name": "Nome do(a) estagiário(a)",
    "filters.type": "Tipo de estágio",
@@ -19,5 +26,8 @@
 
    "filters.order.by.student": "Estudante",
    "filters.order.by.initial.date": "Data de início",
-   "filters.order.by.until": "Data de término"
+   "filters.order.by.until": "Data de término",
+
+   "errors.invalid.date": "A data de início deve ser no futuro",
+   "errors.invalid.until": "A data de término deve ser após a de início"
 }

@@ -1,4 +1,5 @@
 import {
+   CreateInternshipParams,
    GetInternshipsResponse,
    Internship,
    InternshipFilter,
@@ -29,8 +30,19 @@ export const internshipApi = api.injectEndpoints({
          }),
          providesTags: ['Internships'],
       }),
+      createInternship: builder.mutation<null, CreateInternshipParams>({
+         query: (internship) => ({
+            url: 'internships',
+            method: 'POST',
+            body: internship,
+         }),
+         invalidatesTags: ['Internships'],
+      }),
    }),
 });
 
-export const { useGetMyInternshipQuery, useLazyGetInternshipsQuery } =
-   internshipApi;
+export const {
+   useGetMyInternshipQuery,
+   useLazyGetInternshipsQuery,
+   useCreateInternshipMutation,
+} = internshipApi;

@@ -17,6 +17,15 @@ export interface Opportunity {
    applicants?: Array<Applicant>;
 }
 
+export interface SimplifiedOpportunity {
+   id: number;
+   title: string;
+   applicants: Array<{
+      id: number;
+      name: string;
+   }>;
+}
+
 export interface OpportunityFilter extends Filters<Opportunity> {
    title?: string;
    type?: OPPORTUNITY_TYPE;

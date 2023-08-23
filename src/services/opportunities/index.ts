@@ -3,6 +3,7 @@ import {
    GetOpportunitiesResponse,
    Opportunity,
    OpportunityFilter,
+   SimplifiedOpportunity,
 } from '@/models/opportunities';
 
 import { getResponseCount } from '@/utils';
@@ -27,6 +28,15 @@ export const opportunityApi = api.injectEndpoints({
             count: getResponseCount(info.response),
          }),
          providesTags: ['Opportunities'],
+      }),
+      getSimplifiedOpportunities: builder.query<
+         Array<SimplifiedOpportunity>,
+         null
+      >({
+         query: () => ({
+            url: '/opportunities/simplified',
+            method: 'GET',
+         }),
       }),
       getOpportunityById: builder.query<Opportunity, string | number>({
          query: (id) => ({
@@ -74,6 +84,7 @@ export const opportunityApi = api.injectEndpoints({
 
 export const {
    useLazyGetOpportunitiesQuery,
+   useGetSimplifiedOpportunitiesQuery,
    useGetOpportunityByIdQuery,
    useApplyToOpportunityMutation,
    useCreateOpportunityMutation,
