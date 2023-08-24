@@ -4,10 +4,9 @@ export default StyleSheet.create({
    container: {
       flex: 1,
       backgroundColor: 'white',
-      paddingTop: 32,
    },
    content: {
+      marginTop: 32,
       marginHorizontal: 32,
-      marginBottom: 32,
    },
 });

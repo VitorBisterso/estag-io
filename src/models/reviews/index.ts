@@ -24,7 +24,7 @@ export interface Company {
    reviews?: Array<Review>;
 }
 
-export interface CompanyFilter extends Filters<Review> {
+export interface CompanyFilter extends Filters<Company> {
    name?: string;
 }
 

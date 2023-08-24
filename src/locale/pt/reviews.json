@@ -4,8 +4,10 @@
 
    "labels.student.name": "Aluno(a)",
 
+   "filters.name": "Nome da empresa",
    "filters.description": "Descrição da avaliação",
    
+   "filters.order.by.name": "Nome",
    "filters.order.by.rating": "Avaliação",
    "filters.order.by.date": "Data de postagem"
 }
