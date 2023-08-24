@@ -1,4 +1,12 @@
-import { GetReviewsResponse, Review, ReviewFilter } from '@/models/reviews';
+import {
+   Company,
+   CompanyFilter,
+   CreateReviewParams,
+   GetCompaniesResponse,
+   GetReviewsResponse,
+   Review,
+   ReviewFilter,
+} from '@/models/reviews';
 import { getResponseCount } from '@/utils';
 import { api } from '../api';
 
@@ -19,7 +27,41 @@ export const reviewApi = api.injectEndpoints({
          }),
          providesTags: ['Reviews'],
       }),
+      createReview: builder.mutation<null, CreateReviewParams>({
+         query: (review) => ({
+            url: '/reviews',
+            method: 'POST',
+            body: review,
+         }),
+         invalidatesTags: ['Reviews'],
+      }),
+      getCompanies: builder.query<GetCompaniesResponse, CompanyFilter>({
+         query: (params) => ({
+            url: '/companies',
+            method: 'GET',
+            params,
+         }),
+         transformResponse: (
+            res: { companies: Array<Company> },
+            info: { response: Record<string, any> },
+         ) => ({
+            list: res.companies,
+            count: getResponseCount(info.response),
+         }),
+         providesTags: ['Companies'],
+      }),
+      getCompanyById: builder.query<Company, number>({
+         query: (id) => ({
+            url: `/companies/${id}`,
+            method: 'GET',
+         }),
+      }),
    }),
 });
 
-export const { useLazyGetReviewsQuery } = reviewApi;
+export const {
+   useLazyGetReviewsQuery,
+   useCreateReviewMutation,
+   useLazyGetCompaniesQuery,
+   useGetCompanyByIdQuery,
+} = reviewApi;

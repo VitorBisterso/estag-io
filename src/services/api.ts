@@ -93,6 +93,7 @@ export const api = createApi({
       'ProcessSteps',
       'Internships',
       'Reviews',
+      'Companies',
    ],
    endpoints: () => ({}),
 });

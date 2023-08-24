@@ -15,3 +15,26 @@ export interface GetReviewsResponse {
    list: Array<Review>;
    count: number;
 }
+
+export interface Company {
+   id: number;
+   name: string;
+   phone: string;
+   rating: number;
+   reviews?: Array<Review>;
+}
+
+export interface CompanyFilter extends Filters<Review> {
+   name?: string;
+}
+
+export interface GetCompaniesResponse {
+   list: Array<Company>;
+   count: number;
+}
+
+export interface CreateReviewParams {
+   companyId: number;
+   description: string;
+   rating: number;
+}
