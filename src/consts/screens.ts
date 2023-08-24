@@ -11,6 +11,7 @@ export const UPDATE_PROCESS_STEP_PAGE = 'UpdateProcessStepPage';
 
 export const INTERNSHIPS_PAGE = 'Internships';
 export const CREATE_INTERNSHIP_PAGE = 'CreateInternshipPage';
+export const INTERNSHIP_DETAILS_PAGE = 'InternshipDetailsPage';
 
 export const REVIEWS_PAGE = 'Reviews';
 

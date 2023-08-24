@@ -12,9 +12,10 @@ import styles from './styles';
 
 interface Props {
    internship: Internship;
+   onPress: () => void;
 }
 
-export default function InternshipCard({ internship }: Props) {
+export default function InternshipCard({ internship, onPress }: Props) {
    const { t } = useTranslation('internships');
 
    const renderIcon = useCallback(
@@ -32,6 +33,7 @@ export default function InternshipCard({ internship }: Props) {
          titleStyle={styles.title}
          headerStyle={styles.header}
          renderIcons={renderIcon}
+         onPress={onPress}
       >
          <Gap gap={16} style={styles.cardContent}>
             <View>
