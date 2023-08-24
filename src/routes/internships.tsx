@@ -3,10 +3,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import InternshipsPage from '@/components/pages/Internships';
 import CreateInternshipPage from '@/components/pages/CreateInternship';
 import InternshipDetailsPage from '@/components/pages/InternshipDetails';
+import UpdateInternshipPage from '@/components/pages/UpdateInternship';
 import {
    CREATE_INTERNSHIP_PAGE,
    INTERNSHIPS_PAGE,
    INTERNSHIP_DETAILS_PAGE,
+   UPDATE_INTERNSHIP_PAGE,
 } from '@/consts';
 
 const Stack = createNativeStackNavigator();
@@ -25,6 +27,10 @@ export default function InternshipsRoutes() {
          <Stack.Screen
             name={INTERNSHIP_DETAILS_PAGE}
             component={InternshipDetailsPage}
+         />
+         <Stack.Screen
+            name={UPDATE_INTERNSHIP_PAGE}
+            component={UpdateInternshipPage}
          />
       </Stack.Navigator>
    );

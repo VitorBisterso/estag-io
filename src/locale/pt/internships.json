@@ -29,5 +29,7 @@
    "filters.order.by.until": "Data de término",
 
    "errors.invalid.date": "A data de início deve ser no futuro",
-   "errors.invalid.until": "A data de término deve ser após a de início"
+   "errors.invalid.until": "A data de término deve ser após a de início",
+
+   "messages.updated": "Estágio atulizado com sucesso!"
 }

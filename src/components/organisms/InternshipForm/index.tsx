@@ -90,14 +90,16 @@ export default function InternshipForm({ isUpdating }: Props) {
                items={mappedOpportunities}
                onValueChange={(value) => formik.setFieldValue('jobId', value)}
             />
-            <Select
-               label={t('labels.intern')}
-               value={studentId}
-               items={mappedStudents ?? []}
-               onValueChange={(value) =>
-                  formik.setFieldValue('studentId', value)
-               }
-            />
+            {!isUpdating && (
+               <Select
+                  label={t('labels.intern')}
+                  value={studentId}
+                  items={mappedStudents ?? []}
+                  onValueChange={(value) =>
+                     formik.setFieldValue('studentId', value)
+                  }
+               />
+            )}
             <TextInputField
                label={t('labels.manager')}
                value={managerName}

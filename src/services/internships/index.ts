@@ -3,6 +3,7 @@ import {
    GetInternshipsResponse,
    Internship,
    InternshipFilter,
+   UpdateInternshipsParams,
 } from '@/models/internships';
 import { getResponseCount } from '@/utils';
 import { api } from '../api';
@@ -30,11 +31,25 @@ export const internshipApi = api.injectEndpoints({
          }),
          providesTags: ['Internships'],
       }),
+      getInternshipById: builder.query<Internship, number>({
+         query: (id) => ({
+            url: `internships/${id}`,
+            method: 'GET',
+         }),
+      }),
       createInternship: builder.mutation<null, CreateInternshipParams>({
          query: (internship) => ({
             url: 'internships',
             method: 'POST',
             body: internship,
+         }),
+         invalidatesTags: ['Internships'],
+      }),
+      updateInternship: builder.mutation<null, UpdateInternshipsParams>({
+         query: (params) => ({
+            url: `internships/${params.id}`,
+            method: 'PUT',
+            body: params,
          }),
          invalidatesTags: ['Internships'],
       }),
@@ -44,5 +59,7 @@ export const internshipApi = api.injectEndpoints({
 export const {
    useGetMyInternshipQuery,
    useLazyGetInternshipsQuery,
+   useGetInternshipByIdQuery,
    useCreateInternshipMutation,
+   useUpdateInternshipMutation,
 } = internshipApi;

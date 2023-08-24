@@ -2,11 +2,13 @@ import { useCallback } from 'react';
 import { View } from 'react-native';
 import { IconButton, Text } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
+import { useNavigation } from '@react-navigation/native';
 
 import { Internship } from '@/models/internships';
 import { formatDate } from '@/utils';
 import Gap from '@/components/atoms/Gap';
 import CardBottomInfo from '@/components/atoms/CardBottomInfo';
+import { UPDATE_INTERNSHIP_PAGE } from '@/consts';
 import Card from '../Card';
 import styles from './styles';
 
@@ -16,12 +18,21 @@ interface Props {
 }
 
 export default function InternshipCard({ internship, onPress }: Props) {
+   const navigation = useNavigation<any>();
    const { t } = useTranslation('internships');
 
    const renderIcon = useCallback(
       () => (
          <View style={styles.icon}>
-            <IconButton icon="pencil" iconColor="black" />
+            <IconButton
+               icon="pencil"
+               iconColor="black"
+               onPress={() =>
+                  navigation.navigate(UPDATE_INTERNSHIP_PAGE, {
+                     id: internship.id,
+                  })
+               }
+            />
          </View>
       ),
       [],

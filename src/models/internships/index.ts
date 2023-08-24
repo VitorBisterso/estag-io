@@ -42,3 +42,7 @@ export interface CreateInternshipParams {
    studentId: number;
    jobId: number;
 }
+
+export interface UpdateInternshipsParams extends CreateInternshipParams {
+   id: number;
+}
