@@ -2,7 +2,6 @@ import { Filters } from '../filters';
 
 export interface Review {
    id: number;
-   title: string;
    description: string;
    rating: number;
    createdAt: string;

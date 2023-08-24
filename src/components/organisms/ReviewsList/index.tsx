@@ -5,7 +5,8 @@ import Loader from '@/components/atoms/Loader';
 import { useFilterContext } from '@/hooks/useFilter';
 import { Review, ReviewFilter } from '@/models/reviews';
 import Pagination from '@/components/molecules/Pagination';
-import { Text } from 'react-native-paper';
+import ReviewInfo from '@/components/molecules/ReviewInfo';
+import Gap from '@/components/atoms/Gap';
 import styles from './styles';
 
 interface Props {
@@ -24,11 +25,11 @@ export default function ReviewsList({ reviews, count, isLoading }: Props) {
    const { page, size } = state;
    return (
       <>
-         {reviews.map((review) => (
-            <Text key={review.id}>
-               {review.title} - {review.rating}
-            </Text>
-         ))}
+         <Gap gap={24}>
+            {reviews.map((review) => (
+               <ReviewInfo key={review.id} review={review} />
+            ))}
+         </Gap>
          <View style={styles.pagination}>
             <Pagination
                currentPage={page}
