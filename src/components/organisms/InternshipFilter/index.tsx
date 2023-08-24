@@ -19,7 +19,7 @@ export default function InternshipFilter() {
    const { state, set, reset } = useFilterContext<InternshipFilterType>();
 
    const [internName, setInternName] = useState('');
-   const [workload, setWorkload] = useState(30);
+   const [workload, setWorkload] = useState<number>(undefined as any);
 
    const internshipTypes = [
       { label: t('labels.local', { ns: 'common' }), value: 'LOCAL' },
@@ -52,7 +52,7 @@ export default function InternshipFilter() {
          itemsPerPage={state.size}
          setItemsPerPage={(itemsPerPage) => set({ size: itemsPerPage })}
          onClear={() => {
-            setWorkload(30);
+            setWorkload(undefined as any);
             setInternName('');
             reset();
          }}
@@ -80,7 +80,7 @@ export default function InternshipFilter() {
                   style={styles.workload}
                   inputMode="numeric"
                   label={t('filters.workload')}
-                  value={workload.toString() ?? ''}
+                  value={workload?.toString() ?? ''}
                   onChangeText={(newWorkload) => {
                      setWorkload(Number(newWorkload));
                   }}

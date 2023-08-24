@@ -12,7 +12,7 @@ export default function InternshipsListPage() {
       page: FIRST_PAGE,
       internName: '',
       type: undefined,
-      weeklyWorkload: 30,
+      weeklyWorkload: undefined,
       orderBy: 'until',
       direction: DEFAULT_DIRECTION,
    };
