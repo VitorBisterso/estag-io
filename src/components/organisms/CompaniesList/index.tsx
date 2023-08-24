@@ -5,8 +5,7 @@ import Loader from '@/components/atoms/Loader';
 import { useFilterContext } from '@/hooks/useFilter';
 import { Company, ReviewFilter } from '@/models/reviews';
 import Pagination from '@/components/molecules/Pagination';
-import Gap from '@/components/atoms/Gap';
-import { Text } from 'react-native-paper';
+import CompanyCard from '@/components/molecules/CompanyCard';
 import styles from './styles';
 
 interface Props {
@@ -25,11 +24,9 @@ export default function CompaniesList({ companies, count, isLoading }: Props) {
    const { page, size } = state;
    return (
       <>
-         <Gap gap={24}>
-            {companies.map((company) => (
-               <Text>{company.name}</Text>
-            ))}
-         </Gap>
+         {companies.map((company) => (
+            <CompanyCard key={company.id} company={company} />
+         ))}
          <View style={styles.pagination}>
             <Pagination
                currentPage={page}

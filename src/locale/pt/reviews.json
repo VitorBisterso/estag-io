@@ -3,11 +3,15 @@
    "company.header.title": "Avaliações",
 
    "labels.student.name": "Aluno(a)",
+   "labels.phone": "Telefone",
+   "labels.rating": "Avaliação",
 
    "filters.name": "Nome da empresa",
    "filters.description": "Descrição da avaliação",
    
    "filters.order.by.name": "Nome",
    "filters.order.by.rating": "Avaliação",
-   "filters.order.by.date": "Data de postagem"
+   "filters.order.by.date": "Data de postagem",
+
+   "buttons.post.review": "Postar avaliação"
 }
