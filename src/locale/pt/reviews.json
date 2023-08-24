@@ -5,6 +5,9 @@
    "labels.student.name": "Aluno(a)",
    "labels.phone": "Telefone",
    "labels.rating": "Avaliação",
+   "labels.rating.average": "Média das avaliações",
+   "labels.rating.count": "Total de avaliações",
+   "labels.recent.reviews": "Avaliações recentes",
 
    "filters.name": "Nome da empresa",
    "filters.description": "Descrição da avaliação",

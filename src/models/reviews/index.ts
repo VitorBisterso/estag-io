@@ -21,6 +21,7 @@ export interface Company {
    name: string;
    phone: string;
    rating: number;
+   reviewCount?: number;
    reviews?: Array<Review>;
 }
 

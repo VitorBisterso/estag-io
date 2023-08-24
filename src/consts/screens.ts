@@ -17,6 +17,7 @@ export const UPDATE_INTERNSHIP_PAGE = 'UpdateInternshipPage';
 export const HANDLE_PROFILE_REVIEW = 'ReviewsCompanies';
 export const REVIEWS_PAGE = 'Reviews';
 export const COMPANIES_PAGE = 'Companies';
+export const COMPANY_DETAILS_PAGE = 'CompanyDetailsPage';
 
 export const LOGGED_ROUTES = 'Logged';
 export const OPPORTUNITIES_ROUTES = 'OpportunitiesRoutes';

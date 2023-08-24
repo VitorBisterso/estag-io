@@ -11,11 +11,17 @@ import styles from './styles';
 
 interface Props {
    reviews: Array<Review>;
-   count: number;
-   isLoading: boolean;
+   count?: number;
+   isLoading?: boolean;
+   withPagination?: boolean;
 }
 
-export default function ReviewsList({ reviews, count, isLoading }: Props) {
+export default function ReviewsList({
+   reviews,
+   count,
+   isLoading,
+   withPagination,
+}: Props) {
    const { state, set } = useFilterContext<ReviewFilter>();
 
    if (isLoading) return <Loader size={64} />;
@@ -30,14 +36,22 @@ export default function ReviewsList({ reviews, count, isLoading }: Props) {
                <ReviewInfo key={review.id} review={review} />
             ))}
          </Gap>
-         <View style={styles.pagination}>
-            <Pagination
-               currentPage={page}
-               pageSize={size}
-               itemsCount={count}
-               onChange={(newPageNumber) => set({ page: newPageNumber })}
-            />
-         </View>
+         {withPagination && (
+            <View style={styles.pagination}>
+               <Pagination
+                  currentPage={page}
+                  pageSize={size}
+                  itemsCount={count ?? 0}
+                  onChange={(newPageNumber) => set({ page: newPageNumber })}
+               />
+            </View>
+         )}
       </>
    );
 }
+
+ReviewsList.defaultProps = {
+   count: 0,
+   isLoading: false,
+   withPagination: true,
+};
