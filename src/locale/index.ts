@@ -7,6 +7,7 @@ import internships from '@/locale/pt/internships.json';
 import multiselect from '@/locale/pt/multiselect.json';
 import opportunities from '@/locale/pt/opportunities.json';
 import processSteps from '@/locale/pt/processSteps.json';
+import reviews from '@/locale/pt/reviews.json';
 import tabs from '@/locale/pt/tabs.json';
 import toast from '@/locale/pt/toast.json';
 
@@ -33,6 +34,7 @@ i18n.addResourceBundle('pt', 'internships', internships);
 i18n.addResourceBundle('pt', 'multiselect', multiselect);
 i18n.addResourceBundle('pt', 'opportunities', opportunities);
 i18n.addResourceBundle('pt', 'processSteps', processSteps);
+i18n.addResourceBundle('pt', 'reviews', reviews);
 i18n.addResourceBundle('pt', 'tabs', tabs);
 i18n.addResourceBundle('pt', 'toast', toast);
 

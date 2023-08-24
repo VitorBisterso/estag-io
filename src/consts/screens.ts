@@ -14,8 +14,11 @@ export const CREATE_INTERNSHIP_PAGE = 'CreateInternshipPage';
 export const INTERNSHIP_DETAILS_PAGE = 'InternshipDetailsPage';
 export const UPDATE_INTERNSHIP_PAGE = 'UpdateInternshipPage';
 
+export const HANDLE_PROFILE_REVIEW = 'ReviewsCompanies';
 export const REVIEWS_PAGE = 'Reviews';
+export const COMPANIES_PAGE = 'Companies';
 
 export const LOGGED_ROUTES = 'Logged';
 export const OPPORTUNITIES_ROUTES = 'OpportunitiesRoutes';
 export const INTERNSHIPS_ROUTES = 'InternshipsRoutes';
+export const REVIEWS_ROUTES = 'ReviewsRoutes';

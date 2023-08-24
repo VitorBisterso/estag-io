@@ -8,21 +8,21 @@ import {
    AUTH_PAGE,
    LOGGED_ROUTES,
    OPPORTUNITIES_ROUTES,
-   REVIEWS_PAGE,
    SPLASH_SCREEN_PAGE,
    INTERNSHIPS_ICON,
    OPPORTUNITIES_ICON,
    COMPANY_REVIEWS_ICON,
    USER_REVIEWS_ICON,
    INTERNSHIPS_ROUTES,
+   REVIEWS_ROUTES,
 } from '@/consts';
 import TabBar from '@/components/molecules/TabBar';
 import SplashScreenPage from '@/components/pages/SplashScreen';
 import AuthPage from '@/components/pages/Auth';
-import ReviewsPage from '@/components/pages/Reviews';
 
 import OpportunitiesRoutes from './opportunities';
 import InternshipsRoutes from './internships';
+import ReviewsRoutes from './reviews';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -62,8 +62,8 @@ function Tabs() {
             }}
          />
          <Tab.Screen
-            name={REVIEWS_PAGE}
-            component={ReviewsPage}
+            name={REVIEWS_ROUTES}
+            component={ReviewsRoutes}
             options={{
                tabBarLabel: t(`${profile}.reviews`),
                // @ts-expect-error str is not a function

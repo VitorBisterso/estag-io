@@ -1,0 +1,9 @@
+{
+   "student.header.title": "Empresas",
+   "company.header.title": "Avaliações",
+
+   "filters.description": "Descrição da avaliação",
+   
+   "filters.order.by.rating": "Avaliação",
+   "filters.order.by.date": "Data de postagem"
+}
