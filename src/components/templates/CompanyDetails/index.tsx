@@ -44,7 +44,7 @@ export default function CompanyDetailsTemplate({ company }: Props) {
                <DetailsItem label={t('labels.phone')} value={maskedPhone} />
                <DetailsItem
                   label={t('labels.rating.average')}
-                  value={company.rating}
+                  value={Number(company.rating).toFixed(2)}
                />
                <DetailsItem
                   label={t('labels.rating.count')}
