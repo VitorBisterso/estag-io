@@ -5,6 +5,7 @@
    "labels.student.name": "Aluno(a)",
    "labels.phone": "Telefone",
    "labels.rating": "Avaliação",
+   "labels.business.category": "Segmento",
    "labels.rating.average": "Média das avaliações",
    "labels.rating.count": "Total de avaliações",
    "labels.recent.reviews": "Avaliações recentes",
@@ -15,6 +16,7 @@
    "filters.order.by.name": "Nome",
    "filters.order.by.rating": "Avaliação",
    "filters.order.by.date": "Data de postagem",
+   "filters.order.by.business.category": "Segmento de atuação",
 
    "buttons.post.review": "Postar avaliação"
 }

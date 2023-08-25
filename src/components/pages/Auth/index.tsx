@@ -5,7 +5,11 @@ import { useNavigation, StackActions } from '@react-navigation/native';
 import jwtDecode from 'jwt-decode';
 import { useDispatch } from 'react-redux';
 
-import { useSignInMutation, useSignUpMutation } from '@/services';
+import {
+   useSignInMutation,
+   useSignUpMutation,
+   useGetBusinessCategoriesQuery,
+} from '@/services';
 import { setProfile } from '@/store/states/profile';
 import { LoginContext } from '@/hooks/useLogin';
 import useToast from '@/hooks/useToast';
@@ -14,6 +18,7 @@ import { storeData } from '@/hooks/useLocalStorage';
 import { AccessToken } from '@/models/auth';
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, LOGGED_ROUTES } from '@/consts';
 import AuthTemplate from '@/components/templates/Auth';
+import { BusinessCategory } from '@/models/reviews';
 import { loginValidations, signUpValidations } from './validations';
 
 export default function AuthPage() {
@@ -22,6 +27,8 @@ export default function AuthPage() {
    const navigation = useNavigation();
    const dispatch = useDispatch();
 
+   const { data: businessCategories, isFetching: isFetchingCategories } =
+      useGetBusinessCategoriesQuery(null);
    const [signIn, { isLoading: isSigninIn }] = useSignInMutation();
    const [signUp, { isLoading: isSigninUp }] = useSignUpMutation();
 
@@ -59,6 +66,7 @@ export default function AuthPage() {
          birthday: '' as unknown as Date,
          cnpj: '',
          phone: '',
+         businessCategory: '' as BusinessCategory,
       },
       validationSchema: signUpValidations(t),
       onSubmit: () => {
@@ -86,9 +94,10 @@ export default function AuthPage() {
    const signUpProviderValue = useMemo(
       () => ({
          formik: signUpFormik,
-         isLoading: isSigninUp,
+         isLoading: isSigninUp || isFetchingCategories,
+         categories: businessCategories,
       }),
-      [signUpFormik, isSigninUp],
+      [signUpFormik, isSigninUp, isFetchingCategories],
    );
    return (
       <LoginContext.Provider value={loginProviderValue}>

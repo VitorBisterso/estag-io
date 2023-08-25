@@ -1,6 +1,7 @@
 import { JwtPayload } from 'jwt-decode';
 
 import { PROFILE_TYPE } from '@/store/states/profile';
+import { BusinessCategory } from '../reviews';
 
 export interface SignInParams {
    email: string;
@@ -25,6 +26,7 @@ export interface SignUpCompanyParams {
    password: string;
    name: string;
    phone: string;
+   businessCategory: BusinessCategory;
 }
 
 export interface SignUpResponse {

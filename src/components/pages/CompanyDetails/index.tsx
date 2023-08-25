@@ -1,6 +1,6 @@
 import { Route } from '@react-navigation/native';
 
-import { useGetCompanyByIdQuery } from '@/services/reviews';
+import { useGetCompanyByIdQuery } from '@/services';
 import Loader from '@/components/atoms/Loader';
 import { Company } from '@/models/reviews';
 import CompanyDetailsTemplate from '@/components/templates/CompanyDetails';

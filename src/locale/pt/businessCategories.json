@@ -1,0 +1,20 @@
+{
+   "AUTOMOTIVE": "Automobilístico",
+   "BANK": "Banco",
+   "CONSUMER_GOODS": "Bens de consumo",
+   "FOOD_AND_BEVERAGES": "Comidas e bebidas",
+   "EDUCATION": "Educação",
+   "CONSTRUCTION_COMPANY": "Construção civil",
+   "PHARMACEUTICAL_AND_CHEMICALS": "Farmacêuticos e químicos",
+   "HOSPITAL_AND_HEALTH_PLAN": "Hospital e plano de saúde",
+   "INDUSTRY": "Indústria",
+   "LOGISTICS": "Logística",
+   "MEDIA_AND_ADVERTISING": "Mídia e propaganda",
+   "NGO": "Organização Não Governamental (ONG)",
+   "OIL_ENERGY_AND_ENVIRONMENTAL": "Petróleo, energético e ambiental",
+   "HEALTH_AND_WELL_BEING": "Saúde e bem-estar",
+   "INSURANCE_COMPANY": "Seguradora",
+   "FINANCIAL_SERVICES": "Serviços financeiros",
+   "RETAIL": "Varejo",
+   "IT_AND_TELECOMMUNICATIONS": "TI e telecomunicações"
+}

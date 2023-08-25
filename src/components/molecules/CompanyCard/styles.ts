@@ -12,6 +12,9 @@ export default StyleSheet.create({
    text: {
       color: GRAY,
    },
+   italic: {
+      fontStyle: 'italic',
+   },
    row: {
       flexDirection: 'row',
       alignItems: 'center',

@@ -2,6 +2,7 @@ import {
    Company,
    CompanyFilter,
    CreateReviewParams,
+   GetBusinessCategoriesResponse,
    GetCompaniesResponse,
    GetReviewsResponse,
    Review,
@@ -56,6 +57,14 @@ export const reviewApi = api.injectEndpoints({
             method: 'GET',
          }),
       }),
+      getBusinessCategories: builder.query<GetBusinessCategoriesResponse, null>(
+         {
+            query: () => ({
+               url: 'business-categories',
+               method: 'GET',
+            }),
+         },
+      ),
    }),
 });
 
@@ -64,4 +73,5 @@ export const {
    useCreateReviewMutation,
    useLazyGetCompaniesQuery,
    useGetCompanyByIdQuery,
+   useGetBusinessCategoriesQuery,
 } = reviewApi;

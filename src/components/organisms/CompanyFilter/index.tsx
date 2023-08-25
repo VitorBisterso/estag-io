@@ -20,6 +20,10 @@ export default function CompanyFilter() {
    const orderBy: Array<{ label: string; value: keyof Company }> = [
       { label: t('filters.order.by.name'), value: 'name' },
       { label: t('filters.order.by.rating'), value: 'rating' },
+      {
+         label: t('filters.order.by.business.category'),
+         value: 'businessCategory',
+      },
    ];
 
    const debouncedSetName = useCallback(

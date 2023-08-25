@@ -17,7 +17,7 @@ interface Props {
 }
 
 export default function CompanyDetailsTemplate({ company }: Props) {
-   const { t } = useTranslation('reviews');
+   const { t } = useTranslation(['reviews', 'businessCategories']);
 
    const maskedPhone = useMemo(
       () =>
@@ -32,6 +32,12 @@ export default function CompanyDetailsTemplate({ company }: Props) {
          <PageHeader title={company.name} hasBackButton />
          <Gap gap={24} style={styles.content}>
             <Gap gap={16}>
+               <DetailsItem
+                  label={t('labels.business.category')}
+                  value={t(`${company.businessCategory}`, {
+                     ns: 'businessCategories',
+                  })}
+               />
                <DetailsItem label={t('labels.phone')} value={maskedPhone} />
                <DetailsItem
                   label={t('labels.rating.average')}

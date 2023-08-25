@@ -1,4 +1,4 @@
-import { useLazyGetReviewsQuery } from '@/services/reviews';
+import { useLazyGetReviewsQuery } from '@/services';
 import { GetReviewsResponse, ReviewFilter } from '@/models/reviews';
 import { FIRST_PAGE, PAGE_SIZE } from '@/consts';
 import useFilter, { FilterProvider } from '@/hooks/useFilter';

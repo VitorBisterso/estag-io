@@ -13,7 +13,7 @@ import styles from './styles';
 export default function SignUpForm() {
    const { t } = useTranslation('auth');
 
-   const { formik, isLoading } = useSignUp();
+   const { formik, isLoading, categories } = useSignUp();
    const {
       name,
       email,
@@ -23,6 +23,7 @@ export default function SignUpForm() {
       birthday,
       cnpj,
       phone,
+      businessCategory,
    } = formik.values;
    const { errors } = formik;
 
@@ -34,7 +35,11 @@ export default function SignUpForm() {
          'confirmPassword',
       ];
       const userFields: Array<keyof SignUpValues> = ['birthday'];
-      const companyFields: Array<keyof SignUpValues> = ['cnpj', 'phone'];
+      const companyFields: Array<keyof SignUpValues> = [
+         'cnpj',
+         'phone',
+         'businessCategory',
+      ];
 
       const profileFields = profile === 'USER' ? userFields : companyFields;
       const fieldsToCheck = [...commonFields, ...profileFields];
@@ -154,6 +159,14 @@ export default function SignUpForm() {
                onBlur={formik.handleBlur('phone')}
                hasError={Boolean(errors.phone) && formik.touched.phone}
                error={errors.phone}
+            />
+            <Select
+               label={t('labels.select.business.category')}
+               value={businessCategory}
+               items={categories}
+               onValueChange={(newCategory) =>
+                  formik.setFieldValue('businessCategory', newCategory)
+               }
             />
          </Gap>
       );

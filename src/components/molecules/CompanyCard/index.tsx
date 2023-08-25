@@ -19,7 +19,7 @@ interface Props {
 
 export default function CompanyCard({ company }: Props) {
    const navigation = useNavigation<any>();
-   const { t } = useTranslation('reviews');
+   const { t } = useTranslation(['reviews', 'businessCategories']);
 
    const maskedPhone = useMemo(
       () =>
@@ -38,6 +38,9 @@ export default function CompanyCard({ company }: Props) {
          }
       >
          <Gap gap={8} style={styles.content}>
+            <Text style={[styles.text, styles.italic]}>
+               {t(`${company.businessCategory}`, { ns: 'businessCategories' })}
+            </Text>
             <Text style={styles.text}>{`${t(
                'labels.phone',
             )}: ${maskedPhone}`}</Text>
