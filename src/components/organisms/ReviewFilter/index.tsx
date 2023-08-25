@@ -27,6 +27,8 @@ export default function ReviewFilter() {
       [],
    );
    useEffect(() => {
+      if (!description && !state.description) return;
+
       debouncedSetDescription(description);
    }, [description]);
 

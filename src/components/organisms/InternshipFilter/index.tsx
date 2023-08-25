@@ -36,6 +36,8 @@ export default function InternshipFilter() {
       [],
    );
    useEffect(() => {
+      if (!workload && !state.weeklyWorkload) return;
+
       debouncedSetWorkload(Number(workload));
    }, [workload]);
 
@@ -44,6 +46,8 @@ export default function InternshipFilter() {
       [],
    );
    useEffect(() => {
+      if (!internName && !state.internName) return;
+
       debouncedSetInternName(internName);
    }, [internName]);
 

@@ -31,6 +31,8 @@ export default function CompanyFilter() {
       [],
    );
    useEffect(() => {
+      if (!name && !state.name) return;
+
       debouncedSetName(name);
    }, [name]);
 
