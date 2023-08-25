@@ -1,13 +1,15 @@
 import { useEffect } from 'react';
-import { Text } from 'react-native-paper';
+import { View } from 'react-native';
 import { useNavigation, StackActions } from '@react-navigation/native';
 import jwtDecode from 'jwt-decode';
 import { useDispatch } from 'react-redux';
+import LottieView from 'lottie-react-native';
 
 import { getData } from '@/hooks/useLocalStorage';
 import { ACCESS_TOKEN_KEY, AUTH_PAGE, LOGGED_ROUTES } from '@/consts';
 import { AccessToken } from '@/models/auth';
 import { setProfile } from '@/store/states/profile';
+import styles from './styles';
 
 export default function SplashScreenPage() {
    const dispatch = useDispatch();
@@ -28,8 +30,19 @@ export default function SplashScreenPage() {
    }
 
    useEffect(() => {
-      handleOpenApp();
+      const splashTimer = setTimeout(() => handleOpenApp(), 1000);
+      return () => clearTimeout(splashTimer);
    }, []);
 
-   return <Text>splash screen</Text>;
+   return (
+      <View style={styles.container}>
+         <LottieView
+            // eslint-disable-next-line global-require
+            source={require('@/assets/animations/splashScreen.json')}
+            style={styles.animation}
+            autoPlay
+            loop
+         />
+      </View>
+   );
 }
