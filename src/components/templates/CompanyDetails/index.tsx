@@ -3,6 +3,7 @@ import { Text } from 'react-native-paper';
 import { ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Masks, formatWithMask } from 'react-native-mask-input';
+import { useNavigation } from '@react-navigation/native';
 
 import { Company } from '@/models/reviews';
 import PageHeader from '@/components/molecules/PageHeader';
@@ -10,6 +11,7 @@ import Gap from '@/components/atoms/Gap';
 import DetailsItem from '@/components/atoms/DetailsItem';
 import Button from '@/components/atoms/Button';
 import ReviewsList from '@/components/organisms/ReviewsList';
+import { CREATE_REVIEW_PAGE } from '@/consts';
 import styles from './styles';
 
 interface Props {
@@ -17,6 +19,7 @@ interface Props {
 }
 
 export default function CompanyDetailsTemplate({ company }: Props) {
+   const navigation = useNavigation<any>();
    const { t } = useTranslation(['reviews', 'businessCategories']);
 
    const maskedPhone = useMemo(
@@ -50,7 +53,11 @@ export default function CompanyDetailsTemplate({ company }: Props) {
             </Gap>
             <Button
                label={t('buttons.post.review')}
-               onPress={() => undefined}
+               onPress={() =>
+                  navigation.navigate(CREATE_REVIEW_PAGE, {
+                     companyId: company.id,
+                  })
+               }
             />
             <Text style={styles.recentLabel}>{t('labels.recent.reviews')}</Text>
             <ReviewsList

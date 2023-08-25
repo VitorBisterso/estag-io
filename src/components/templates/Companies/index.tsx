@@ -7,7 +7,6 @@ import Gap from '@/components/atoms/Gap';
 import { USER_REVIEWS_ICON } from '@/consts';
 import CompanyFilter from '@/components/organisms/CompanyFilter';
 import CompaniesList from '@/components/organisms/CompaniesList';
-import Fab from '@/components/atoms/Fab';
 import styles from './styles';
 
 interface Props {
@@ -34,7 +33,6 @@ export default function CompaniesTemplate({ data, isFetching }: Props) {
                />
             </Gap>
          </ScrollView>
-         <Fab icon="plus" onPress={() => undefined} />
       </>
    );
 }

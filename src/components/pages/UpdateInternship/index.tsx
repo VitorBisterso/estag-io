@@ -1,9 +1,11 @@
 import { Route } from '@react-navigation/native';
 
 import Loader from '@/components/atoms/Loader';
-import { useGetInternshipByIdQuery } from '@/services/internships';
+import {
+   useGetInternshipByIdQuery,
+   useGetSimplifiedOpportunitiesQuery,
+} from '@/services';
 import { Internship } from '@/models/internships';
-import { useGetSimplifiedOpportunitiesQuery } from '@/services';
 import UpdateInternshipTemplate from '@/components/templates/UpdateInternship';
 
 interface Props {

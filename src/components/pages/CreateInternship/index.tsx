@@ -6,10 +6,12 @@ import { useNavigation } from '@react-navigation/native';
 import useToast from '@/hooks/useToast';
 import { INTERNSHIPS_PAGE } from '@/consts';
 import validations from '@/hooks/useInternshipForm/validations';
-import { useCreateInternshipMutation } from '@/services/internships';
+import {
+   useCreateInternshipMutation,
+   useGetSimplifiedOpportunitiesQuery,
+} from '@/services';
 import { InternshipFormContext } from '@/hooks/useInternshipForm';
 import CreateInternshipTemplate from '@/components/templates/CreateInternship';
-import { useGetSimplifiedOpportunitiesQuery } from '@/services';
 
 export default function CreateInternshipPage() {
    const { t } = useTranslation('internships');

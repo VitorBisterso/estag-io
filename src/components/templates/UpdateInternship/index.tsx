@@ -8,7 +8,7 @@ import useToast from '@/hooks/useToast';
 import { INTERNSHIPS_PAGE } from '@/consts';
 import validations from '@/hooks/useInternshipForm/validations';
 import { Internship } from '@/models/internships';
-import { useUpdateInternshipMutation } from '@/services/internships';
+import { useUpdateInternshipMutation } from '@/services';
 import { InternshipFormContext } from '@/hooks/useInternshipForm';
 import { SimplifiedOpportunity } from '@/models/opportunities';
 import InternshipForm from '@/components/organisms/InternshipForm';

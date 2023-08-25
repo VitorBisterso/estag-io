@@ -2,7 +2,7 @@ import InternshipsListTemplate from '@/components/templates/InternshipsList';
 import { DEFAULT_DIRECTION, FIRST_PAGE, PAGE_SIZE } from '@/consts';
 import useFilter, { FilterProvider } from '@/hooks/useFilter';
 import { GetInternshipsResponse, InternshipFilter } from '@/models/internships';
-import { useLazyGetInternshipsQuery } from '@/services/internships';
+import { useLazyGetInternshipsQuery } from '@/services';
 
 export default function InternshipsListPage() {
    const [getInternships, { data, isFetching }] = useLazyGetInternshipsQuery();

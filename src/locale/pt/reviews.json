@@ -2,6 +2,10 @@
    "student.header.title": "Empresas",
    "company.header.title": "Avaliações",
 
+   "placeholders.description": "Eu participei de um processo seletivo com eles e foi incrível! Recomendo e muito!",
+
+   "labels.create": "Criando avaliação",
+   "labels.description": "Descrição da avaliação",
    "labels.student.name": "Aluno(a)",
    "labels.phone": "Telefone",
    "labels.rating": "Avaliação",

@@ -9,7 +9,7 @@ import { Company } from '@/models/reviews';
 import Gap from '@/components/atoms/Gap';
 import { useMemo } from 'react';
 import Button from '@/components/atoms/Button';
-import { COMPANY_DETAILS_PAGE } from '@/consts';
+import { COMPANY_DETAILS_PAGE, CREATE_REVIEW_PAGE } from '@/consts';
 import Card from '../Card';
 import styles from './styles';
 
@@ -59,7 +59,11 @@ export default function CompanyCard({ company }: Props) {
                style={styles.button}
                textStyle={styles.buttonText}
                label={t('buttons.post.review')}
-               onPress={() => undefined}
+               onPress={() =>
+                  navigation.navigate(CREATE_REVIEW_PAGE, {
+                     companyId: company.id,
+                  })
+               }
             />
          </Gap>
       </Card>

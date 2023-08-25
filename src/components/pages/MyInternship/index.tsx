@@ -1,4 +1,4 @@
-import { useGetMyInternshipQuery } from '@/services/internships';
+import { useGetMyInternshipQuery } from '@/services';
 import Loader from '@/components/atoms/Loader';
 import MyInternshipTemplate from '@/components/templates/MyInternship';
 

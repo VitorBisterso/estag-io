@@ -16,6 +16,7 @@ export const UPDATE_INTERNSHIP_PAGE = 'UpdateInternshipPage';
 
 export const HANDLE_PROFILE_REVIEW = 'ReviewsCompanies';
 export const REVIEWS_PAGE = 'Reviews';
+export const CREATE_REVIEW_PAGE = 'CreateReviewPage';
 export const COMPANIES_PAGE = 'Companies';
 export const COMPANY_DETAILS_PAGE = 'CompanyDetailsPage';
 
