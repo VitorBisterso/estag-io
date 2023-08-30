@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { useNavigation } from '@react-navigation/native';
+import { Route, useNavigation } from '@react-navigation/native';
 
 import useToast from '@/hooks/useToast';
 import { INTERNSHIPS_PAGE } from '@/consts';
@@ -13,7 +13,12 @@ import {
 import { InternshipFormContext } from '@/hooks/useInternshipForm';
 import CreateInternshipTemplate from '@/components/templates/CreateInternship';
 
-export default function CreateInternshipPage() {
+interface Props {
+   // eslint-disable-next-line react/require-default-props
+   route?: Route<string, { opportunityId?: number }>;
+}
+
+export default function CreateInternshipPage({ route }: Props) {
    const { t } = useTranslation('internships');
    const toast = useToast();
    const navigation = useNavigation<any>();
@@ -23,6 +28,10 @@ export default function CreateInternshipPage() {
    const [createInternship, { isLoading: isCreating }] =
       useCreateInternshipMutation();
 
+   function getInitialJobId() {
+      return route?.params?.opportunityId ?? 0;
+   }
+
    const formik = useFormik({
       initialValues: {
          initialDate: '',
@@ -30,7 +39,7 @@ export default function CreateInternshipPage() {
          managerName: '',
          advisorName: '',
          studentId: 0,
-         jobId: 0,
+         jobId: getInitialJobId(),
       },
       validationSchema: validations(t),
       onSubmit: () => {

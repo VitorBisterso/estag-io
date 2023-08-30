@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { ProcessStep } from '@/models/processSteps';
 import Gap from '@/components/atoms/Gap';
+import EmptyResults from '@/components/atoms/EmptyResults';
 import Card from '@/components/molecules/Card';
 import ConfirmationModal from '@/components/molecules/ConfirmationModal';
 import { useDeleteProcessStepMutation } from '@/services/processSteps';
@@ -64,6 +65,8 @@ export default function ProcessStepList({
    }
 
    function renderWithCards() {
+      if (processSteps.length <= 0) return <EmptyResults />;
+
       return processSteps.map((step, index) => (
          <Card
             key={step.id}

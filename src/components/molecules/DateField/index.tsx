@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 import TextInputField from '@/components/molecules/TextInputField';
+import { intlDateFormatter } from '@/utils';
 
 interface Props {
    label: string;
@@ -28,11 +29,12 @@ export default function DateField({
       setDatePickerVisibility(false);
    }
 
-   const dateFormat = useMemo(
-      () => new Intl.DateTimeFormat('pt-br', { timeZone: 'Australia/Sydney' }),
-      [],
+   const dateFormat = useMemo(intlDateFormatter, []);
+   const currentDate = useMemo(
+      () => (date ? (new Date(date) as any) : undefined),
+      [date],
    );
-   const formattedDate = date ? dateFormat.format(new Date(date) as any) : '';
+   const formattedDate = currentDate ? dateFormat.format(currentDate) : '';
    return (
       <>
          <TextInputField
@@ -46,11 +48,12 @@ export default function DateField({
             error={error}
          />
          <DateTimePickerModal
+            date={currentDate ?? new Date()}
             isVisible={isDatePickerVisible}
             mode="date"
             onConfirm={(newDate) => {
-               onChange(newDate);
                hideDatePicker();
+               onChange(newDate);
             }}
             onCancel={hideDatePicker}
          />

@@ -16,7 +16,7 @@ interface Props {
 }
 
 export default function OpportunityDetailsInfo({ opportunity }: Props) {
-   const { t } = useTranslation('opportunities');
+   const { t } = useTranslation(['opportunities', 'common']);
    const { profile } = useSelector((state: RootState) => state.ProfileSlice);
    const isCompany = profile === 'COMPANY';
 
@@ -48,7 +48,7 @@ export default function OpportunityDetailsInfo({ opportunity }: Props) {
          <DetailsItem
             style={{ marginVertical: -16 }}
             label={t('labels.type')}
-            value={t(`labels.type.${type.toLowerCase()}`)}
+            value={t(`labels.${type.toLowerCase()}`, { ns: 'common' })}
             valueIcon={type === 'REMOTE' ? REMOTE_ICON : LOCAL_ICON}
          />
          <DetailsItem

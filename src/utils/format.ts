@@ -11,3 +11,7 @@ export function intlCurrencyFormatter() {
       currency: 'BRL',
    });
 }
+
+export function intlDateFormatter() {
+   return new Intl.DateTimeFormat('pt-br');
+}

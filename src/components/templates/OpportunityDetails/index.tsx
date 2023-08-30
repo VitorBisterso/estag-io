@@ -15,6 +15,7 @@ import TabGroup from '@/components/molecules/TabGroup';
 import OpportunityProcessSteps from '@/components/organisms/OpportunityProcessSteps';
 import useToast from '@/hooks/useToast';
 import {
+   CREATE_INTERNSHIP_PAGE,
    MANAGE_PROCESS_STEPS_PAGE,
    OPPORTUNITIES_PAGE,
    UPDATE_OPPORTUNTITY_PAGE,
@@ -61,7 +62,11 @@ export default function OpportunityDetailsTemplate({ opportunity }: Props) {
                <Button
                   mode="outlined"
                   label={t('buttons.create.internship')}
-                  onPress={() => undefined}
+                  onPress={() =>
+                     navigation.navigate(CREATE_INTERNSHIP_PAGE, {
+                        opportunityId: opportunity.id,
+                     })
+                  }
                />
             </Gap>
          );
