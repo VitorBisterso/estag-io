@@ -1,4 +1,6 @@
 import {
+   ChangePasswordParams,
+   ResetPasswordParams,
    SignInParams,
    SignInResponse,
    SignUpCompanyParams,
@@ -35,7 +37,26 @@ export const authApi = api.injectEndpoints({
             };
          },
       }),
+      resetPassword: builder.mutation<null, ResetPasswordParams>({
+         query: (params) => ({
+            url: '/auth/reset-password',
+            method: 'POST',
+            body: params,
+         }),
+      }),
+      changePassword: builder.mutation<null, ChangePasswordParams>({
+         query: (params) => ({
+            url: '/auth/change-password',
+            method: 'POST',
+            body: params,
+         }),
+      }),
    }),
 });
 
-export const { useSignInMutation, useSignUpMutation } = authApi;
+export const {
+   useSignInMutation,
+   useSignUpMutation,
+   useResetPasswordMutation,
+   useChangePasswordMutation,
+} = authApi;

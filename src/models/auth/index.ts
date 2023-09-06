@@ -33,6 +33,16 @@ export interface SignUpResponse {
    accessToken: string;
 }
 
+export interface ResetPasswordParams {
+   email: string;
+}
+
+export interface ChangePasswordParams {
+   token: string;
+   email: string;
+   password: string;
+}
+
 export interface AccessToken extends JwtPayload {
    email: string;
    exp: number;
