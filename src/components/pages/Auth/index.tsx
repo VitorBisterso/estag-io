@@ -9,6 +9,8 @@ import {
    useSignInMutation,
    useSignUpMutation,
    useGetBusinessCategoriesQuery,
+   useResetPasswordMutation,
+   useChangePasswordMutation,
 } from '@/services';
 import { setProfile } from '@/store/states/profile';
 import { LoginContext } from '@/hooks/useLogin';
@@ -19,7 +21,14 @@ import { AccessToken } from '@/models/auth';
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, LOGGED_ROUTES } from '@/consts';
 import AuthTemplate from '@/components/templates/Auth';
 import { BusinessCategory } from '@/models/reviews';
-import { loginValidations, signUpValidations } from './validations';
+import { ResetPasswordContext } from '@/hooks/useResetPassword';
+import { ChangePasswordContext } from '@/hooks/useChangePassword';
+import {
+   changePasswordValidations,
+   loginValidations,
+   resetPasswordValidations,
+   signUpValidations,
+} from './validations';
 
 export default function AuthPage() {
    const { t } = useTranslation(['auth', 'common']);
@@ -31,6 +40,10 @@ export default function AuthPage() {
       useGetBusinessCategoriesQuery(null);
    const [signIn, { isLoading: isSigninIn }] = useSignInMutation();
    const [signUp, { isLoading: isSigninUp }] = useSignUpMutation();
+   const [resetPassword, { isLoading: isResetingPassword }] =
+      useResetPasswordMutation();
+   const [changePassword, { isLoading: isChangingPassword }] =
+      useChangePasswordMutation();
 
    const loginFormik = useFormik({
       initialValues: {
@@ -84,6 +97,41 @@ export default function AuthPage() {
       },
    });
 
+   const resetPasswordFormik = useFormik({
+      initialValues: {
+         email: '',
+      },
+      validationSchema: resetPasswordValidations(t),
+      onSubmit: () => {
+         const { email } = resetPasswordFormik.values;
+
+         resetPassword({ email })
+            .unwrap()
+            .then(() => {
+               toast.success(t('success.reset.password'));
+            });
+      },
+   });
+
+   const changePasswordFormik = useFormik({
+      initialValues: {
+         token: '',
+         email: '',
+         password: '',
+         confirmPassword: '',
+      },
+      validationSchema: changePasswordValidations(t),
+      onSubmit: () => {
+         const { token, email, password } = changePasswordFormik.values;
+
+         changePassword({ token, email, password })
+            .unwrap()
+            .then(() => {
+               toast.success(t('success.change.password'));
+            });
+      },
+   });
+
    const loginProviderValue = useMemo(
       () => ({
          formik: loginFormik,
@@ -99,10 +147,30 @@ export default function AuthPage() {
       }),
       [signUpFormik, isSigninUp, isFetchingCategories],
    );
+   const resetPasswordProviderValue = useMemo(
+      () => ({
+         formik: resetPasswordFormik,
+         isLoading: isResetingPassword,
+      }),
+      [resetPasswordFormik, isResetingPassword],
+   );
+   const changePasswordProviderValue = useMemo(
+      () => ({
+         formik: changePasswordFormik,
+         isLoading: isChangingPassword,
+      }),
+      [changePasswordFormik, isChangingPassword],
+   );
    return (
       <LoginContext.Provider value={loginProviderValue}>
          <SignUpContext.Provider value={signUpProviderValue as any}>
-            <AuthTemplate />
+            <ResetPasswordContext.Provider value={resetPasswordProviderValue}>
+               <ChangePasswordContext.Provider
+                  value={changePasswordProviderValue}
+               >
+                  <AuthTemplate />
+               </ChangePasswordContext.Provider>
+            </ResetPasswordContext.Provider>
          </SignUpContext.Provider>
       </LoginContext.Provider>
    );

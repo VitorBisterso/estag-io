@@ -48,3 +48,33 @@ export function signUpValidations(t: TranslationFunctionType) {
          .matches(phoneRegExp, t('errors.invalid.phone')),
    });
 }
+
+export function resetPasswordValidations(t: TranslationFunctionType) {
+   const requiredMessage = t('errors.required.field', { ns: 'common' });
+
+   return Yup.object({
+      email: Yup.string()
+         .trim()
+         .email(t('errors.invalid.email'))
+         .required(requiredMessage),
+   });
+}
+
+export function changePasswordValidations(t: TranslationFunctionType) {
+   const requiredMessage = t('errors.required.field', { ns: 'common' });
+
+   return Yup.object({
+      token: Yup.string().trim().required(requiredMessage),
+      email: Yup.string()
+         .trim()
+         .email(t('errors.invalid.email'))
+         .required(requiredMessage),
+      password: Yup.string()
+         .trim()
+         .min(MIN_PASSWORD_SIZE, t('errors.password.min'))
+         .required(requiredMessage),
+      confirmPassword: Yup.string()
+         .oneOf([Yup.ref('password'), null as any], t('errors.equal.passwords'))
+         .required(requiredMessage),
+   });
+}
