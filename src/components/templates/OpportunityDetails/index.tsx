@@ -14,6 +14,7 @@ import OpportunityDetailsInfo from '@/components/molecules/OpportunityDetailsInf
 import TabGroup from '@/components/molecules/TabGroup';
 import OpportunityProcessSteps from '@/components/organisms/OpportunityProcessSteps';
 import useToast from '@/hooks/useToast';
+import * as RootNavigation from '@/navigation';
 import {
    CREATE_INTERNSHIP_PAGE,
    MANAGE_PROCESS_STEPS_PAGE,
@@ -63,7 +64,7 @@ export default function OpportunityDetailsTemplate({ opportunity }: Props) {
                   mode="outlined"
                   label={t('buttons.create.internship')}
                   onPress={() =>
-                     navigation.navigate(CREATE_INTERNSHIP_PAGE, {
+                     RootNavigation.navigate(CREATE_INTERNSHIP_PAGE, {
                         opportunityId: opportunity.id,
                      })
                   }

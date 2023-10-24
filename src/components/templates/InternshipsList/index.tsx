@@ -1,6 +1,5 @@
 import { ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { useNavigation } from '@react-navigation/native';
 
 import { CREATE_INTERNSHIP_PAGE, INTERNSHIPS_ICON } from '@/consts';
 import Gap from '@/components/atoms/Gap';
@@ -9,6 +8,7 @@ import PageHeader from '@/components/molecules/PageHeader';
 import InternshipsList from '@/components/organisms/InternshipsList';
 import InternshipFilter from '@/components/organisms/InternshipFilter';
 import { GetInternshipsResponse } from '@/models/internships';
+import * as RootNavigation from '@/navigation';
 import styles from './styles';
 
 interface Props {
@@ -18,7 +18,6 @@ interface Props {
 
 export default function InternshipsListTemplate({ data, isFetching }: Props) {
    const { t } = useTranslation('internships');
-   const navigation = useNavigation<any>();
 
    return (
       <>
@@ -38,7 +37,7 @@ export default function InternshipsListTemplate({ data, isFetching }: Props) {
          </ScrollView>
          <Fab
             icon="plus"
-            onPress={() => navigation.navigate(CREATE_INTERNSHIP_PAGE)}
+            onPress={() => RootNavigation.navigate(CREATE_INTERNSHIP_PAGE)}
          />
       </>
    );

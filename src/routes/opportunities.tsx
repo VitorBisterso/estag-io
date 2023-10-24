@@ -7,6 +7,8 @@ import UpdateOpportunity from '@/components/pages/UpdateOpportunity';
 import ManageProcessStepsPage from '@/components/pages/ManageProcessSteps';
 import CreateProcessStepPage from '@/components/pages/CreateProcessStep';
 import UpdateProcessStepPage from '@/components/pages/UpdateProcessStep';
+import InternshipsPage from '@/components/pages/Internships';
+import CreateInternshipPage from '@/components/pages/CreateInternship';
 import {
    CREATE_OPPORTUNTITY_PAGE,
    OPPORTUNITIES_PAGE,
@@ -15,6 +17,8 @@ import {
    UPDATE_OPPORTUNTITY_PAGE,
    CREATE_PROCESS_STEP_PAGE,
    UPDATE_PROCESS_STEP_PAGE,
+   CREATE_INTERNSHIP_PAGE,
+   INTERNSHIPS_PAGE,
 } from '@/consts';
 
 const Stack = createNativeStackNavigator();
@@ -52,6 +56,11 @@ export default function OpportunitiesRoutes() {
          <Stack.Screen
             name={UPDATE_PROCESS_STEP_PAGE}
             component={UpdateProcessStepPage}
+         />
+         <Stack.Screen name={INTERNSHIPS_PAGE} component={InternshipsPage} />
+         <Stack.Screen
+            name={CREATE_INTERNSHIP_PAGE}
+            component={CreateInternshipPage}
          />
       </Stack.Navigator>
    );
